@@ -28,7 +28,8 @@ namespace TravelAgent.Web.UI
                 Admin = (TravelAgent.Model.AdminList)Session["LoginUser"];
             }
         }
-        
+
+
         protected void chkLoginLevel(string pagestr)
         {
             string msbox = "";

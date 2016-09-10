@@ -74,6 +74,7 @@
     <Content Include="css\line.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />
+    <Content Include="Global.asax" />
     <Content Include="guide\add.aspx" />
     <Content Include="guide\css\8575557af2e22a645fd8457df2d411b4.css" />
     <Content Include="guide\css\bf7ed159deabdd1a409950a1335697cd.css" />
@@ -1499,6 +1500,9 @@
     </Compile>
     <Compile Include="DiyResult.aspx.designer.cs">
       <DependentUpon>DiyResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="guide\add.aspx.cs">
       <DependentUpon>add.aspx</DependentUpon>
