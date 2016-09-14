@@ -48,6 +48,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.8\lib\net35\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -3061,6 +3064,13 @@
     <Content Include="mTravel\data\order.ashx" />
     <Content Include="Tools\SingleUpload1.ashx" />
     <Content Include="packages.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="travel.pfx" />
     <None Include="ueditor\net\upload\2005-01-05\Thumbs.db" />
     <Content Include="wxpay\js\jquery-1.9.0.js" />
@@ -3276,9 +3286,17 @@
       <Project>{370AE2AD-8E5D-4ED8-9395-F38AD41B3241}</Project>
       <Name>TravelAgent.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.DALFactory\TravelAgent.DALFactory.csproj">
+      <Project>{e0817455-e1d9-46c1-b662-9ae85f9f74dd}</Project>
+      <Name>TravelAgent.DALFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelAgent.DALSQL\TravelAgent.DALSQL.csproj">
       <Project>{C6590989-8C02-4D17-A7D4-91FCCF4D205F}</Project>
       <Name>TravelAgent.DALSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
+      <Project>{6cefb7ba-7a36-4a2b-8317-ad5c22178472}</Project>
+      <Name>TravelAgent.IDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.Model\TravelAgent.Model.csproj">
       <Project>{1F4B9051-EADE-4180-84BE-ECCD98091444}</Project>

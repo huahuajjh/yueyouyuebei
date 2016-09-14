@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TravelAgent.Tool;
+using TravelAgent.IDAL;
+using NLog;
 namespace TravelAgent.Web
 {
     public partial class Default : System.Web.UI.Page
