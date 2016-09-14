@@ -19,14 +19,11 @@ namespace TravelAgent.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = "订单结果" + Master.webinfo.WebName;
+            int.TryParse(Request.QueryString["oid"], out oid);
             if (Request.QueryString["pay"] != null)
             {
                 strTip = "付款成功";
                 strSubTip = "如果付款成功，订单的状态仍是‘待付款’，请联系客服工作人员核实修改！";
-            }
-            if (Request.QueryString["oid"] != null)
-            {
-                oid = Convert.ToInt32(Request.QueryString["oid"]);
             }
             if (!this.IsPostBack)
             {
@@ -47,6 +44,8 @@ namespace TravelAgent.Web
                     }
                 }
             }
+            if (order == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); order = new Model.Order(); }
+            if (Line == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); Line = new Model.Line(); }
         }
     }
 }

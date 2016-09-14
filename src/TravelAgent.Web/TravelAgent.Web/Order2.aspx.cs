@@ -20,10 +20,7 @@ namespace TravelAgent.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = "填写游客信息-" + Master.webinfo.WebName;
-            if (Request.QueryString["oid"] != null)
-            {
-                oid = Convert.ToInt32(Request.QueryString["oid"]);
-            }
+            int.TryParse(Request.QueryString["oid"], out oid);
             if (!this.IsPostBack)
             {
                 if (oid > 0)
@@ -71,6 +68,8 @@ namespace TravelAgent.Web
                     }
                 }
             }
+            if (order == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); order = new Model.Order(); }
+            if (Line == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); Line = new Model.Line(); }
         }
         /// <summary>
         /// 绑定附加产品
@@ -96,7 +95,7 @@ namespace TravelAgent.Web
         public string BindTouristInfo()
         {
             StringBuilder sbTour = new StringBuilder();
-            for (int i = 0; i < order.adultNumber; i++)
+            for (int i = 0; order != null && i < order.adultNumber; i++)
             {
                 sbTour.Append("<div class=\"userType userTypeAdault\" id=\"div_ch_person_"+i+"\">");
                 sbTour.Append("<div class=\"hd\">");
@@ -128,7 +127,7 @@ namespace TravelAgent.Web
                 sbTour.Append("</div></div></div>");
                
             }
-            for (int k = 0; k < order.childNumber; k++)
+            for (int k = 0; order != null && k < order.childNumber; k++)
             {
                 sbTour.Append("<div class=\"userType userTypeChildren\" id=\"div_ch_child_"+k+"\">");
                 sbTour.Append("<div class=\"hd\">");

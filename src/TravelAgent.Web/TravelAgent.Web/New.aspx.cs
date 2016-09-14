@@ -21,14 +21,8 @@ namespace TravelAgent.Web
         private static readonly TravelAgent.BLL.Line LineBll = new TravelAgent.BLL.Line();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["nav"] != null)
-            {
-                nav = Convert.ToInt32(Request.QueryString["nav"]);
-            }
-            if (Request.QueryString["id"] != null)
-            {
-                id = Convert.ToInt32(Request.QueryString["id"]);
-            }
+            int.TryParse(Request.QueryString["nav"], out nav);
+            int.TryParse(Request.QueryString["id"], out id);
             if (!this.IsPostBack)
             {
                 StringBuilder sbPlace = new StringBuilder();

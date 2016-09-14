@@ -24,10 +24,7 @@ namespace TravelAgent.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = "核对订单-" + Master.webinfo.WebName;
-            if (Request.QueryString["oid"] != null)
-            {
-                oid = Convert.ToInt32(Request.QueryString["oid"]);
-            }
+            int.TryParse(Request.QueryString["oid"], out oid);
             if (!this.IsPostBack)
             {
                 TravelAgent.Model.InfoSetting info = new TravelAgent.Model.InfoSetting();
@@ -83,6 +80,8 @@ namespace TravelAgent.Web
                     }
                 }
             }
+            if (order == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); order = new Model.Order(); }
+            if (Line == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); Line = new Model.Line(); }
         }
         /// <summary>
         /// 显示城市名称

@@ -42,74 +42,65 @@ namespace TravelAgent.Web
         {
             string strTitle = "";
             string strTempName = "";
-            if (Request["nav"] != null)
+            int.TryParse(Request["nav"], out nav);
+            if (Request["od"] != null && int.TryParse(Request["od"], out od))
             {
-                nav = Convert.ToInt32(Request["nav"]);
-            }
-            if (Request["od"] != null)
-            {
-                od = Convert.ToInt32(Request["od"]);
                 if (od > 0)
                 {
-                    strTempName = (DestBll.GetModel(od)).navName;
-                    //strPlace += "<a href=\"?nav=" + nav + "&od=" + od + "\">" +strTempName+ "</a>&gt;";
-                    //urlrewrite
-                    strPlace += "<a href=\"/linemodel/" + nav + "/" + od + ".html\">" + strTempName + "</a>&gt;";
-                    strTitle = strTempName;
+                    Model.Destination model = DestBll.GetModel(od);
+                    if(model != null)
+                    {
+                        strTempName = model.navName;
+                        //strPlace += "<a href=\"?nav=" + nav + "&od=" + od + "\">" +strTempName+ "</a>&gt;";
+                        //urlrewrite
+                        strPlace += "<a href=\"/linemodel/" + nav + "/" + od + ".html\">" + strTempName + "</a>&gt;";
+                        strTitle = strTempName;
+                    }
                 }
             }
-            if (Request["td"] != null)
+            if (Request["td"] != null && int.TryParse(Request["td"], out td))
             {
-                td = Convert.ToInt32(Request["td"]);
                 if (td > 0)
                 {
-                    strTempName = (DestBll.GetModel(td)).navName;
-                    //strPlace += "<a href=\"?nav=" + nav + "&od=" + od + "&td=" + td + "\">" + strTempName + "旅游</a>&gt;";
-                    //urlrewrite
-                    strPlace += "<a href=\"/linesub/" + nav + "/" + od + "/" + td + ".html\">" + strTempName + "旅游</a>&gt;";
-                    if (!strTitle.Equals(""))
+                    Model.Destination model = DestBll.GetModel(td);
+                    if(model != null)
                     {
-                        strTitle = strTempName + "旅游-" + strTitle;
+                        strTempName = model.navName;
+                        //strPlace += "<a href=\"?nav=" + nav + "&od=" + od + "&td=" + td + "\">" + strTempName + "旅游</a>&gt;";
+                        //urlrewrite
+                        strPlace += "<a href=\"/linesub/" + nav + "/" + od + "/" + td + ".html\">" + strTempName + "旅游</a>&gt;";
+                        if (!strTitle.Equals(""))
+                        {
+                            strTitle = strTempName + "旅游-" + strTitle;
+                        }
                     }
                 }
             }
-            if (Request["thd"] != null)
+            if (Request["thd"] != null && int.TryParse(Request["thd"], out thd))
             {
-                thd = Convert.ToInt32(Request["thd"]);
                 if (thd > 0)
                 {
-                    strTempName = (DestBll.GetModel(thd)).navName;
-                    strPlace += "<em>" + strTempName + "</em>";
-                    if (!strTitle.Equals(""))
+                    Model.Destination model = DestBll.GetModel(thd);
+                    if(model != null)
                     {
-                        strTitle = strTempName + "旅游-" + strTitle;
+                        strTempName = model.navName;
+                        strPlace += "<em>" + strTempName + "</em>";
+                        if (!strTitle.Equals(""))
+                        {
+                            strTitle = strTempName + "旅游-" + strTitle;
+                        }
                     }
                 }
             }
-            if (Request["c"] != null)
-            {
-                cityId = Convert.ToInt32(Request["c"]);
-            }
-            if (Request["p"] != null)
-            {
-                proId = Convert.ToInt32(Request["p"]);
-            }
-            if (Request["d"] != null)
-            {
-                day = Convert.ToInt32(Request["d"]);
-            }
-            if (Request["Tu"] != null)
-            {
-                isTuijian = Convert.ToInt32(Request["Tu"]);
-            }
-            if (Request["Te"] != null)
-            {
-                isTejia = Convert.ToInt32(Request["Te"]);
-            }
-            if (Request["Re"] != null)
-            {
-                isRemai = Convert.ToInt32(Request["Re"]);
-            }
+            int.TryParse(Request["c"], out cityId);
+            int.TryParse(Request["p"], out proId);
+            int.TryParse(Request["d"], out day);
+            int.TryParse(Request["Tu"], out isTuijian);
+            int.TryParse(Request["Te"], out isTejia);
+            int.TryParse(Request["Re"], out isRemai);
+            int.TryParse(Request["rq"], out renqi);
+            int.TryParse(Request["pr"], out price);
+            int.TryParse(Request["page"], out page);
             if (Request["pu"] != null)
             {
                 price_up = Request["pu"];
@@ -118,22 +109,7 @@ namespace TravelAgent.Web
             {
                 price_down = Request["pd"];
             }
-
-            if (Request["rq"] != null)
-            {
-                renqi = Convert.ToInt32(Request["rq"]);
-            }
-            if (Request["pr"] != null)
-            {
-                price = Convert.ToInt32(Request["pr"]);
-            }
-            if (Request["page"] != null)
-            {
-                page = Convert.ToInt32(Request["page"]);
-            }
             this.Title = strTitle + "-" + Master.webinfo.WebName;
-
-           
         }
         /// <summary>
         /// 绑定目的地
@@ -604,14 +580,18 @@ namespace TravelAgent.Web
             {
                 if(!this.price_up.Equals("0"))
                 {
-                    strTemp.Append(" and priceCommon<=" + Convert.ToInt32(this.price_up));
+                    int tempPrice_up;
+                    int.TryParse(this.price_up, out tempPrice_up);
+                    strTemp.Append(" and priceCommon<=" + tempPrice_up.ToString());
                 }
             }
             if (!string.IsNullOrEmpty(this.price_down))
             {
                 if(!this.price_down.Equals("0"))
                 {
-                    strTemp.Append(" and priceCommon>=" + Convert.ToInt32(this.price_down));
+                    int tempPrice_down;
+                    int.TryParse(this.price_down, out tempPrice_down);
+                    strTemp.Append(" and priceCommon>=" + tempPrice_down);
                 }
             }
             return strTemp.ToString();

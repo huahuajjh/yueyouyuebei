@@ -40,30 +40,12 @@ namespace TravelAgent.Web
                     keyword = Server.UrlDecode(Request["k"]); 
                 }
             }
-            if (Request["c"] != null)
-            {
-                cityId = Convert.ToInt32(Request["c"]);
-            }
-            if (Request["p"] != null)
-            {
-                proId = Convert.ToInt32(Request["p"]);
-            }
-            if (Request["d"] != null)
-            {
-                day = Convert.ToInt32(Request["d"]);
-            }
-            if (Request["Tu"] != null)
-            {
-                isTuijian = Convert.ToInt32(Request["Tu"]);
-            }
-            if (Request["Te"] != null)
-            {
-                isTejia = Convert.ToInt32(Request["Te"]);
-            }
-            if (Request["Re"] != null)
-            {
-                isRemai = Convert.ToInt32(Request["Re"]);
-            }
+            int.TryParse(Request["c"], out cityId);
+            int.TryParse(Request["p"], out proId);
+            int.TryParse(Request["d"], out day);
+            int.TryParse(Request["Tu"], out isTuijian);
+            int.TryParse(Request["Te"], out isTejia);
+            int.TryParse(Request["Re"], out isRemai);
             if (Request["pu"] != null)
             {
                 price_up = Request["pu"];
@@ -72,19 +54,9 @@ namespace TravelAgent.Web
             {
                 price_down = Request["pd"];
             }
-
-            if (Request["rq"] != null)
-            {
-                renqi = Convert.ToInt32(Request["rq"]);
-            }
-            if (Request["pr"] != null)
-            {
-                price = Convert.ToInt32(Request["pr"]);
-            }
-            if (Request["page"] != null)
-            {
-                page = Convert.ToInt32(Request["page"]);
-            }
+            int.TryParse(Request["rq"], out renqi);
+            int.TryParse(Request["pr"], out price);
+            int.TryParse(Request["page"], out page);
             if (keyword != "no")
             {
                 this.Title = keyword + "旅游搜索结果-" + Master.webinfo.WebName;
@@ -259,11 +231,15 @@ namespace TravelAgent.Web
             }
             if (!this.price_up.Equals("") && !this.price_up.Equals("0"))
             {
-                strTemp.Append(" and priceCommon<="+Convert.ToInt32(this.price_up));
+                int tempPrice_up;
+                int.TryParse(this.price_up, out tempPrice_up);
+                strTemp.Append(" and priceCommon<=" + tempPrice_up);
             }
             if (!this.price_down.Equals("")&&!this.price_down.Equals("0"))
             {
-                strTemp.Append(" and priceCommon>=" + Convert.ToInt32(this.price_down));
+                int tempPrice_down;
+                int.TryParse(this.price_down, out tempPrice_down);
+                strTemp.Append(" and priceCommon>=" + tempPrice_down);
             }
             return strTemp.ToString();
         }

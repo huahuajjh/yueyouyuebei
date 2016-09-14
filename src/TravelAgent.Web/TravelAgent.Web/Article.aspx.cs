@@ -16,10 +16,7 @@ namespace TravelAgent.Web
         private static readonly TravelAgent.BLL.Category CateBll = new TravelAgent.BLL.Category();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["navid"] != null)
-            {
-                navId = Convert.ToInt32(Request.QueryString["navid"]);
-            }
+            int.TryParse(Request.QueryString["navid"], out navId);
             if (!this.IsPostBack)
             {
                 if (navId > 0)

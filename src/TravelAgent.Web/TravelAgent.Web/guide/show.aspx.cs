@@ -19,9 +19,9 @@ namespace TravelAgent.Web.guide
         TravelAgent.BLL.AdminList admin = new BLL.AdminList();
         TravelAgent.BLL.Club club = new BLL.Club();
         TravelAgent.BLL.TourComment comment = new BLL.TourComment();
-        public Club user = new Club();
-        public TourGuide gd = new TourGuide();
-        public TourGuideTemp tt = new TourGuideTemp();
+        public Club user = null;
+        public TourGuide gd = null;
+        public TourGuideTemp tt = null;
         public List<TourGuideRoute> routelist = new List<TourGuideRoute>();
         public AdminList ad = new AdminList();
         public string begindate="";
@@ -30,74 +30,83 @@ namespace TravelAgent.Web.guide
         {
             Response.Cache.SetNoStore();
             if (!IsPostBack) {
-                int id =Convert.ToInt32( Request["id"]);
+                int id;
+                int.TryParse(Request["id"], out id);
                 gd = guide.GetModel(id);
-                gd.browsecount = gd.browsecount + 1;
-                guide.Update(gd);
-                gd = guide.GetModel(id);
-                string userid = gd.userid;
-                user = club.GetModel(Convert.ToInt32(userid));
-                tt = tgt.GetModel(gd.temp_id);
-                routelist = tre.GetList(tt.Id);
-                if (routelist.Count > 0) {
-                    begindate = routelist[0].routetime.ToString("yyyy-MM-dd");
-                    //Response.Write(routelist[0].routetime);
-                }
-                StringBuilder sb=new StringBuilder();
+                if (gd != null)
+                {
+                    gd.browsecount = gd.browsecount + 1;
+                    guide.Update(gd);
+                    gd = guide.GetModel(id);
+                    string userid = gd.userid;
+                    user = club.GetModel(Convert.ToInt32(userid));
+                    tt = tgt.GetModel(gd.temp_id);
+                    routelist = tre.GetList(tt.Id);
+                    if (routelist.Count > 0)
+                    {
+                        begindate = routelist[0].routetime.ToString("yyyy-MM-dd");
+                        //Response.Write(routelist[0].routetime);
+                    }
+                    StringBuilder sb = new StringBuilder();
 
-                for(int i=0;i<routelist.Count;i++){
-                
-                    sb.Append("<div class=\"day_box\">");
-                    sb.Append("<div class=\"day_item\">");
-                    sb.Append("<div class=\"room-title\">");
-                    sb.Append("<p>第<em>"+(i+1)+"</em>天</p>");
-                    sb.Append("<p class=\"date\">"+routelist[i].routetime.ToString("yyyy-MM-dd")+"</p>");
-                    sb.Append("<p class=\"cities\">");
-                    sb.Append("<span></span>&nbsp;&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">"+routelist[i].title+"</a>");
-                    //sb.Append("<span></span>&nbsp;&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">上海</a>");
-                    sb.Append("&nbsp;&nbsp;&gt;");
-                    sb.Append("</p>");
-                    sb.Append("</div>");
+                    for (int i = 0; i < routelist.Count; i++)
+                    {
 
-                    sb.Append("<div class=\"day_content\">");
-                    sb.Append("<div class=\"route_title\">"+routelist[i].title+"</div>");
-                    int routeid=routelist[i].id;
-                    List<TourGuideSpot> spotlist = spot.GetList(routeid);
-                    for (int j = 0; j < spotlist.Count; j++) {
-                        sb.Append("<div class=\"day_spot\">");
-                        sb.Append(" <div class=\"room-city\">");
-                        sb.Append("<p class=\"city-name\" data-destination=\"" + spotlist[j].areaname + "\"><span></span>&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">" + spotlist[j].areaname + "</a></p>");
+                        sb.Append("<div class=\"day_box\">");
+                        sb.Append("<div class=\"day_item\">");
+                        sb.Append("<div class=\"room-title\">");
+                        sb.Append("<p>第<em>" + (i + 1) + "</em>天</p>");
+                        sb.Append("<p class=\"date\">" + routelist[i].routetime.ToString("yyyy-MM-dd") + "</p>");
+                        sb.Append("<p class=\"cities\">");
+                        sb.Append("<span></span>&nbsp;&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">" + routelist[i].title + "</a>");
+                        //sb.Append("<span></span>&nbsp;&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">上海</a>");
+                        sb.Append("&nbsp;&nbsp;&gt;");
+                        sb.Append("</p>");
                         sb.Append("</div>");
-                        sb.Append("<div class=\"spot_gallery_list\">");
-                        sb.Append("<ul>");
-                        int spotid = spotlist[j].id;
-                        List<TourGuideGallery> gallerylist = tgy.GetList(spotid);
-                        for (int p = 0; p < gallerylist.Count; p++) {
-                            sb.Append("<li class=\"pic_item\">");
-                            sb.Append("<a href=\"\"><img src=\"../"+gallerylist[p].image+"\"/></a>");
-                            sb.Append("</li>");
-                        }
-                        
 
-                        sb.Append("</ul>");
+                        sb.Append("<div class=\"day_content\">");
+                        sb.Append("<div class=\"route_title\">" + routelist[i].title + "</div>");
+                        int routeid = routelist[i].id;
+                        List<TourGuideSpot> spotlist = spot.GetList(routeid);
+                        for (int j = 0; j < spotlist.Count; j++)
+                        {
+                            sb.Append("<div class=\"day_spot\">");
+                            sb.Append(" <div class=\"room-city\">");
+                            sb.Append("<p class=\"city-name\" data-destination=\"" + spotlist[j].areaname + "\"><span></span>&nbsp;<a href=\"javascript:;\" rel=\"nofollow\">" + spotlist[j].areaname + "</a></p>");
+                            sb.Append("</div>");
+                            sb.Append("<div class=\"spot_gallery_list\">");
+                            sb.Append("<ul>");
+                            int spotid = spotlist[j].id;
+                            List<TourGuideGallery> gallerylist = tgy.GetList(spotid);
+                            for (int p = 0; p < gallerylist.Count; p++)
+                            {
+                                sb.Append("<li class=\"pic_item\">");
+                                sb.Append("<a href=\"\"><img src=\"../" + gallerylist[p].image + "\"/></a>");
+                                sb.Append("</li>");
+                            }
+
+
+                            sb.Append("</ul>");
+                            sb.Append("</div>");
+                            sb.Append("</div>");
+                        }
+                        ///////////////////////////////
+
+                        //////////////////////////////////////
+                        //
+                        sb.Append("<div class=\"day_desc\">" + routelist[i].contents + "</div>");
+                        sb.Append("</div>");
                         sb.Append("</div>");
                         sb.Append("</div>");
                     }
-                        ///////////////////////////////
-                    
-                    //////////////////////////////////////
-                    //
-                    sb.Append("<div class=\"day_desc\">"+routelist[i].contents+"</div>");
-                    sb.Append("</div>");
-                    sb.Append("</div>");
-                    sb.Append("</div>");
+                    J_nbox_0.InnerHtml = sb.ToString();
+                    comlist = comment.GetList(id);
+                    CommentList(comlist);
                 }
-                J_nbox_0.InnerHtml = sb.ToString();
-                comlist = comment.GetList(id);
-                CommentList(comlist);
             }
-
-           
+            if (gd == null) { gd = new TourGuide(); Response.Redirect("/Opr.aspx?t=error&msg=opr"); }
+            if (tt == null) { tt = new TourGuideTemp(); Response.Redirect("/Opr.aspx?t=error&msg=opr"); }
+            if (user == null) { user = new Club(); Response.Redirect("/Opr.aspx?t=error&msg=opr"); }
         }
 
         private void CommentList(List<TourComment> clist) { 

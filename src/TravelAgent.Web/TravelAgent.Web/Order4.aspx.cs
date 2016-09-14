@@ -29,18 +29,15 @@ namespace TravelAgent.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Title = "付款-" + Master.webinfo.WebName;
-            string strUid = TravelAgent.Tool.CookieHelper.GetCookieValue("uid");
-            if (Request.QueryString["oid"] != null)
-            {
-                oid = Convert.ToInt32(Request.QueryString["oid"]);
-            }
-            if (string.IsNullOrEmpty(strUid))
+            int.TryParse(Request.QueryString["oid"], out oid);
+            int strUid;
+            if (!int.TryParse(TravelAgent.Tool.CookieHelper.GetCookieValue("uid"), out strUid))
             {
                 Response.Redirect("/member/Login.aspx");
             }
             else
             {
-                club = clubBll.GetModel(Convert.ToInt32(strUid));
+                club = clubBll.GetModel(strUid);
             }
             if (Request.QueryString["t"] != null)
             {
@@ -115,6 +112,8 @@ namespace TravelAgent.Web
                 }
 
             }
+            if (club == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); club = new Model.Club(); }
+            if (Line == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); Line = new Model.Line(); }
         }
         /// <summary>
         /// 显示支付方式

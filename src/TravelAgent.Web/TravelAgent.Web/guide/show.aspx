@@ -10,7 +10,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    
-    
+    
+
     <link href="css/8575557af2e22a645fd8457df2d411b4.css" rel="stylesheet" type="text/css" />
 
     <form id="form1" runat="server">
@@ -195,6 +196,7 @@
 			<%--<a href='#' ><img src='http://www1.lvyou.com/public/adv/img/201408/15/00/20140815002413_46307.jpg'  width=208 height=130 /></a>--%>
 		</div>
     </div>
-</div>
+</div>
+
     </form>
 </asp:Content>

@@ -18,17 +18,20 @@ namespace TravelAgent.Web.visa
         {
             if (!this.IsPostBack)
             {
-                if (Request.QueryString["id"] != null)
+                int id;
+                int uid;
+                if (int.TryParse(Request.QueryString["id"], out id))
                 {
-                    visa = VisaListBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
-                    this.Title = visa.visaName + "-" + Master.webinfo.WebName;
+                    visa = VisaListBll.GetModel(id);
+                    if (visa != null) this.Title = visa.visaName + "-" + Master.webinfo.WebName;
                 }
-                if (!string.IsNullOrEmpty(TravelAgent.Tool.CookieHelper.GetCookieValue("uid")))
+                if (int.TryParse(TravelAgent.Tool.CookieHelper.GetCookieValue("uid"), out uid))
                 {
-                    int uid = Convert.ToInt32(TravelAgent.Tool.CookieHelper.GetCookieValue("uid"));
                     club = ClubBll.GetModel(uid);
                 }
             }
+            if (visa == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); visa = new Model.VisaList(); }
+            if (club == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); club = new Model.Club() ; }
         }
         /// <summary>
         /// 显示性别

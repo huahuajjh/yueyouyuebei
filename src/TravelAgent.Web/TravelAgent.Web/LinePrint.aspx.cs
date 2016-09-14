@@ -19,9 +19,10 @@ namespace TravelAgent.Web
         private static readonly TravelAgent.BLL.LineContent LineContentBll = new TravelAgent.BLL.LineContent();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
+            int id;
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]) && int.TryParse(Request.QueryString["id"], out id))
             {
-                LineModel = LineBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
+                LineModel = LineBll.GetModel(id);
                 if (LineModel == null)
                 {
                     Response.Redirect("");

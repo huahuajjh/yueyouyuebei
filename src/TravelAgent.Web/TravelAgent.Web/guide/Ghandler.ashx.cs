@@ -28,8 +28,9 @@ namespace TravelAgent.Web.guide
         {
             context.Response.ContentType = "text/plain";
 
-            string cmd=context.Request["cmd"];
-            switch (cmd) { 
+            string cmd = context.Request["cmd"];
+            switch (cmd)
+            {
                 case "AddRoute":
                     AddRoute(context);
                     break;
@@ -70,8 +71,8 @@ namespace TravelAgent.Web.guide
         }
         public void sendcode(HttpContext context)
         {
-            string ccode = Str_char(4,false);
-            context.Session["ccode"]=ccode;
+            string ccode = Str_char(4, false);
+            context.Session["ccode"] = ccode;
             string mobile = context.Request["mobile"];
 
             string account = "HCCF123";
@@ -110,10 +111,10 @@ namespace TravelAgent.Web.guide
             }
 
         }
-        public  string Str_char(int Length, bool Sleep)
+        public string Str_char(int Length, bool Sleep)
         {
             if (Sleep) System.Threading.Thread.Sleep(3);
-            char[] Pattern = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'  };
+            char[] Pattern = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
             string result = "";
             int n = Pattern.Length;
             System.Random random = new Random(~unchecked((int)DateTime.Now.Ticks));
@@ -126,22 +127,26 @@ namespace TravelAgent.Web.guide
         }
         public string guidelist(HttpContext context)
         {
-
-            int id =Convert.ToInt32( context.Request["id"]);
-            TourGuide gde= guide.GetModel(id);
-            TourGuideRoute route = tre.GetModel(gde.temp_id);
-            List<TourGuideSpot> sp = spot.GetList(gde.temp_id);
-            List<TourGuideGallery> gylist = tgy.GetListByguideid(gde.temp_id);
-            gde.routetitle = route.title;
-            gde.routecontent = route.contents;
-            if (gylist.Count > 0)
+            int id;
+            int.TryParse(context.Request["id"], out id);
+            TourGuide gde = guide.GetModel(id);
+            if (gde != null)
             {
-                gde.image = gylist[0].image;
+                TourGuideRoute route = tre.GetModel(gde.temp_id);
+                List<TourGuideSpot> sp = spot.GetList(gde.temp_id);
+                List<TourGuideGallery> gylist = tgy.GetListByguideid(gde.temp_id);
+                gde.routetitle = route.title;
+                gde.routecontent = route.contents;
+                if (gylist.Count > 0)
+                {
+                    gde.image = gylist[0].image;
+                }
+                else
+                {
+                    gde.image = "";
+                }
             }
-            else {
-                gde.image = "";
-            }
-                return JsonConvert.SerializeObject(gde);
+            return JsonConvert.SerializeObject(gde);
             //StringBuilder sb = new StringBuilder();
 
             //sb.Append("<div class=\"item\">");
@@ -158,22 +163,23 @@ namespace TravelAgent.Web.guide
             //sb.Append("<div><a href=\"\" class=\"notes_info_content\">匙、二是做消费凭证（每张卡可关联自己信用卡，并每卡有三百美元消费额度）…</a></div>");
             //sb.Append("</div>");
             //sb.Append("</div>");
-            
-  
+
+
             //return "";
         }
         public void comment(HttpContext context)
         {
             string user_id = TravelAgent.Tool.CookieHelper.GetCookieValue("uid");
             string msg = "";
-            if (string.Empty == user_id) {
-                 msg = "{\"result\":\"false\",\"reason\":\"needlogin\"}";
+            if (string.Empty == user_id)
+            {
+                msg = "{\"result\":\"false\",\"reason\":\"needlogin\"}";
                 context.Response.Write(msg);
                 return;
             }
-            string contents=context.Request["contents"];
-            int comment_type=Convert.ToInt32(context.Request["comment_type"]);
-            int comment_rel_id=Convert.ToInt32(context.Request["comment_rel_id"]);
+            string contents = context.Request["contents"];
+            int comment_type = Convert.ToInt32(context.Request["comment_type"]);
+            int comment_rel_id = Convert.ToInt32(context.Request["comment_rel_id"]);
             Club user = club.GetModel(Convert.ToInt32(user_id));
             TourComment comm = new TourComment();
             comm.contents = contents;
@@ -183,13 +189,13 @@ namespace TravelAgent.Web.guide
             comm.nickname = user.clubMobile;
             comm.create_time = DateTime.Now;
             comments.Add(comm);
-             
+
             //更新评论数
-             TourGuide tg = guide.GetModel(comment_rel_id);
-             List<TourComment> tclist = comments.GetList(comment_rel_id);
-             tg.commentcount = (tclist.Count);
-             guide.Update(tg);
-             msg = "{\"result\":\"true\",\"reason\":\"true\"}";
+            TourGuide tg = guide.GetModel(comment_rel_id);
+            List<TourComment> tclist = comments.GetList(comment_rel_id);
+            tg.commentcount = (tclist.Count);
+            guide.Update(tg);
+            msg = "{\"result\":\"true\",\"reason\":\"true\"}";
             context.Response.Write(msg);
         }
         public void save_guide(HttpContext context)
@@ -224,34 +230,34 @@ namespace TravelAgent.Web.guide
             guide.Add(gde);
         }
         public void savetemp(HttpContext context)
-        { 
-            int id=Convert.ToInt32( context.Request["id"]);
-            string title=context.Request["title"];
-            int tourrange=Convert.ToInt32(context.Request["tourrange"]);
-            int tourtype=Convert.ToInt32(context.Request["tourtype"]);
-          
-            TourGuideTemp temp=tgt.GetModel(id);
-            temp.title=title;
+        {
+            int id = Convert.ToInt32(context.Request["id"]);
+            string title = context.Request["title"];
+            int tourrange = Convert.ToInt32(context.Request["tourrange"]);
+            int tourtype = Convert.ToInt32(context.Request["tourtype"]);
+
+            TourGuideTemp temp = tgt.GetModel(id);
+            temp.title = title;
             temp.tourrange = tourrange;
             temp.tourtype = tourtype;
             tgt.Update(temp);
         }
         public void saveroute(HttpContext context)
         {
-            
-            int id=Convert.ToInt32( context.Request["id"]);
-            DateTime dates=Convert.ToDateTime(context.Request["date"]);
-            string title=context.Request["title"];
-            string content=context.Request["content"];
-            TourGuideRoute route=tre.GetModel(id);
-            route.title=title;
-            route.routetime=dates;
-            route.contents=content;
+
+            int id = Convert.ToInt32(context.Request["id"]);
+            DateTime dates = Convert.ToDateTime(context.Request["date"]);
+            string title = context.Request["title"];
+            string content = context.Request["content"];
+            TourGuideRoute route = tre.GetModel(id);
+            route.title = title;
+            route.routetime = dates;
+            route.contents = content;
             tre.Update(route);
         }
         public void AddRoute(HttpContext context)
         {
-            int id =Convert.ToInt32( context.Request["gid"]);
+            int id = Convert.ToInt32(context.Request["gid"]);
             TourGuideTemp temp = tgt.GetModel(id);
             TourGuideRoute route = new TourGuideRoute();
             route.guideid = id;
@@ -265,7 +271,8 @@ namespace TravelAgent.Web.guide
             int id = Convert.ToInt32(context.Request["rid"]);
             tre.Delete(id);
         }
-        public void AddSpot(HttpContext context) {
+        public void AddSpot(HttpContext context)
+        {
             int gid = Convert.ToInt32(context.Request["gid"]);
             int rid = Convert.ToInt32(context.Request["rid"]);
             string areaname = context.Request["areaname"];
@@ -277,9 +284,9 @@ namespace TravelAgent.Web.guide
             spots.gallery = "";
             spots.sort = spot.GetMaxID("id") + 1;
             spot.Add(spots);
-            int id=spot.GetMaxID("id");
+            int id = spot.GetMaxID("id");
             TourGuideSpot tgs = spot.GetModel(id);
-            
+
             context.Response.Write(Newtonsoft.Json.JsonConvert.SerializeObject(tgs));
         }
         public void DelSpot(HttpContext context)
@@ -289,10 +296,10 @@ namespace TravelAgent.Web.guide
         }
 
         public void GetGallery(HttpContext context)
-        { 
-            string spotid=context.Request["spotid"];
+        {
+            string spotid = context.Request["spotid"];
             List<TourGuideGallery> list = tgy.GetList(Convert.ToInt32(spotid));
-             context.Response.Write(Newtonsoft.Json.JsonConvert.SerializeObject(list));
+            context.Response.Write(Newtonsoft.Json.JsonConvert.SerializeObject(list));
             //return Newtonsoft.Json.JsonConvert.;
         }
         public bool IsReusable
@@ -303,6 +310,6 @@ namespace TravelAgent.Web.guide
             }
         }
 
-       
+
     }
 }

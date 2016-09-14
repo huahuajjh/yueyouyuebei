@@ -22,10 +22,7 @@ namespace TravelAgent.Web.visa
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["countryid"] != null)
-            {
-                countryid = Convert.ToInt32(Request.QueryString["countryid"]);
-            }
+            int.TryParse(Request.QueryString["countryid"], out countryid);
             if (!this.IsPostBack)
             {
                 TravelAgent.Model.InfoSetting info = new TravelAgent.Model.InfoSetting();

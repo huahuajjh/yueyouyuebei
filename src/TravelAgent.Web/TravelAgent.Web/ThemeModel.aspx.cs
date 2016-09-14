@@ -22,14 +22,8 @@ namespace TravelAgent.Web
         private static readonly TravelAgent.BLL.JoinProperty ProBll = new TravelAgent.BLL.JoinProperty();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
-            {
-                id = Convert.ToInt32(Convert.ToInt32(Request.QueryString["id"]));
-            }
-            if (Request["page"] != null)
-            {
-                page = Convert.ToInt32(Request["page"]);
-            }
+            int.TryParse(Request.QueryString["id"], out id);
+            int.TryParse(Request.QueryString["page"], out page);
             if (!this.IsPostBack)
             {
                 if (id > 0)

@@ -22,72 +22,71 @@ namespace TravelAgent.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            int id;
+            if (!this.IsPostBack && Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out id))
             {
-                if (Request.QueryString["id"] != null)
+                LineModel = LineBll.GetModel(id);
+                if (LineModel != null)
                 {
-                    LineModel = LineBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
-                    if (LineModel != null)
+                    //增加关注度
+                    string strsql = "update Line set gzd=gzd+1 where Id=" + LineModel.Id;
+                    //Access
+                    //TravelAgent.Tool.DbHelperOleDb.ExecuteSql(strsql);
+                    //SQL
+                    TravelAgent.Tool.DbHelperSQL.ExecuteSql(strsql);
+
+                    if (LineModel.SeoTitle.Trim().Equals(""))
                     {
-                        //增加关注度
-                        string strsql = "update Line set gzd=gzd+1 where Id=" + LineModel.Id;
-                        //Access
-                        //TravelAgent.Tool.DbHelperOleDb.ExecuteSql(strsql);
-                        //SQL
-                        TravelAgent.Tool.DbHelperSQL.ExecuteSql(strsql);
+                        this.Title = LineModel.LineName + "-" + Master.webinfo.WebName + "-" + Master.webinfo.SEOTitle;
+                    }
+                    else
+                    {
+                        this.Title = LineModel.SeoTitle;
+                    }
+                    if (LineModel.SeoKey.Trim().Equals(""))
+                    {
+                        Common.AddMeta(Page.Master.Page, "keywords", Master.webinfo.SEOKeywords);
+                    }
+                    else
+                    {
+                        Common.AddMeta(Page.Master.Page, "keywords", LineModel.SeoKey);
+                    }
+                    if (LineModel.SeoDisc.Trim().Equals(""))
+                    {
+                        Common.AddMeta(Page.Master.Page, "description", Master.webinfo.SEODescription);
+                    }
+                    else
+                    {
+                        Common.AddMeta(Page.Master.Page, "description", LineModel.SeoDisc);
+                    }
 
-                        if (LineModel.SeoTitle.Trim().Equals(""))
-                        {
-                            this.Title = LineModel.LineName + "-" + Master.webinfo.WebName + "-" + Master.webinfo.SEOTitle;
-                        }
-                        else
-                        {
-                            this.Title = LineModel.SeoTitle;
-                        }
-                        if (LineModel.SeoKey.Trim().Equals(""))
-                        {
-                            Common.AddMeta(Page.Master.Page, "keywords", Master.webinfo.SEOKeywords);
-                        }
-                        else
-                        {
-                            Common.AddMeta(Page.Master.Page, "keywords", LineModel.SeoKey);
-                        }
-                        if (LineModel.SeoDisc.Trim().Equals(""))
-                        {
-                            Common.AddMeta(Page.Master.Page, "description", Master.webinfo.SEODescription);
-                        }
-                        else
-                        {
-                            Common.AddMeta(Page.Master.Page, "description", LineModel.SeoDisc);
-                        }
+                    this.divPlace.InnerHtml = ShowPlace(LineModel);
 
-                        this.divPlace.InnerHtml = ShowPlace(LineModel);
+                    TravelAgent.Model.JoinProperty proModel = ProBll.GetModel(Convert.ToInt32(LineModel.ProIds));
+                    if (proModel != null)
+                    {
+                        this.lblLineType.Text = proModel.joinName;
+                    }
 
-                        TravelAgent.Model.JoinProperty proModel = ProBll.GetModel(Convert.ToInt32(LineModel.ProIds));
-                        if (proModel != null)
-                        {
-                            this.lblLineType.Text = proModel.joinName;
-                        }
+                    TravelAgent.Model.DepartureCity cityModel = CityBll.GetModel(LineModel.CityId);
+                    if (cityModel != null)
+                    {
+                        this.lblCity.Text = cityModel.CityName;
+                    }
 
-                        TravelAgent.Model.DepartureCity cityModel = CityBll.GetModel(LineModel.CityId);
-                        if (cityModel != null)
-                        {
-                            this.lblCity.Text = cityModel.CityName;
-                        }
-
-                        int intNormalPrice = String.IsNullOrEmpty(LineModel.PriceContent) ? 0 : Convert.ToInt32(LineModel.PriceContent.Split(',')[2]);
-                        int intMinPrice = GetLineSpePrice(LineModel.Id, intNormalPrice);
-                        if (intMinPrice == 0)
-                        {
-                            this.ltPrice.Text="电询";
-                        }
-                        else
-                        {
-                            this.ltPrice.Text="¥ "+intMinPrice;
-                        }
+                    int intNormalPrice = String.IsNullOrEmpty(LineModel.PriceContent) ? 0 : Convert.ToInt32(LineModel.PriceContent.Split(',')[2]);
+                    int intMinPrice = GetLineSpePrice(LineModel.Id, intNormalPrice);
+                    if (intMinPrice == 0)
+                    {
+                        this.ltPrice.Text = "电询";
+                    }
+                    else
+                    {
+                        this.ltPrice.Text = "¥ " + intMinPrice;
                     }
                 }
             }
+            if (LineModel == null) Response.Redirect("/Opr.aspx?t=error&msg=opr");
         }
         /// <summary>
         /// 获取线路中成人特殊日期价格的最低价格
@@ -101,7 +100,7 @@ namespace TravelAgent.Web
             if (intNormalPrice == 0)
             {
                 if (lstLineSpePrice.Count > 0)
-                { 
+                {
                     intMinPrice = Convert.ToInt32(lstLineSpePrice[0].linePrice.Split(',')[2]);
                 }
             }
@@ -129,8 +128,8 @@ namespace TravelAgent.Web
         {
             StringBuilder sbPlace = new StringBuilder();
             sbPlace.Append("<span>您当前位置：</span>");
-            sbPlace.Append(" <a href=\""+Master.webinfo.WebDomain+"\">首页</a>&gt;");
-            int proId=0;
+            sbPlace.Append(" <a href=\"" + Master.webinfo.WebDomain + "\">首页</a>&gt;");
+            int proId = 0;
             if (!string.IsNullOrEmpty(Line.Dest))
             {
                 if (Line.Dest.Contains(","))
@@ -158,7 +157,7 @@ namespace TravelAgent.Web
                         }
                     }
                 }
-                sbPlace.Append("<em>"+Line.LineName+"</em>");
+                sbPlace.Append("<em>" + Line.LineName + "</em>");
             }
             else
             {
@@ -167,10 +166,10 @@ namespace TravelAgent.Web
                 {
                     sbPlace.Append("<a>" + dest.navName + "报价</a>&gt;");
                 }
-                
+
                 sbPlace.Append("<em>" + Line.LineName + "</em>");
             }
-            
+
             return sbPlace.ToString();
         }
         /// <summary>
@@ -207,7 +206,7 @@ namespace TravelAgent.Web
             {
                 sb.Append(line.LineContent);
             }
-            
+
             return sb.ToString();
         }
         /// <summary>
@@ -215,7 +214,7 @@ namespace TravelAgent.Web
         /// </summary>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public string ShowAboutLine(string dest,int destId,int top)
+        public string ShowAboutLine(string dest, int destId, int top)
         {
             StringBuilder sbLine = new StringBuilder();
             string strWhere = "";
@@ -224,14 +223,14 @@ namespace TravelAgent.Web
                 string[] arryDest = dest.Split(',');
                 foreach (string s in arryDest)
                 {
-                    strWhere += "dest like '%,"+s+",%' and ";
+                    strWhere += "dest like '%," + s + ",%' and ";
                 }
                 strWhere = strWhere + "isLock=0";
             }
-            DataSet dsAboutLine=LineBll.GetList(top,strWhere,"Sort asc,adddate desc");
+            DataSet dsAboutLine = LineBll.GetList(top, strWhere, "Sort asc,adddate desc");
             if (dsAboutLine.Tables[0].Rows.Count == 0)
             {
-                dsAboutLine = LineBll.GetList(top, "destId="+destId+" and isLock=0", "Sort asc,adddate desc");
+                dsAboutLine = LineBll.GetList(top, "destId=" + destId + " and isLock=0", "Sort asc,adddate desc");
             }
             foreach (DataRow row in dsAboutLine.Tables[0].Rows)
             {
@@ -247,7 +246,7 @@ namespace TravelAgent.Web
                 {
                     sbLine.Append("<span>¥ " + row["priceContent"].ToString().Split(',')[2] + "</span>");
                 }
-                
+
                 sbLine.Append("</li>");
             }
             return sbLine.ToString();
@@ -266,7 +265,7 @@ namespace TravelAgent.Web
                 DateTime dtstart = Convert.ToDateTime(LineModel.PriceSDate);
                 DateTime dtend = Convert.ToDateTime(LineModel.PriceEDate);
                 if (dtend >= dtstart)
-                { 
+                {
                     TimeSpan ts = dtend.Subtract(dtstart);
                     int days = ts.Days;
                     string strSpePrice = "";
@@ -275,15 +274,15 @@ namespace TravelAgent.Web
                         DateTime dttemp = dtstart.AddDays(i);
                         if (dttemp >= DateTime.Now)
                         {
-                            int dayValue=Convert.ToInt32(dttemp.DayOfWeek);
+                            int dayValue = Convert.ToInt32(dttemp.DayOfWeek);
                             string strCurPrice = LineModel.PriceContent.Split(',')[2] + "," + LineModel.PriceContent.Split(',')[3];
                             if (LineModel.PriceEditModel == 0)//天天发团
                             {
-                                strSpePrice = getSpePrice(LineModel.Id, dttemp.ToString("yyyy-MM-dd"), strCurPrice,listSpePrice);
+                                strSpePrice = getSpePrice(LineModel.Id, dttemp.ToString("yyyy-MM-dd"), strCurPrice, listSpePrice);
                             }
                             else if (LineModel.PriceEditModel == 1)//按周
                             {
-                                if (TravelAgent.Tool.CommonOprate.IsContainValue(dayValue.ToString(),LineModel.PriceSetting))
+                                if (TravelAgent.Tool.CommonOprate.IsContainValue(dayValue.ToString(), LineModel.PriceSetting))
                                 {
                                     strSpePrice = getSpePrice(LineModel.Id, dttemp.ToString("yyyy-MM-dd"), strCurPrice, listSpePrice);
                                 }
@@ -320,7 +319,7 @@ namespace TravelAgent.Web
         /// <param name="lineid"></param>
         /// <param name="pricecontent"></param>
         /// <returns></returns>
-        public string getSpePrice(int lineid, string date, string curprice,List<TravelAgent.Model.LineSpePrice> lstSpePrice)
+        public string getSpePrice(int lineid, string date, string curprice, List<TravelAgent.Model.LineSpePrice> lstSpePrice)
         {
             string strValue = curprice;
             //List<TravelAgent.Model.LineSpePrice> listSpePrice = SpePriceBll.GetlstSpePriceByLineId(lineid);
@@ -348,7 +347,7 @@ namespace TravelAgent.Web
         public string ShowConsult()
         {
             StringBuilder sb = new StringBuilder();
-            DataSet dscon = ConsultBll.GetList("LineId="+LineModel.Id);
+            DataSet dscon = ConsultBll.GetList("LineId=" + LineModel.Id);
             foreach (DataRow row in dscon.Tables[0].Rows)
             {
                 if (row["IsReply"].ToString().Equals("1"))

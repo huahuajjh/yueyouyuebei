@@ -53,12 +53,12 @@ namespace TravelAgent.Tool
         public static void ExportExcel(HttpResponse response, DataTable dt, string fileName,string sheetname)   
         {   
               NPOI.HSSF.UserModel.HSSFWorkbook book = new NPOI.HSSF.UserModel.HSSFWorkbook();
-              NPOI.SS.UserModel.Sheet sheet = book.CreateSheet(sheetname);   
-              NPOI.SS.UserModel.Row row = sheet.CreateRow(0);
-              NPOI.SS.UserModel.Cell cell = null;
-              NPOI.SS.UserModel.Font font = book.CreateFont();
-              NPOI.SS.UserModel.CellStyle style = book.CreateCellStyle();
-              font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.BOLD;
+              NPOI.SS.UserModel.ISheet sheet = book.CreateSheet(sheetname);   
+              NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+              NPOI.SS.UserModel.ICell cell = null;
+              NPOI.SS.UserModel.IFont font = book.CreateFont();
+              NPOI.SS.UserModel.ICellStyle style = book.CreateCellStyle();
+              font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
               font.FontName = "宋体";
               
               style.SetFont(font);
@@ -72,7 +72,7 @@ namespace TravelAgent.Tool
           
                for (int i = 0; i < dt.Rows.Count; i++)   
                {   
-                  NPOI.SS.UserModel.Row row2 = sheet.CreateRow(i + 1);
+                  NPOI.SS.UserModel.IRow row2 = sheet.CreateRow(i + 1);
                   for (int j = 0; j < dt.Columns.Count; j++)
                   {
                       string strColDataType = dt.Columns[j].DataType.ToString();
@@ -108,12 +108,12 @@ namespace TravelAgent.Tool
         /// <summary>
         /// 设置样式
         /// </summary>
-         private static void SetExcelValue(DataTable dt, string sheetname,NPOI.HSSF.UserModel.HSSFWorkbook book,NPOI.SS.UserModel.CellStyle style)
+         private static void SetExcelValue(DataTable dt, string sheetname,NPOI.HSSF.UserModel.HSSFWorkbook book,NPOI.SS.UserModel.ICellStyle style)
         {
-            NPOI.SS.UserModel.Sheet sheet = book.CreateSheet(sheetname);
-            NPOI.SS.UserModel.Row row = sheet.CreateRow(0);
-            NPOI.SS.UserModel.Cell cell = null;
-            NPOI.SS.UserModel.Cell newCell = null;
+            NPOI.SS.UserModel.ISheet sheet = book.CreateSheet(sheetname);
+            NPOI.SS.UserModel.IRow row = sheet.CreateRow(0);
+            NPOI.SS.UserModel.ICell cell = null;
+            NPOI.SS.UserModel.ICell newCell = null;
             for (int i = 0; i < dt.Columns.Count; i++)
             {
                 cell = row.CreateCell(i);
@@ -123,7 +123,7 @@ namespace TravelAgent.Tool
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                NPOI.SS.UserModel.Row row2 = sheet.CreateRow(i + 1);
+                NPOI.SS.UserModel.IRow row2 = sheet.CreateRow(i + 1);
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
                     string strColDataType = dt.Columns[j].DataType.ToString();

@@ -11,7 +11,8 @@ namespace TravelAgent.DALSQL
 {
     public class TourGuide : ITourGuide
     {
-        public TourGuide() { 
+        public TourGuide()
+        {
         }
         /// <summary>
         /// 取得最新插入的ID
@@ -91,7 +92,8 @@ namespace TravelAgent.DALSQL
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public void Update(TravelAgent.Model.TourGuide model) {
+        public void Update(TravelAgent.Model.TourGuide model)
+        {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("update TourGuide set ");
             strSql.Append("userid=@userid,");
@@ -161,7 +163,8 @@ namespace TravelAgent.DALSQL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public void Delete(int Id) {
+        public void Delete(int Id)
+        {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("delete from TourGuide ");
             strSql.Append(" where id like '" + Id + "' ");
@@ -171,8 +174,9 @@ namespace TravelAgent.DALSQL
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public TravelAgent.Model.TourGuide GetModel(int Id) {
-            TravelAgent.Model.TourGuide tg = new Model.TourGuide();
+        public TravelAgent.Model.TourGuide GetModel(int Id)
+        {
+            TravelAgent.Model.TourGuide tg = null;
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select  top 1 * from TourGuide ");
             strSql.Append(" where Id=@Id ");
@@ -180,31 +184,33 @@ namespace TravelAgent.DALSQL
 					new SqlParameter("@Id", SqlDbType.Int,4)};
             parameters[0].Value = Id;
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
-            if (ds.Tables.Count >= 0) { 
-            DataTable dt=ds.Tables[0];
-                DataRow dr=dt.Rows[0];
-            tg.Id =Convert.ToInt32( dt.Rows[0]["Id"]);
-            tg.userid = dt.Rows[0]["userid"].ToString();
-            tg.Id = Convert.ToInt32(dt.Rows[0]["id"]);
-            tg.userid = dt.Rows[0]["userid"].ToString();
-            tg.nickname = dt.Rows[0]["nickname"].ToString();
-            tg.title = dt.Rows[0]["title"].ToString();
-            tg.createtime = Convert.ToDateTime(dt.Rows[0]["createtime"]);
-            tg.imagelist = dt.Rows[0]["imagelist"].ToString();
-            tg.imagecount = Convert.ToInt32(dt.Rows[0]["imagecount"]);
-            tg.areamatch = dt.Rows[0]["areamatch"].ToString();
-            tg.areamathrow = dt.Rows[0]["areamathrow"].ToString();
-            tg.istuijian = Convert.ToInt32(dt.Rows[0]["istuijian"]);
-            tg.updatetime = Convert.ToDateTime(dt.Rows[0]["updatetime"]);
-            tg.ispublish = Convert.ToInt32(dt.Rows[0]["ispublish"]);
-            tg.tourdays = Convert.ToInt32(dt.Rows[0]["tourdays"]);
-            tg.browsecount = Convert.ToInt32(dt.Rows[0]["browsecount"]);
-            tg.commentcount = Convert.ToInt32(dt.Rows[0]["commentcount"]);
-            tg.ishot = Convert.ToInt32(dt.Rows[0]["ishot"]);
-            tg.isindex = Convert.ToInt32(dt.Rows[0]["isindex"]);
-            tg.tourrange = Convert.ToInt32(dt.Rows[0]["tourrange"]);
-            tg.tourtype = Convert.ToInt32(dt.Rows[0]["tourtype"]);
-            tg.temp_id = Convert.ToInt32(dt.Rows[0]["temp_id"]);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                DataTable dt = ds.Tables[0];
+                DataRow dr = dt.Rows[0];
+                tg = new Model.TourGuide();
+                tg.Id = Convert.ToInt32(dt.Rows[0]["Id"]);
+                tg.userid = dt.Rows[0]["userid"].ToString();
+                tg.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                tg.userid = dt.Rows[0]["userid"].ToString();
+                tg.nickname = dt.Rows[0]["nickname"].ToString();
+                tg.title = dt.Rows[0]["title"].ToString();
+                tg.createtime = Convert.ToDateTime(dt.Rows[0]["createtime"]);
+                tg.imagelist = dt.Rows[0]["imagelist"].ToString();
+                tg.imagecount = Convert.ToInt32(dt.Rows[0]["imagecount"]);
+                tg.areamatch = dt.Rows[0]["areamatch"].ToString();
+                tg.areamathrow = dt.Rows[0]["areamathrow"].ToString();
+                tg.istuijian = Convert.ToInt32(dt.Rows[0]["istuijian"]);
+                tg.updatetime = Convert.ToDateTime(dt.Rows[0]["updatetime"]);
+                tg.ispublish = Convert.ToInt32(dt.Rows[0]["ispublish"]);
+                tg.tourdays = Convert.ToInt32(dt.Rows[0]["tourdays"]);
+                tg.browsecount = Convert.ToInt32(dt.Rows[0]["browsecount"]);
+                tg.commentcount = Convert.ToInt32(dt.Rows[0]["commentcount"]);
+                tg.ishot = Convert.ToInt32(dt.Rows[0]["ishot"]);
+                tg.isindex = Convert.ToInt32(dt.Rows[0]["isindex"]);
+                tg.tourrange = Convert.ToInt32(dt.Rows[0]["tourrange"]);
+                tg.tourtype = Convert.ToInt32(dt.Rows[0]["tourtype"]);
+                tg.temp_id = Convert.ToInt32(dt.Rows[0]["temp_id"]);
             }
             return tg;
         }
@@ -227,7 +233,8 @@ namespace TravelAgent.DALSQL
             }
             return dt;
         }
-        public List<TravelAgent.Model.TourGuide> GetListPublis() {
+        public List<TravelAgent.Model.TourGuide> GetListPublis()
+        {
             List<TravelAgent.Model.TourGuide> dt = new List<Model.TourGuide>();
             string sql = "select * from TourGuide where ispublish=1 order by id desc";
             DataTable dts = DbHelperSQL.Query(sql).Tables[0];

@@ -18,15 +18,13 @@ namespace TravelAgent.Web.visa
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            int id;
+            if (!this.IsPostBack && int.TryParse(Request.QueryString["id"], out id))
             {
-                if (Request.QueryString["id"] != null)
-                {
-                    visa = VisaListBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
-                    this.Title = visa.visaName + "-" + Master.webinfo.WebName;
-
-                }
+                visa = VisaListBll.GetModel(id);
+                if (visa != null) this.Title = visa.visaName + "-" + Master.webinfo.WebName;
             }
+            if (visa == null) { Response.Redirect("/Opr.aspx?t=error&msg=opr", false); visa = new Model.VisaList(); }
         }
         /// <summary>
         /// 绑定基本信息设置
