@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Configuration;
+using System;
 
 namespace TravelAgent.DALFactory
 {
@@ -38,6 +39,7 @@ namespace TravelAgent.DALFactory
         {
             return (TravelAgent.IDAL.IWebNav)Assembly.Load(AssemblyName).CreateInstance(GetObjectName("WebNav"));
         }
+
         /// <summary>
         /// 返回程序集中目的地的实体
         /// </summary>
@@ -361,6 +363,18 @@ namespace TravelAgent.DALFactory
         public static TravelAgent.IDAL.ITourComment CreateTourComment()
         {
             return (TravelAgent.IDAL.ITourComment)Assembly.Load(AssemblyName).CreateInstance(GetObjectName("TourComment"));
+        }
+    
+        public static T GetObj<T>(string className)
+        {
+            if (string.IsNullOrEmpty(className))
+            {
+                throw new NullReferenceException("初始化DLL失败，类名参数className为null，或者错误的className值");
+            }
+            else
+            {
+                return (T)Assembly.Load(AssemblyName).CreateInstance(GetObjectName(className));
+            }
         }
     }
 }

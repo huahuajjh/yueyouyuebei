@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,16 +12,13 @@ namespace TravelAgent.Web
 {
     public class Global : System.Web.HttpApplication
     {
+        private ILogger logger = LogManager.GetCurrentClassLogger();
         protected void Application_Error(object sender, EventArgs e)
         {
-            //test code,should be deleted
             Exception ex = HttpContext.Current.Server.GetLastError();
             if(ex != null)
             { 
-                FileStream fs = File.OpenWrite("d:/log.txt");
-                byte[] bs = Encoding.UTF8.GetBytes(ex.InnerException.ToString());
-                fs.Write(bs,0,bs.Length);
-                fs.Flush();
+                logger.Error("error={0}    url={1}    stacktrace={2}",ex.Message,HttpContext.Current.Request.RawUrl,ex.StackTrace);
             }
         }
     }
