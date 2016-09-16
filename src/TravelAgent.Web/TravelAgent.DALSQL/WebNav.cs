@@ -213,7 +213,8 @@ namespace TravelAgent.DALSQL
             data.Columns.Add(state);
             data.Columns.Add(subcount);
             //调用迭代组合成DAGATABLE
-            GetNavChild(data, PId, KId);
+            List<int> ids = new List<int>();
+            GetNavChild(data, PId, KId, ids);
             return data;
         }
 
@@ -223,8 +224,10 @@ namespace TravelAgent.DALSQL
         /// <param name="data">DATATABLE名</param>
         /// <param name="PId">父栏目ID</param>
         /// <param name="KId">种类ID</param>
-        private void GetNavChild(DataTable data, int PId, int? KId)
+        private void GetNavChild(DataTable data, int PId, int? KId, List<int> ids)
         {
+            if (ids.Contains(PId)) return;
+            ids.Add(PId);
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select Id,navName,navParentId,navList,navLayer,navSort,navURL,kindId,State from WebNav");
             if (KId != null)
@@ -256,7 +259,7 @@ namespace TravelAgent.DALSQL
 
                     data.Rows.Add(row);
                     //调用自身迭代
-                    this.GetNavChild(data, int.Parse(dr["Id"].ToString()), KId);
+                    this.GetNavChild(data, int.Parse(dr["Id"].ToString()), KId, ids);
                 }
             }
         }

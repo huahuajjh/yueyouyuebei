@@ -220,7 +220,8 @@ namespace TravelAgent.DALSQL
             data.Columns.Add(isLock);
             data.Columns.Add(subcount);
             //调用迭代组合成DAGATABLE
-            GetDestChild(data, PId, KId);
+            List<int> ids = new List<int>();
+            GetDestChild(data, PId, KId, ids);
             return data;
         }
 
@@ -230,8 +231,10 @@ namespace TravelAgent.DALSQL
         /// <param name="data">DATATABLE名</param>
         /// <param name="PId">父栏目ID</param>
         /// <param name="KId">种类ID</param>
-        private void GetDestChild(DataTable data, int PId, int? KId)
+        private void GetDestChild(DataTable data, int PId, int? KId, List<int> ids)
         {
+            if (ids.Contains(PId)) return;
+            ids.Add(PId);
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select Id,navName,navParentId,navList,navLayer,navSort,navURL,kindId,State,isLock from Destination");
             if (KId != null)
@@ -263,7 +266,7 @@ namespace TravelAgent.DALSQL
                     row[9] = int.Parse(dr["isLock"].ToString());
                     data.Rows.Add(row);
                     //调用自身迭代
-                    this.GetDestChild(data, int.Parse(dr["Id"].ToString()), KId);
+                    this.GetDestChild(data, int.Parse(dr["Id"].ToString()), KId, ids);
                 }
             }
         }
