@@ -26,7 +26,7 @@
           </em></span>
           <div style="display:none" class="wx_select shadow">
             <span>公众号：<%= webinfo.WXName%></span>
-            <img width="122" height="122" src="<%= webinfo.WXM%>">
+            <img width="122" height="122" src="<%= webinfo.WXM%>" alt="糟糕，图片不见了" />
           </div>
         </li>
         <li class="soft5"><span><i class="softico5"></i><em>
@@ -179,7 +179,7 @@
   </div>
 </div>
 <!--底部广告-->
-<div class="float_mask" id="float_mask">
+<div class="float_mask" id="obsolete_float_mask">
     <div class="float_layer">
     </div>
     <div class="float_content clearfix">

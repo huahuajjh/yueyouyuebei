@@ -140,8 +140,6 @@ namespace TravelAgent.Web.admin.data
                     {
                         Response.Write("false");
                     }
-                  
-
                 }
             }
         }
