@@ -34,3 +34,12 @@
    在 ASP.default_aspx.ProcessRequest(HttpContext context) 位置 c:\Users\jjh\AppData\Local\Temp\Temporary ASP.NET Files\root\8913fec6\c20303ab\App_Web_frs9fboh.16.cs:行号 0
    在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-09-15 17:43:09.9104|ERROR|TravelAgent.Web.Global|error=引发类型为“System.Web.HttpUnhandledException”的异常。    url=/Default.aspx    stacktrace=   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.default_aspx.ProcessRequest(HttpContext context) 位置 c:\Users\jjh\AppData\Local\Temp\Temporary ASP.NET Files\root\8913fec6\c20303ab\App_Web_ry7qyf23.9.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

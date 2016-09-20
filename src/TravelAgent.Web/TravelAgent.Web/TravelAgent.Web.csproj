@@ -2557,20 +2557,13 @@
     <Content Include="admin\visa\VisaOrderList.aspx" />
     <Content Include="admin\visa\VisaSetting.aspx" />
     <Content Include="admin\visa\VistTypeList.aspx" />
-    <Content Include="bin\Gma.QrCodeNet.Encoding.Net35.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\NPOI.dll" />
     <Content Include="bin\SMS.dll" />
     <Content Include="bin\TravelAgent.DALSQL.dll" />
-    <Content Include="bin\TravelAgent.DALSQL.pdb" />
     <Content Include="bin\TravelAgent.Pay.dll" />
-    <Content Include="bin\TravelAgent.Pay.pdb" />
     <Content Include="bin\TravelAgent.WapPay.dll" />
-    <Content Include="bin\TravelAgent.WapPay.pdb" />
     <Content Include="bin\TravelAgent.WeiPay.dll" />
-    <Content Include="bin\TravelAgent.WeiPay.pdb" />
-    <Content Include="bin\TravelAgent.WxPay.dll" />
-    <Content Include="bin\TravelAgent.WxPay.pdb" />
     <Content Include="bin\UrlRewriter.dll" />
     <Content Include="car\CarDetail.aspx" />
     <Content Include="car\CarOrder1.aspx" />
@@ -2884,19 +2877,11 @@
     <Content Include="js\isMobile.js" />
     <Content Include="js\jquery-1.10.2.js" />
     <Content Include="bin\TravelAgent.BLL.dll" />
-    <Content Include="bin\TravelAgent.BLL.pdb" />
     <Content Include="bin\TravelAgent.DALFactory.dll" />
-    <Content Include="bin\TravelAgent.DALFactory.pdb" />
     <Content Include="bin\TravelAgent.IDAL.dll" />
-    <Content Include="bin\TravelAgent.IDAL.pdb" />
     <Content Include="bin\TravelAgent.Model.dll" />
-    <Content Include="bin\TravelAgent.Model.pdb" />
     <Content Include="bin\TravelAgent.Tool.dll" />
-    <Content Include="bin\TravelAgent.Tool.pdb" />
-    <Content Include="bin\TravelAgent.Web.dll" />
-    <Content Include="bin\TravelAgent.Web.pdb" />
     <Content Include="bin\TravelAgent.Web.UI.dll" />
-    <Content Include="bin\TravelAgent.Web.UI.pdb" />
     <Content Include="config\WebInfo.config" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.form.js" />
@@ -3071,6 +3056,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="travel.pfx" />
     <None Include="ueditor\net\upload\2005-01-05\Thumbs.db" />
     <Content Include="wxpay\js\jquery-1.9.0.js" />
