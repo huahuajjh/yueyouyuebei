@@ -142,3 +142,35 @@
    在 System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
    在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-09-20 17:33:47.3665|ERROR|TravelAgent.Web.Global|error=SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。    url=/guide/Ghandler.ashx?cmd=save_guide  user_ip=::1  stacktrace=   在 System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   在 System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   在 System.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   在 System.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj)
+   在 System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 TravelAgent.Tool.DbHelperSQL.ExecuteSql(String SQLString, SqlParameter[] cmdParms) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Tool\DbHelperSQL.cs:行号 364
+   在 TravelAgent.DALSQL.TourGuide.Add(TourGuide model) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.DALSQL\TourGuide.cs:行号 90
+   在 TravelAgent.BLL.TourGuide.Add(TourGuide model) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.BLL\TourGuide.cs:行号 32
+   在 TravelAgent.Web.guide.Ghandler.save_guide(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 230
+   在 TravelAgent.Web.guide.Ghandler.ProcessRequest(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 58
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-09-20 17:33:54.2120|ERROR|TravelAgent.Web.Global|error=SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。    url=/guide/Ghandler.ashx?cmd=save_guide  user_ip=::1  stacktrace=   在 System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   在 System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   在 System.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   在 System.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj)
+   在 System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   在 System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   在 System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   在 TravelAgent.Tool.DbHelperSQL.ExecuteSql(String SQLString, SqlParameter[] cmdParms) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Tool\DbHelperSQL.cs:行号 364
+   在 TravelAgent.DALSQL.TourGuide.Add(TourGuide model) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.DALSQL\TourGuide.cs:行号 90
+   在 TravelAgent.BLL.TourGuide.Add(TourGuide model) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.BLL\TourGuide.cs:行号 32
+   在 TravelAgent.Web.guide.Ghandler.save_guide(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 230
+   在 TravelAgent.Web.guide.Ghandler.ProcessRequest(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 58
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
