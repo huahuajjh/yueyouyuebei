@@ -4,6 +4,7 @@ using System.Text;
 using System.Data.SqlClient;
 using TravelAgent.Tool;//请先添加引用
 using TravelAgent.IDAL;
+using System.Collections.Generic;
 
 namespace TravelAgent.DALSQL
 {
@@ -218,7 +219,8 @@ namespace TravelAgent.DALSQL
             data.Columns.Add(Css);
             data.Columns.Add(State);
             //调用迭代组合成DAGATABLE
-            GetChannelChild(data, PId, KId);
+            List<int> ids = new List<int>();
+            GetChannelChild(data, PId, KId, ids);
             return data;
         }
 
@@ -228,8 +230,10 @@ namespace TravelAgent.DALSQL
         /// <param name="data">DATATABLE名</param>
         /// <param name="PId">父栏目ID</param>
         /// <param name="KId">种类ID</param>
-        private void GetChannelChild(DataTable data, int PId, int? KId)
+        private void GetChannelChild(DataTable data, int PId, int? KId, List<int> ids)
         {
+            if (ids.Contains(PId)) return;
+            ids.Add(PId);
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select Id,Title,ParentId,ClassList,ClassLayer,ClassOrder,PageUrl,KindId,css,State from Category");
             if(KId!=null)
@@ -260,7 +264,7 @@ namespace TravelAgent.DALSQL
                     row[9] = dr["State"].ToString();
                     data.Rows.Add(row);
                     //调用自身迭代
-                    this.GetChannelChild(data, int.Parse(dr["Id"].ToString()), KId);
+                    this.GetChannelChild(data, int.Parse(dr["Id"].ToString()), KId, ids);
                 }
             }
         }

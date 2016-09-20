@@ -228,7 +228,8 @@ namespace TravelAgent.DALSQL
             data.Columns.Add(ClassLayer);
             data.Columns.Add(subcount);
             //调用迭代组合成DAGATABLE
-            GetChild(data, PId,strWhere);
+            List<int> ids = new List<int>();
+            GetChild(data, PId, strWhere, ids);
             return data;
         }
 
@@ -238,8 +239,10 @@ namespace TravelAgent.DALSQL
         /// <param name="data">DATATABLE名</param>
         /// <param name="PId">父栏目ID</param>
         /// <param name="KId">种类ID</param>
-        private void GetChild(DataTable data, int PId,string strWhere)
+        private void GetChild(DataTable data, int PId,string strWhere, List<int> ids)
         {
+            if (ids.Contains(PId)) return;
+            ids.Add(PId);
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select Id,Name,PicUrl,Tips,EnglishName,FirstWord,Sort,isLock,ParentId,ClassList,ClassLayer from VisaCountry");
            
@@ -272,7 +275,7 @@ namespace TravelAgent.DALSQL
 
                     data.Rows.Add(row);
                     //调用自身迭代
-                    this.GetChild(data, int.Parse(dr["Id"].ToString()),strWhere);
+                    this.GetChild(data, int.Parse(dr["Id"].ToString()), strWhere, ids);
                 }
             }
         }
