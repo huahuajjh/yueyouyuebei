@@ -47,7 +47,7 @@
 		<a href="mTravel/LineList.aspx?d=1" class="home_link_a">
 			<div class="home_link_box mglt hg">
 				<em>Outbound tourism</em>
-				<span>出境旅游</span>
+				<span>常规旅行</span>
 			</div>
 		</a>
 	</div>
@@ -55,7 +55,7 @@
 		<a href="mTravel/LineList.aspx?d=2" class="home_link_a">
 			<div class="home_link_box mgrt hb">
 				<em>Domestic tourism</em>
-				<span>国内旅游</span>
+				<span>户外撒野</span>
 			</div>
 		</a>
 		<a href="mTravel/LineList.aspx?d=3" class="home_link_a">
