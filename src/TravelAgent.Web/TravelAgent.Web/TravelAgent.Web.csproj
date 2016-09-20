@@ -20,7 +20,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -2557,7 +2557,6 @@
     <Content Include="admin\visa\VisaOrderList.aspx" />
     <Content Include="admin\visa\VisaSetting.aspx" />
     <Content Include="admin\visa\VistTypeList.aspx" />
-    <Content Include="bin\Gma.QrCodeNet.Encoding.Net35.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="bin\NPOI.dll" />
     <Content Include="bin\SMS.dll" />
@@ -3350,12 +3349,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1639</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:1639/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

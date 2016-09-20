@@ -18,14 +18,8 @@ namespace TravelAgent.Web.mTravel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
-            {
-                pid = Convert.ToInt32(Request.QueryString["id"]);
-            }
-            if (Request.QueryString["ot"] != null)
-            {
-                orderType = Convert.ToInt32(Request.QueryString["ot"]);
-            }
+            int.TryParse(Request.QueryString["id"], out pid);
+            int.TryParse(Request.QueryString["ot"], out orderType);
             if (Request.QueryString["name"] != null)
             {
                 pname = Request.QueryString["name"];

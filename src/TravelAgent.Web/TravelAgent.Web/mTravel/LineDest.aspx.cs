@@ -23,18 +23,9 @@ namespace TravelAgent.Web.mTravel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["fd"] != null)
-            {
-                fd = Convert.ToInt32(Request.QueryString["fd"]);
-            }
-            if (Request["d"] != null)
-            {
-                d = Convert.ToInt32(Request["d"]);
-            }
-            if (Request.QueryString["td"] != null)
-            {
-                td = Convert.ToInt32(Request.QueryString["td"]);
-            }
+            int.TryParse(Request["fd"], out fd);
+            int.TryParse(Request["d"], out d);
+            int.TryParse(Request.QueryString["td"], out td);
             if (Request.QueryString["name"] != null)
             {
                 dest = Request.QueryString["name"];
@@ -100,12 +91,14 @@ namespace TravelAgent.Web.mTravel
                     {
                         sbLine.Append("<span class=\"show_line_jia\">¥&nbsp;" + row["priceCommon"] + "</span>");
                     }
-
+                    string name = "";
+                    Model.DepartureCity city = CityBll.GetModel(Convert.ToInt32(row["cityId"]));
+                    if(city != null) name = city.CityName;
                     sbLine.Append("</a>");
                     sbLine.Append("<a href=\"LineDetail.aspx?id=" + row["Id"] + "\" class=\"show_line_tit\">");
                     sbLine.Append("<strong>" + row["lineName"] + "</strong>");
                     sbLine.Append("<p>");
-                    sbLine.Append("<span>" + CityBll.GetModel(Convert.ToInt32(row["cityId"])).CityName + "出发</span>|");
+                    sbLine.Append("<span>" + name + "出发</span>|");
                     sbLine.Append("<span>" + row["dayNumber"] + "日游</span>|");
                     sbLine.Append("<span>关注：" + row["gzd"] + "</span>");
                     sbLine.Append("</p>");

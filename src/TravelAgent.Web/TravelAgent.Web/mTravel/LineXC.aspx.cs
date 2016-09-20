@@ -17,9 +17,14 @@ namespace TravelAgent.Web.mTravel
         public TravelAgent.Model.Line Line;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            int id;
+            if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out id))
             {
-                Line = LineBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
+                Line = LineBll.GetModel(id);
+            }
+            if(Line == null)
+            {
+                Response.Redirect("/Opr.aspx?t=error&msg=opr");
             }
         }
 

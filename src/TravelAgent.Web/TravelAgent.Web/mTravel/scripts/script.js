@@ -26,7 +26,7 @@ jQuery(document).ready(function ($) {
 		$(".zhedang").fadeOut(200);
 	});
 	$("#rolin").rolinTab();
-
+	$(".zhedang").click(function () { $(".zhedang,.navbox").css("display", "none"); });
 });
 
 $.fn.rolinTab = function () {

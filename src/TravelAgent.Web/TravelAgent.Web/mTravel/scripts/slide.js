@@ -41,5 +41,7 @@ $(document).ready(function () {
 	
 	var ah = $("#main_img_1").height();
 	$("#main_div").css("height", ah + "px");
+
+	$(".zhedang").click(function () { $(".zhedang,.navbox").css("display", "none"); });
 });
 
