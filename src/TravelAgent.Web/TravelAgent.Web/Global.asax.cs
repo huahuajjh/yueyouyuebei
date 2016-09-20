@@ -18,7 +18,7 @@ namespace TravelAgent.Web
             Exception ex = HttpContext.Current.Server.GetLastError();
             if(ex != null)
             { 
-                logger.Error("error={0}    url={1}    stacktrace={2}",ex.Message,HttpContext.Current.Request.RawUrl,ex.StackTrace);
+                logger.Error("error={0}    url={1}  user_ip={2}  stacktrace={3}",ex.Message,HttpContext.Current.Request.RawUrl,HttpContext.Current.Request.UserHostAddress,ex.StackTrace);
             }
         }
     }
