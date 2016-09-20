@@ -5,6 +5,7 @@
                 <meta charset="utf-8" />
                 <title><%=Line.LineName%></title>
                 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <link type="text/css" rel="stylesheet" href="css/style.css">
                 <link rel="stylesheet" type="text/css" href="css/mobile-style.css" />
 		        <link rel="stylesheet" type="text/css" href="css/mobile-line.css" />
                 <script src="scripts/jquery.min.js"></script>
@@ -158,6 +159,7 @@
 		$(".linedetail_xin_btn2 span").click(function () {
 			$("#line_xinbox2").toggleClass("line_xinbox_down2");
 		});
+		$(".zhedang").click(function () { $(".zhedang,.navbox").css("display", "none"); });
         </script>
 </body>
 </html>

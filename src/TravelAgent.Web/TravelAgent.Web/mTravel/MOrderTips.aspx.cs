@@ -18,19 +18,34 @@ namespace TravelAgent.Web.mTravel
         {
             if (!this.IsPostBack)
             {
-                if (Request["lineid"] != null)
+                int lineid;
+                int renshu1;
+                int renshu2;
+                int renshu3;
+                int adult_price;
+                int child_price;
+                int bx_price;
+                int order_type;
+                if (int.TryParse(Request["lineid"], out lineid) && 
+                    int.TryParse(Request["renshu1"], out renshu1) && 
+                    int.TryParse(Request["renshu2"], out renshu2) &&
+                    int.TryParse(Request["renshu3"], out renshu3) &&
+                    int.TryParse(Request["adult_price"], out adult_price) &&
+                    int.TryParse(Request["child_price"], out child_price) &&
+                    int.TryParse(Request["bx_price"], out bx_price) &&
+                    int.TryParse(Request["order_type"], out order_type))
                 {
                     TravelAgent.Model.Order order = new TravelAgent.Model.Order();
-                    order.lineId = Convert.ToInt32(Request["lineid"]);
+                    order.lineId = lineid;
                     ordercode = "O" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
                     order.ordercode = ordercode;
-                    order.peopleNumber = Convert.ToInt32(Request["renshu1"])+Convert.ToInt32(Request["renshu2"]);
-                    order.adultNumber = Convert.ToInt32(Request["renshu1"]);
-                    order.childNumber = Convert.ToInt32(Request["renshu2"]);
+                    order.peopleNumber = renshu1 + renshu2;
+                    order.adultNumber = renshu1;
+                    order.childNumber = renshu2;
                     order.orderDate = DateTime.Now;
                     order.TravelDate = Request["shijian1"];
-                    order.orderPrice = Convert.ToInt32(Request["adult_price"]) * Convert.ToInt32(Request["renshu1"]) + Convert.ToInt32(Request["child_price"]) * Convert.ToInt32(Request["renshu2"]);
-                    order.attachPrice = Convert.ToInt32(Request["bx_price"]) * Convert.ToInt32(Request["renshu3"]);
+                    order.orderPrice = adult_price * renshu1 + child_price * renshu2;
+                    order.attachPrice = bx_price * renshu3;
                     order.usePoints = 0;
                     order.donatePoints = 0;
                     order.contactName = Request["xingming"];
@@ -46,7 +61,7 @@ namespace TravelAgent.Web.mTravel
                     order.payType = 0;
                     order.subPrice = 0;
 
-                    order.orderType = Convert.ToInt32(Request["order_type"]);
+                    order.orderType = order_type;
                     order.contactSex = "";
                     order.sourceType = Convert.ToInt32(TravelAgent.Tool.EnumSummary.SourceType.移动WAP);
                     try
@@ -88,11 +103,12 @@ namespace TravelAgent.Web.mTravel
         public string ShowPay()
         {
             StringBuilder sbpay = new StringBuilder();
-            if (Convert.ToInt32(Request["deal_type"]).Equals(Convert.ToInt32(TravelAgent.Tool.EnumSummary.DealType.自动处理)) && webinfo.AlipayIslock == 1)
+            int deal_type;
+            if (int.TryParse(Request["deal_type"], out deal_type) && Convert.ToInt32(Request["deal_type"]).Equals(Convert.ToInt32(TravelAgent.Tool.EnumSummary.DealType.自动处理)) && webinfo.AlipayIslock == 1)
             {
                 sbpay.Append("<a class=\"pay\"  href=\"../WapPayApi/Alipay/alipay_default.aspx?id=" + Request["lineid"] + "&o=" + ordercode + "&subject=" + Request["linename"] + "【出发日期：" + Request["shijian1"] + "】&total_fee=" + Request["totalprice"] + "\" target=\"_blank\">支付宝支付</a>&nbsp; ");
             }
-            if (Convert.ToInt32(Request["deal_type"]).Equals(Convert.ToInt32(TravelAgent.Tool.EnumSummary.DealType.自动处理)) && webinfo.WxpayIsLock == 1)
+            if (int.TryParse(Request["deal_type"], out deal_type) && Convert.ToInt32(Request["deal_type"]).Equals(Convert.ToInt32(TravelAgent.Tool.EnumSummary.DealType.自动处理)) && webinfo.WxpayIsLock == 1)
             {
                 sbpay.Append("<a class=\"cancel\" href=\"weipay/confirmPay.aspx?o=" + ordercode + "\">微信支付</a>");
             }

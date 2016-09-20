@@ -22,9 +22,8 @@ namespace TravelAgent.Web.mTravel
         private static readonly TravelAgent.BLL.VisaCountry CountryBll = new TravelAgent.BLL.VisaCountry();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["typeid"] != null)
+            if (Request.QueryString["typeid"] != null && int.TryParse(Request.QueryString["typeid"], out typeid))
             {
-                typeid = Convert.ToInt32(Request.QueryString["typeid"]);
                 TravelAgent.Model.VisaType VisaType = TypeBll.GetModel(typeid);
                 strTypeName = VisaType!=null?VisaType.Name:"";
             }
@@ -32,10 +31,7 @@ namespace TravelAgent.Web.mTravel
             {
                 strKeyName = Request.QueryString["keyword"];
             }
-            if (Request.QueryString["countryId"] != null)
-            {
-                countryId = Convert.ToInt32(Request.QueryString["countryId"]);
-            }
+            int.TryParse(Request.QueryString["countryId"], out countryId);
         }
         /// <summary>
         /// 绑定签证列表

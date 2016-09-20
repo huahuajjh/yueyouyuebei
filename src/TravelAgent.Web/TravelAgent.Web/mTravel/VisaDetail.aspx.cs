@@ -17,10 +17,12 @@ namespace TravelAgent.Web.mTravel
         private static readonly TravelAgent.BLL.Category CateBll = new TravelAgent.BLL.Category();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            int id;
+            if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out id))
             {
-                Visa = VisaBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
+                Visa = VisaBll.GetModel(id);
             }
+            if(Visa == null) Response.Redirect("/Opr.aspx?t=error&msg=opr");
         }
         /// <summary>
         /// 显示签证类型

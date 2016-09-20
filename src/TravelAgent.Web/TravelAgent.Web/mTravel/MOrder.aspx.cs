@@ -19,10 +19,7 @@ namespace TravelAgent.Web.mTravel
         private static readonly TravelAgent.BLL.Insure InsureBll = new TravelAgent.BLL.Insure();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
-            {
-                pid = Convert.ToInt32(Request.QueryString["id"]);
-            }
+            int.TryParse(Request.QueryString["id"], out pid);
             if (!this.IsPostBack)
             {
                 if (pid > 0)
@@ -33,6 +30,10 @@ namespace TravelAgent.Web.mTravel
                         LineModel.Insure = InsureBll.GetModel(LineModel.InsureId);
                     }
                 }
+            }
+            if(LineModel == null)
+            {
+                Response.Redirect("/Opr.aspx?t=error&msg=opr");
             }
         }
         /// <summary>

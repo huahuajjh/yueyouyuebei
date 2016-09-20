@@ -32,7 +32,8 @@ namespace TravelAgent.Web
             for (int i = 0; i < dsBanner.Tables[0].Rows.Count; i++)
             {
                 row = dsBanner.Tables[0].Rows[i];
-                bannerstring += "<a href=\"javascript:;\">" + (i + 1) + "</a>";
+                //bannerstring += "<a href=\"javascript:;\">" + (i + 1) + "</a>";
+                bannerstring += "<a href=\"javascript:;\"></a>";
                 sbBanner.Append("<li><a href=\"mTravel/Search.aspx?keyword=" + Server.UrlEncode(row["Title"].ToString()) + "\"><img id=\"main_img_" + (i + 1) + "\" src=\"" + row["AdUrl"] + "\" alt=\"" + row["Title"] + "\" /></a></li>");
             }
             return sbBanner.ToString();

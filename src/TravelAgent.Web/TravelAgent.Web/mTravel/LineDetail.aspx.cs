@@ -20,9 +20,14 @@ namespace TravelAgent.Web.mTravel
         private static readonly TravelAgent.BLL.LineSpePrice SpePriceBll = new TravelAgent.BLL.LineSpePrice();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            int id;
+            if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out id))
             {
-                Line = LineBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
+                Line = LineBll.GetModel(id);
+            }
+            if(Line == null)
+            {
+                Response.Redirect("/Opr.aspx?t=error&msg=opr");
             }
         }
         /// <summary>
@@ -32,10 +37,14 @@ namespace TravelAgent.Web.mTravel
         public string ShowJoinName(string proids)
         {
             string strvalue = "";
-            TravelAgent.Model.JoinProperty proModel = ProBll.GetModel(Convert.ToInt32(proids));
-            if (proModel != null)
+            int proidsId;
+            if (int.TryParse(proids, out proidsId))
             {
-                strvalue = proModel.joinName;
+                TravelAgent.Model.JoinProperty proModel = ProBll.GetModel(proidsId);
+                if (proModel != null)
+                {
+                    strvalue = proModel.joinName;
+                }
             }
             return strvalue;
         }
@@ -53,7 +62,7 @@ namespace TravelAgent.Web.mTravel
             }
             else
             {
-                strvalue = "¥&nbsp;"+price+"起";
+                strvalue = "¥&nbsp;" + price + "起";
             }
             return strvalue;
         }
@@ -64,7 +73,9 @@ namespace TravelAgent.Web.mTravel
         /// <returns></returns>
         public string ShowCityName()
         {
-            return CityBll.GetModel(Line.CityId).CityName;
+            Model.DepartureCity city = CityBll.GetModel(Line.CityId);
+            if (city == null) return "";
+            return city.CityName;
         }
         /// <summary>
         /// 显示行程详细内容

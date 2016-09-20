@@ -1,9 +1,18 @@
+<<<<<<< HEAD
+2016-09-20 15:23:48.3776|ERROR|TravelAgent.Web.Global|error=引发类型为“System.Web.HttpUnhandledException”的异常。    url=/mTravel/LineDest.aspx?td=aaa&name=%E6%96%B0%E5%8A%A0%E5%9D%A11    stacktrace=   在 System.Web.UI.Page.HandleError(Exception e)
+=======
 2016-09-20 13:22:34.2561|ERROR|TravelAgent.Web.Global|error=引发类型为“System.Web.HttpUnhandledException”的异常。    url=/Default.aspx    stacktrace=   在 System.Web.UI.Page.HandleError(Exception e)
+>>>>>>> 79e13a471e58a402146eec95c79f4d895e2a28d2
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
    在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
    在 System.Web.UI.Page.ProcessRequest()
    在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
    在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+<<<<<<< HEAD
+   在 ASP.mtravel_linedest_aspx.ProcessRequest(HttpContext context) 位置 c:\Users\Administrator\AppData\Local\Temp\Temporary ASP.NET Files\root\2f5f7848\214cf064\App_Web_gijgbu1g.10.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+=======
    在 ASP.default_aspx.ProcessRequest(HttpContext context)
    在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
@@ -142,6 +151,7 @@
    在 System.Web.UI.PageHandlerFactory.GetHandler(HttpContext context, String requestType, String virtualPath, String path)
    在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+<<<<<<< HEAD
 2016-09-20 17:33:47.3665|ERROR|TravelAgent.Web.Global|error=SqlDateTime 溢出。必须介于 1/1/1753 12:00:00 AM 和 12/31/9999 11:59:59 PM 之间。    url=/guide/Ghandler.ashx?cmd=save_guide  user_ip=::1  stacktrace=   在 System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
    在 System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
    在 System.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
@@ -172,5 +182,24 @@
    在 TravelAgent.BLL.TourGuide.Add(TourGuide model) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.BLL\TourGuide.cs:行号 32
    在 TravelAgent.Web.guide.Ghandler.save_guide(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 230
    在 TravelAgent.Web.guide.Ghandler.ProcessRequest(HttpContext context) 位置 d:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.Web\guide\Ghandler.ashx.cs:行号 58
+=======
+>>>>>>> 79e13a471e58a402146eec95c79f4d895e2a28d2
+2016-09-20 16:56:32.9759|ERROR|TravelAgent.Web.Global|error=引发类型为“System.Web.HttpUnhandledException”的异常。    url=/Default.aspx  user_ip=::1  stacktrace=   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.default_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\2f5f7848\214cf064\App_Web_nviy2xgj.11.cs:行号 0
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2016-09-20 16:57:28.1379|ERROR|TravelAgent.Web.Global|error=引发类型为“System.Web.HttpUnhandledException”的异常。    url=/Default.aspx  user_ip=::1  stacktrace=   在 System.Web.UI.Page.HandleError(Exception e)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   在 System.Web.UI.Page.ProcessRequest()
+   在 System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   在 System.Web.UI.Page.ProcessRequest(HttpContext context)
+   在 ASP.default_aspx.ProcessRequest(HttpContext context) 位置 c:\Windows\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\2f5f7848\214cf064\App_Web_kczrpi9h.10.cs:行号 0
+>>>>>>> aef7016e70d7f6c6c07f1c49f96ca7b06327b2c5
    在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

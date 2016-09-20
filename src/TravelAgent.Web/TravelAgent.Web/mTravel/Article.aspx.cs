@@ -17,10 +17,11 @@ namespace TravelAgent.Web.mTravel
         private static readonly TravelAgent.BLL.Article ArticleBll = new TravelAgent.BLL.Article();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            int id;
+            if (int.TryParse(Request.QueryString["id"], out id))
             {
                 //article = ArticleBll.GetModel(Convert.ToInt32(Request.QueryString["id"]));
-                DataSet dsArticle = ArticleBll.GetList(1, "IsLock=0 and ClassId=" + Convert.ToInt32(Request.QueryString["id"]), "Click asc,AddTime desc");
+                DataSet dsArticle = ArticleBll.GetList(1, "IsLock=0 and ClassId=" + id.ToString(), "Click asc,AddTime desc");
                 if (dsArticle.Tables[0].Rows.Count > 0)
                 {
                     strtitle = dsArticle.Tables[0].Rows[0]["Title"].ToString();

@@ -28,7 +28,7 @@
                     }
                     $(function() {
                         var id = request("d");
-
+                        $(".zhedang").click(function () { $(".zhedang,.navbox").css("display", "none"); });
                         if (id == "") {
                             $("#popbod").show();
                             $("#rolin").hide();

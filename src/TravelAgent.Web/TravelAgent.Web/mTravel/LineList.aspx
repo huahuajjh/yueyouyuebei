@@ -27,7 +27,8 @@
                             return returnValue;
                         }
                     }
-                    $(function() {
+                    $(function () {
+                        $(".zhedang").click(function () { $(".zhedang,.navbox").css("display", "none"); });
                         var id = request("d");
                         if (id == "") {
                             $("#popbod").show();
@@ -62,7 +63,9 @@
 				<em>目的地推荐</em>
 			</div>
 			<ul class="hotmdd">
-				<%=BindPageNav()%>					    </ul>
+				<%=BindPageNav()%>			
+		    </ul>
+
 	<!--产品部分-->
 	<div class="gy_tit">
 		<em>推荐产品</em>
