@@ -39,6 +39,7 @@
       <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -53,17 +54,36 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DALTest\TestSBuilderFormat.cs" />
+    <Compile Include="DALTest\TestArea.cs" />
+    <Compile Include="DALTest\TestSchool.cs" />
     <Compile Include="TestNLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelAgent.BLL\TravelAgent.BLL.csproj">
+      <Project>{370ae2ad-8e5d-4ed8-9395-f38ad41b3241}</Project>
+      <Name>TravelAgent.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelAgent.DALFactory\TravelAgent.DALFactory.csproj">
       <Project>{e0817455-e1d9-46c1-b662-9ae85f9f74dd}</Project>
       <Name>TravelAgent.DALFactory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.DALSQL\TravelAgent.DALSQL.csproj">
+      <Project>{c6590989-8c02-4d17-a7d4-91fccf4d205f}</Project>
+      <Name>TravelAgent.DALSQL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
       <Project>{6cefb7ba-7a36-4a2b-8317-ad5c22178472}</Project>
       <Name>TravelAgent.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.Model\TravelAgent.Model.csproj">
+      <Project>{1f4b9051-eade-4180-84be-eccd98091444}</Project>
+      <Name>TravelAgent.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.Tool\TravelAgent.Tool.csproj">
+      <Project>{57ea1a47-f9d2-405f-97d1-1fb046381e08}</Project>
+      <Name>TravelAgent.Tool</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +94,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -70,6 +70,9 @@
     <Compile Include="Destination.cs" />
     <Compile Include="InfoSetting.cs" />
     <Compile Include="Insure.cs" />
+    <Compile Include="Interface\IAreaService.cs" />
+    <Compile Include="Interface\IReferencesService.cs" />
+    <Compile Include="Interface\ISchoolService.cs" />
     <Compile Include="JoinProperty.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineConsult.cs" />

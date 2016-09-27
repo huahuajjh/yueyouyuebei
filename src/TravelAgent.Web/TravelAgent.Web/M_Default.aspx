@@ -26,7 +26,7 @@
 <div class="main_visual">			
 	<div class="main_image" id="main_div">
 		<ul>
-			<%=BindBanner(22)%>		
+			<%=BindBanner(22)%>
 	    </ul>
 		<a href="javascript:;" id="btn_prev"></a>
 		<a href="javascript:;" id="btn_next"></a>				
