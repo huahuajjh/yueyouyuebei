@@ -10,22 +10,24 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TravelAgent.IDAL</RootNamespace>
     <AssemblyName>TravelAgent.IDAL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,7 +59,7 @@
     <Compile Include="IAdminList.cs" />
     <Compile Include="IAdminRole.cs" />
     <Compile Include="IAdvertising.cs" />
-    <Compile Include="IArea.cs" />
+    <Compile Include="IAreaDao.cs" />
     <Compile Include="IArticle.cs" />
     <Compile Include="ICarBrand.cs" />
     <Compile Include="ICarCity.cs" />
@@ -82,8 +85,8 @@
     <Compile Include="ILineSpePrice.cs" />
     <Compile Include="ILineTheme.cs" />
     <Compile Include="ILinks.cs" />
-    <Compile Include="IReferences.cs" />
-    <Compile Include="ISchool.cs" />
+    <Compile Include="IReferencesDao.cs" />
+    <Compile Include="ISchoolDao.cs" />
     <Compile Include="ISupply.cs" />
     <Compile Include="ITourComment.cs" />
     <Compile Include="ITourGuide.cs" />

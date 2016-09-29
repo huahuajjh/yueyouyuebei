@@ -13,7 +13,7 @@ namespace Test.DALTest
         [TestMethod]
         public void TestAdd()
         { 
-            ISchool dao = new SchoolDao();
+            ISchoolDao dao = new SchoolDao();
             School s = new School(){ ShortName="st", Name="s", AreaId=123};
             dao.Add(s);
         }
@@ -21,7 +21,7 @@ namespace Test.DALTest
         [TestMethod]        
         public void TestGet()
         {
-            ISchool dao = new SchoolDao();
+            ISchoolDao dao = new SchoolDao();
             IList<School> list = dao.Get("");
             foreach (School item in list)
             {

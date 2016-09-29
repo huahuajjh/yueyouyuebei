@@ -10,7 +10,7 @@ using TravelAgent.Tool;
 
 namespace TravelAgent.DALSQL
 {
-    public class ReferencesDao:IReferences
+    public class ReferencesDao:IReferencesDao
     {
         public void Add(References r)
         {

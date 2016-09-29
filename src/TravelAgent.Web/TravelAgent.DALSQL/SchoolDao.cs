@@ -10,7 +10,7 @@ using TravelAgent.Tool;
 
 namespace TravelAgent.DALSQL
 {
-    public class SchoolDao:ISchool
+    public class SchoolDao:ISchoolDao
     {
         public void Add(School s)
         {

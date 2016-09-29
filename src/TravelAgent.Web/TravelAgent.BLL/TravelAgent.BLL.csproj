@@ -10,22 +10,24 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TravelAgent.BLL</RootNamespace>
     <AssemblyName>TravelAgent.BLL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +36,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +57,7 @@
     <Compile Include="AdminList.cs" />
     <Compile Include="AdminRole.cs" />
     <Compile Include="Advertising.cs" />
+    <Compile Include="AreaService.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="CarBrand.cs" />
     <Compile Include="CarCity.cs" />
@@ -70,9 +74,6 @@
     <Compile Include="Destination.cs" />
     <Compile Include="InfoSetting.cs" />
     <Compile Include="Insure.cs" />
-    <Compile Include="Interface\IAreaService.cs" />
-    <Compile Include="Interface\IReferencesService.cs" />
-    <Compile Include="Interface\ISchoolService.cs" />
     <Compile Include="JoinProperty.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="LineConsult.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="LineTheme.cs" />
     <Compile Include="Links.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBase.cs" />
     <Compile Include="Supply.cs" />
     <Compile Include="TourComment.cs" />
     <Compile Include="TourGuide.cs" />
@@ -107,6 +109,10 @@
     <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
       <Project>{6CEFB7BA-7A36-4A2B-8317-AD5C22178472}</Project>
       <Name>TravelAgent.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.IService\TravelAgent.IService.csproj">
+      <Project>{fedfc6cc-1340-46e5-95e5-05e1fe4b8bb5}</Project>
+      <Name>TravelAgent.IService</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.Model\TravelAgent.Model.csproj">
       <Project>{1F4B9051-EADE-4180-84BE-ECCD98091444}</Project>

@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NLog">
@@ -57,6 +60,7 @@
     <Compile Include="DALTest\TestSBuilderFormat.cs" />
     <Compile Include="DALTest\TestArea.cs" />
     <Compile Include="DALTest\TestSchool.cs" />
+    <Compile Include="JsonTest\TestJson.cs" />
     <Compile Include="TestNLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +80,10 @@
     <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
       <Project>{6cefb7ba-7a36-4a2b-8317-ad5c22178472}</Project>
       <Name>TravelAgent.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.IService\TravelAgent.IService.csproj">
+      <Project>{fedfc6cc-1340-46e5-95e5-05e1fe4b8bb5}</Project>
+      <Name>TravelAgent.IService</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.Model\TravelAgent.Model.csproj">
       <Project>{1f4b9051-eade-4180-84be-eccd98091444}</Project>
