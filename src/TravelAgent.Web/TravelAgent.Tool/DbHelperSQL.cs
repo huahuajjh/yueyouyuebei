@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Reflection;
 
 namespace TravelAgent.Tool
 {
@@ -15,10 +16,8 @@ namespace TravelAgent.Tool
         public static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionSQLString"].ConnectionString;
         //public static string connectionClubString = ConfigurationManager.ConnectionStrings["str_clubconn"].ConnectionString;
 
-        public DbHelperSQL()
-        {
+        public DbHelperSQL(){}
 
-        }
         #region  执行简单SQL语句
 
         /// <summary>
@@ -639,5 +638,37 @@ namespace TravelAgent.Tool
 
 
         #endregion
+
+        public static IList<T> DT2List<T>(DataTable dt) where T : new()
+        {            
+            Type type = typeof(T);
+            IList<T> list = new List<T>();
+            
+            int row_count = dt.Rows.Count;
+            DataRowCollection rows = dt.Rows;
+            foreach (DataRow row in rows)
+            {
+                T t = new T();
+                PropertyInfo[] ps = type.GetProperties();
+                foreach (var p in ps)
+                {
+                    if(dt.Columns.Contains(p.Name))
+                    {
+                        if (!p.CanWrite) { continue;}
+                        p.SetValue(t,row[p.Name],null);                        
+                    }
+                }
+                list.Add(t);
+            }
+
+            return list;
+        }
+
+        public static int Count(string tb_name)
+        {
+            int r = 0;
+            int.TryParse(GetSingle("select count(1) as rows from " + tb_name).ToString(),out r);
+            return r;
+        }
     }
 }

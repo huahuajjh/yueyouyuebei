@@ -18,6 +18,8 @@ namespace TravelAgent.DALFactory
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
+        
+        #region old
         private static string GetObjectName(string name)
         {
             return AssemblyName + "." + name;
@@ -364,7 +366,14 @@ namespace TravelAgent.DALFactory
         {
             return (TravelAgent.IDAL.ITourComment)Assembly.Load(AssemblyName).CreateInstance(GetObjectName("TourComment"));
         }
-    
+        #endregion
+
+        /// <summary>
+        /// DI方法，根据类名实例化对象
+        /// </summary>
+        /// <typeparam name="T">实例化类型参数</typeparam>
+        /// <param name="className">类名</param>
+        /// <returns>实例对象</returns>
         public static T GetObj<T>(string className)
         {
             if (string.IsNullOrEmpty(className))
@@ -374,6 +383,26 @@ namespace TravelAgent.DALFactory
             else
             {
                 return (T)Assembly.Load(AssemblyName).CreateInstance(GetObjectName(className));
+            }
+        }
+
+        /// <summary>
+        /// DI方法，根据dll+class name创建实例
+        /// </summary>
+        /// <typeparam name="T">实例类型参数</typeparam>
+        /// <param name="dll">dll名称</param>
+        /// <param name="class_name">类名称</param>
+        /// <returns>实例</returns>
+        public static T GetObj<T>(string dll,string class_name)
+        {
+            if (string.IsNullOrEmpty(class_name))
+            {
+                throw new NullReferenceException("初始化DLL失败，类名参数className为null，或者错误的className值");
+            }
+            else
+            {
+                string s = ConfigurationManager.AppSettings[dll] + "." + class_name;
+                return (T)Assembly.Load(ConfigurationManager.AppSettings[dll]).CreateInstance(ConfigurationManager.AppSettings[dll] + "." + class_name);
             }
         }
     }

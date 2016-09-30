@@ -60,7 +60,7 @@
 		<%=BindBottonNav(3,3)%>
 	</p>
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
-	<p>技术支持：研旅网络</p>
+	<p>技术支持：约游约呗</p>
 </footer>
 <script type="text/javascript" src="scripts/script.js"></script>
 <!--遮挡层-->

@@ -26,7 +26,7 @@
 <div class="main_visual">			
 	<div class="main_image" id="main_div">
 		<ul>
-			<%=BindBanner(22)%>		
+			<%=BindBanner(22)%>
 	    </ul>
 		<a href="javascript:;" id="btn_prev"></a>
 		<a href="javascript:;" id="btn_next"></a>				
@@ -47,7 +47,7 @@
 		<a href="mTravel/LineList.aspx?d=1" class="home_link_a">
 			<div class="home_link_box mglt hg">
 				<em>Outbound tourism</em>
-				<span>出境旅游</span>
+				<span>常规旅行</span>
 			</div>
 		</a>
 	</div>
@@ -55,7 +55,7 @@
 		<a href="mTravel/LineList.aspx?d=2" class="home_link_a">
 			<div class="home_link_box mgrt hb">
 				<em>Domestic tourism</em>
-				<span>国内旅游</span>
+				<span>户外撒野</span>
 			</div>
 		</a>
 		<a href="mTravel/LineList.aspx?d=3" class="home_link_a">

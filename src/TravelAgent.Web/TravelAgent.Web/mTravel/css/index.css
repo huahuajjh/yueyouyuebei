@@ -994,7 +994,7 @@ Pagination Styles
 .fanye ul li{ float: left; }
 
 /********************************Ò³Í·*******************************************/
-.header {width: 100%; height: 50px; background: #008857; position: relative; z-index: 100;}
+.header {width: 100%; height: 50px; background: #FFAA11; position: relative; z-index: 100;}
 /*Ê×Ò³*/
 .header h1 { height: 40px; padding: 5px 0; background: url(../images/logo.png) no-repeat 10px center; background-size: 35px 35px;}
 .header h1 em{margin-left: 50px; height: 40px; font: 700 20px/40px "microsoft yahei","SimHei",Arial,sans-serif; color: #FFF;}
