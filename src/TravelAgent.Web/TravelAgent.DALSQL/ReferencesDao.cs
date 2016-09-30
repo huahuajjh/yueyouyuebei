@@ -15,7 +15,7 @@ namespace TravelAgent.DALSQL
         public void Add(References r)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("insert into References(Name,SchoolId,Tel) values({0},{1},{2})", "@Name", "@SchoolId", "@Tel");
+            sb.AppendFormat("insert into [References](Name,SchoolId,Tel) values({0},{1},{2})", "@Name", "@SchoolId", "@Tel");
 
             SqlParameter[] parameters = {
                 new SqlParameter("@Name",SqlDbType.Char,15),
@@ -45,7 +45,7 @@ namespace TravelAgent.DALSQL
         public int Update(References r)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("update References set Name={0},SchoolId={1},Tel={2} where Id={3}", "@Name", "@SchoolId", "@Tel", "@Id");
+            sb.AppendFormat("update [References] set Name={0},SchoolId={1},Tel={2} where Id={3}", "@Name", "@SchoolId", "@Tel", "@Id");
 
             SqlParameter[] parameters = {
                 new SqlParameter("@Name",SqlDbType.Char,15),
@@ -64,7 +64,7 @@ namespace TravelAgent.DALSQL
 
         public int Del(int id)
         {
-            return DbHelperSQL.ExecuteSql("delete from References where Id="+id);
+            return DbHelperSQL.ExecuteSql("delete from [References] where Id="+id);
         }
 
         public References Get(int id)
@@ -75,7 +75,7 @@ namespace TravelAgent.DALSQL
         public IList<References> Get(string where, params string[] parameters)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("select  Id,Name,Tel,SchoolId from References ");
+            sb.AppendFormat("select  Id,Name,Tel,SchoolId from [References] ");
             if (!string.IsNullOrEmpty(where))
             {
                 sb.Append("where ").Append(where);
@@ -87,9 +87,9 @@ namespace TravelAgent.DALSQL
 
         public IList<References> Get(string where, int page_index, int page_count, out int total_page, params string[] parameters)
         {
-            total_page = DbHelperSQL.Count("References");
+            total_page = DbHelperSQL.Count("[References]");
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Id,Name,Tel,SchoolId FROM References ");
+            sb.Append("SELECT Id,Name,Tel,SchoolId FROM [References] ");
             if (!string.IsNullOrEmpty(where))
             {
                 sb.Append("where ").Append(where);

@@ -38,8 +38,37 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="attributes">
+      <HintPath>..\TravelAgent.WebAPI\lib\attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="eh.impls">
+      <HintPath>..\TravelAgent.WebAPI\lib\eh.impls.dll</HintPath>
+    </Reference>
+    <Reference Include="eh.interfaces">
+      <HintPath>..\TravelAgent.WebAPI\lib\eh.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="eh.util">
+      <HintPath>..\TravelAgent.WebAPI\lib\eh.util.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -60,6 +89,7 @@
     <Compile Include="DALTest\TestSBuilderFormat.cs" />
     <Compile Include="DALTest\TestArea.cs" />
     <Compile Include="DALTest\TestSchool.cs" />
+    <Compile Include="Excel\TestExcel.cs" />
     <Compile Include="JsonTest\TestJson.cs" />
     <Compile Include="TestNLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

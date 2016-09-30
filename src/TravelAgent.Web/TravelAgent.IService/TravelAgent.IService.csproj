@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAreaService.cs" />
-    <Compile Include="IReferences.cs" />
+    <Compile Include="IReferencesService.cs" />
     <Compile Include="ISchoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

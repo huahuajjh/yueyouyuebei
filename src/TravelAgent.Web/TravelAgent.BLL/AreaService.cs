@@ -9,12 +9,17 @@ using TravelAgent.Model;
 
 namespace TravelAgent.BLL
 {
-    public class AreaService:ServiceBase,IAreaService
+    public class AreaService:ServiceBase<IAreaDao>,IAreaService
     {
         public IList<Area> GetByParent(int pid)
         {
-            IAreaDao dao = GetDao<IAreaDao>("AreaDao");
+            IAreaDao dao = GetDao("AreaDao");
             return dao.Get("Pid="+pid);
+        }
+        public IList<Area> GetByPage(int index, int count, out int total)
+        {
+            IAreaDao dao = GetDao("AreaDao");
+            return dao.Get("",index,count,out total);
         }
     }
 }

@@ -40,6 +40,26 @@ namespace Test.JsonTest
             }
 
         }
+
+        [TestMethod]
+        public void ToObj1()
+        {
+            string json = "{'Id':0,'Name':'zs0','Tel':'a0','SchoolId':1}";
+            References r = JsonUtil.ToObj<References>(json);
+            Console.WriteLine(r.Name);
+        }
         
+        [TestMethod]
+        public void TestSchoolJson()
+        {
+            Console.WriteLine(JsonUtil.ToJson(new School{ AreaId=1,ShortName="学校简称", Id=2, Name="学校名称"}));
+        }
+
+        [TestMethod]
+        public void TestRefJson()
+        {
+            Console.WriteLine(JsonUtil.ToJson(new References { Tel="推荐人电话", SchoolId=11, Id=1, Name="推荐人姓名"}));
+        }
+
     }
 }

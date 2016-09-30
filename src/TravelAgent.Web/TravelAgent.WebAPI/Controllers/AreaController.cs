@@ -18,9 +18,12 @@ namespace TravelAgent.WebAPI.Controllers
             return ToJson(list);
         }
 
-        public HttpResponseMessage GetByPage(string page)
+        public HttpResponseMessage GetByPage(int index,int count)
         {
-           return null;
+            int total = 0;
+            IList<Area> list = GetService<IAreaService>("AreaService").GetByPage(index,count,out total);
+            return ToJson(list,total:total);
+
         }
     }
 }

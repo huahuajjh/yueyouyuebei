@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
 using System.Web.Http;
@@ -24,6 +27,19 @@ namespace TravelAgent.WebAPI.Controllers
             string json = JsonUtil.ToJson(jf);
             HttpResponseMessage res = new HttpResponseMessage{ Content=new StringContent(json,Encoding.GetEncoding("UTF-8"),"application/json")};
             return res;
+        }
+
+        protected HttpResponseMessage DownloadFile(string filename)
+        { 
+            HttpResponseMessage res = new HttpResponseMessage(HttpStatusCode.OK);
+            using (FileStream fs = new FileStream(filename,FileMode.Open))
+            {
+                res.Content = new StreamContent(fs);
+                res.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment"){ FileName="school.xls"};
+                res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                res.Content.Headers.ContentLength = new FileInfo(filename).Length;
+                return res;
+            }
         }
     }
 }

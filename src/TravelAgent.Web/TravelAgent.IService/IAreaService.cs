@@ -10,5 +10,6 @@ namespace TravelAgent.IService
     public interface IAreaService
     {
         IList<Area> GetByParent(int pid);
+        IList<Area> GetByPage(int index,int count,out int total);
     }
 }
