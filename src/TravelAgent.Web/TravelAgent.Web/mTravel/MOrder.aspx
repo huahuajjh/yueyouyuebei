@@ -8,13 +8,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <link type="text/css" rel="stylesheet" href="css/yuding.css" />
- <link  rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
+<link  rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
+<link type="text/css" href="css/mAddress.css" rel="stylesheet" />
 <script src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/date.js" ></script>
 <script type="text/javascript" src="scripts/iscroll.js" ></script>
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
+<script type="text/javascript" src="scripts/mAddress.js"></script>
 <script type="text/javascript">
+    function plusMinusNum(domVal) {
+        var dom = $(domVal);
+        var firstOrderBtn = dom.find(".order-btn:first");
+        var lastOrderBtn = dom.find(".order-btn:last");
+        var inp = dom.find("input");
+        firstOrderBtn.on("click", function(){
+            var val = inp.val();
+            if(val.match(/\d*/i) && parseInt(val) > 0) {
+                inp.val(parseInt(val) - 1);
+            } else {
+                inp.val("0");
+            }
+        });
+        lastOrderBtn.on("click", function(){
+            var val = inp.val();
+            if(val.match(/\d*/i)) {
+                inp.val(parseInt(val) + 1);
+            } else {
+                inp.val("1");
+            }
+        });
+    }
     $(function() {
+        plusMinusNum("#adult_num");
+        plusMinusNum("#child_num");
+        plusMinusNum("#baoxian_num");
+        $("#tuijianren").bindAddress();
         //$('#shijian').date();
         $("#ordertime").val("");
         $("#ordertime").change(function() {
@@ -82,12 +110,12 @@
                 <span class="j-linkage order-btn plus plus-active" data-type="adults"></span> </span>  </li>
               <li>
                 <label>儿童</label>
-                <span class="t2" id="child_price_span"> ￥0 </span> <span class="t3" id="child_num"> <span class="j-linkage order-btn minus minus-disabled" data-type="teens"></span>
+                <span class="t2" id="child_price_span"> ￥0 </span> <span class="t3" id="child_num"> <span class="j-linkage order-btn minus minus-active" data-type="teens"></span>
                 <input type='number' min="0" max="100" id="pr_child_num" class="order-txt-n" name="renshu2" value="0" />
                 <span class="j-linkage order-btn plus plus-active" data-type="teens"></span> </span> </li>
               <li>
                 <label>保险</label>
-                <span class="t2" id="baoxian"> ￥<%=LineModel.Insure!=null?LineModel.Insure.InsurePrice.ToString():"0" %> </span> <span class="t3" id="baoxian_num"> <span class="j-linkage order-btn minus minus-disabled" data-type="baox"></span>
+                <span class="t2" id="baoxian"> ￥<%=LineModel.Insure!=null?LineModel.Insure.InsurePrice.ToString():"0" %> </span> <span class="t3" id="baoxian_num"> <span class="j-linkage order-btn minus minus-active" data-type="baox"></span>
                 <input type='number' min="0" max="100" id="pr_bx_num" class="order-txt-n" name="renshu3" value="0" />
                 <span class="j-linkage order-btn plus plus-active" data-type="teens"></span> </span> 
               </li>
@@ -165,7 +193,8 @@
 				<span><a href="LineList.aspx?d=2">国内旅游</a></span>
 				<span><a href="LineList.aspx?d=3">周边旅游</a></span>
     </div>
-</div></div>
+</div>
+</div>
 <script src="scripts/order_widget.js"></script>
 <script type="text/javascript">
     $(function() { 

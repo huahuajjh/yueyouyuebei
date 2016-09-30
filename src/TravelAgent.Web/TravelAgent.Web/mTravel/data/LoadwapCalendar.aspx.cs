@@ -14,9 +14,9 @@ namespace TravelAgent.Web.mTravel.data
         private static readonly TravelAgent.BLL.LineSpePrice SpePriceBll = new TravelAgent.BLL.LineSpePrice();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            int id;
+            if (int.TryParse(Request.QueryString["id"], out id))
             {
-                int id = Convert.ToInt32(Request.QueryString["id"]);
                 StringBuilder sb = new StringBuilder();
                 string[] Day = new string[] { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
                 TravelAgent.Model.Line Line = LineBll.GetModel(id);

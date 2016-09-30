@@ -77,8 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\guide\CheckList.aspx" />
+    <Content Include="css\jquery.address.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\line.css" />
+    <Content Include="mTravel\css\mAddress.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />
     <Content Include="Global.asax" />
@@ -426,6 +428,7 @@
     <Content Include="guide\js\swf\swfupload.queue.js" />
     <Content Include="guide\show.aspx" />
     <Content Include="guide\swfupload.swf" />
+    <Content Include="images\20130606B.png" />
     <Content Include="images\422.gif" />
     <Content Include="images\425.gif" />
     <Content Include="images\432.gif" />
@@ -491,7 +494,9 @@
     <Content Include="images\yd_btn.png" />
     <Content Include="images\yunnan.jpg" />
     <Content Include="images\zhangjiajie.jpg" />
+    <Content Include="js\jquery.address.js" />
     <Content Include="js\jquery-2.0.0.js" />
+    <Content Include="mTravel\scripts\mAddress.js" />
     <Content Include="js\model.js" />
     <Content Include="js\fullcalendar.js" />
     <Content Include="js\gotop.js" />
@@ -2881,7 +2886,9 @@
     <Content Include="bin\TravelAgent.Model.dll" />
     <Content Include="bin\TravelAgent.Tool.dll" />
     <Content Include="bin\TravelAgent.Web.UI.dll" />
-    <Content Include="config\WebInfo.config" />
+    <Content Include="config\WebInfo.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.form.js" />
     <Content Include="js\jquery.lazyload.js" />
