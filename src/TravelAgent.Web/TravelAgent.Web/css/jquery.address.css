@@ -1,6 +1,6 @@
 .tq-address{
   border: 1px solid #cecbce;
-  width: 390px;
+  width: 500px;
   padding: 15px;
   background: #fff;
   -moz-box-shadow: 0 0 5px #ddd;
@@ -67,7 +67,7 @@
   width: 7px;
   height: 5px;
   overflow: hidden;
-  background: url(../image/20130606B.png) no-repeat -76px -34px;
+  background: url(/images/20130606B.png) no-repeat -76px -34px;
   opacity: .5;
   filter: alpha(opacity=50);
 }
@@ -92,7 +92,7 @@
 }
 .tq-address .area-panel .area-list li {
   float: left;
-  width: 80px;
+  width: 120px;
   padding: 2px 0;
   clear: none;
 }

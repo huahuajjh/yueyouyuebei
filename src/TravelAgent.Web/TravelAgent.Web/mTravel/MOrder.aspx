@@ -42,7 +42,11 @@
         plusMinusNum("#adult_num");
         plusMinusNum("#child_num");
         plusMinusNum("#baoxian_num");
-        $("#tuijianren").bindAddress();
+        $("#tuijianren").bindAddress({
+            addressUrl: "http://192.168.1.3:9694/api/Area/Get",
+            schoolUrl: "http://192.168.1.3:9694/api/School/Get",
+            personUrl: "http://192.168.1.3:9694/api/References/Get"
+        });
         //$('#shijian').date();
         $("#ordertime").val("");
         $("#ordertime").change(function() {

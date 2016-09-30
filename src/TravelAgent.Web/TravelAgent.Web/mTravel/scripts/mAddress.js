@@ -4,36 +4,45 @@
     var self = this;
     // ----私用方法
     // 请求封装
-    function ajax(url, id, successFn, errorFn) {
-      self.panel.find(".area-panel .msg").remove();
-      self.panel.find(".area-panel > div").css("display", "none");
-      self.panel.find(".area-panel").append($('<div class="msg">正在初始化数据...</div>'));
-      var sendData = {};
-      sendData["pid"] = id;
-      if($.isFunction(setting.requestBefore)) setting.requestBefore(sendData);
+    function ajax(url, sendData, successFn, errorFn) {
+        self.panel.find(".area-panel .msg").remove();
+        self.panel.find(".area-panel > div").css("display", "none");
+        self.panel.find(".area-panel").append($('<div class="msg">正在初始化数据...</div>'));
+        if ($.isFunction(setting.requestBefore)) setting.requestBefore(sendData);
 
-      $.ajax({
-        dataType: setting.dataType,
-        type: setting.type,
-        url: url,
-        success: function(data) {
-          self.panel.find(".area-panel > .msg").remove();
-          if($.isFunction(setting.requestAfter)){
-            var rData = setting.requestAfter(data);
-            if(rData) data = rData;
-          }
-          if($.isFunction(successFn)) successFn(data);
-        },
-        error: function() {
-          var a = $("<a href='javascript:void(0);'>刷新</a>")
-          a.on("click", function() {
-            ajax(id, successFn, errorFn);
-          });
-          self.panel.find(".area-panel > .msg").remove();
-          self.panel.find(".area-panel").append($('<div class="msg">请求服务器失败.</div>').append(a));
-          if($.isFunction(errorFn)) errorFn();
-        }
-      })
+        $.ajax({
+            dataType: setting.dataType,
+            type: setting.type,
+            url: url,
+            data: sendData,
+            success: function (data) {
+                if (data.Code == 1) {
+                    self.panel.find(".area-panel > .msg").remove();
+                    if ($.isFunction(setting.requestAfter)) {
+                        var rData = setting.requestAfter(data);
+                        if (rData) data = rData;
+                    }
+                    if ($.isFunction(successFn)) successFn(data);
+                } else {
+                    var a = $("<a href='javascript:void(0);'>刷新</a>")
+                    a.on("click", function () {
+                        ajax(url, sendData, successFn, errorFn);
+                    });
+                    self.panel.find(".area-panel > .msg").remove();
+                    self.panel.find(".area-panel").append($('<div class="msg">数据格式不正确.</div>').append(a));
+                    if ($.isFunction(errorFn)) errorFn();
+                }
+            },
+            error: function () {
+                var a = $("<a href='javascript:void(0);'>刷新</a>")
+                a.on("click", function () {
+                    ajax(url, sendData, successFn, errorFn);
+                });
+                self.panel.find(".area-panel > .msg").remove();
+                self.panel.find(".area-panel").append($('<div class="msg">请求服务器失败.</div>').append(a));
+                if ($.isFunction(errorFn)) errorFn();
+            }
+        })
     }
     // 创建I单个item
 
@@ -59,39 +68,28 @@
 
     // 创建Tab
     self.createTab = function(name, id, reqType) {
-      // if(reqType == "address")
-      //   ajax(setting.addressUrl, id, function(data) {
-      //     self.createTabDom(data.addressData, data.schoolData);
-      //   });
-      // else if(reqType == "school")
-      //   ajax(setting.schoolUrl, id, function(data) {
-      //     self.createTabDom(data);
-      //   });
-      if(reqType == "address") {
-        self.panel.find(".area-panel > div").css("display", "none");
-        self.createTabDom(name, [{
-          id: 1,
-          name: "地址1"
-        },{
-          id: 2,
-          name: "地址2"
-        }], [{
-          id: 1,
-          name: "学校1"
-        },{
-          id: 2,
-          name: "学校2"
-        }]);
-      } else if(reqType == "school") {
-        self.panel.find(".area-panel > div").css("display", "none");
-        self.createTabDom(name, null, null, [{
-          id: 1,
-          name: "人1"
-        },{
-          id: 2,
-          name: "人2"
-        }], "请选人");
-      }
+        if (reqType == "address") {
+            var sendAddressData = {
+                pid: id
+            };
+            ajax(setting.addressUrl, sendAddressData, function (data) {
+                var addressData = data.Data;
+                var sendSchoolData = {
+                    area_id: id
+                };
+                ajax(setting.schoolUrl, sendSchoolData, function (data) {
+                    self.createTabDom(name, addressData, data.Data, []);
+                });
+            });
+        }
+        else if (reqType == "school") {
+            var sendPersonData = {
+                school_id: id
+            };
+            ajax(setting.personUrl, sendPersonData, function (data) {
+                self.createTabDom(name, [], [], data.Data, "选择推介人");
+            });
+        }
     }
 
     // 创建标签对象
@@ -117,12 +115,12 @@
         // 增加标签对象
         var areaListLi = $('<li><a></a></li>').appendTo(areaList);
         // 给标签对象增加事件
-        areaListLi.find("a").html(d["name"]).on("click", { address: d, index: tabIndex, name: d["name"]}, function(e) {
+        areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
           self.panel.find(".tab a:gt(" + e.data.index + ")").each(function() {
             $(this).data("areaData").remove();
             $(this).remove();
           });
-          self.createTab(e.data.name, e.data.address["id"], "address"); // 点击后传输的数据
+          self.createTab(e.data.Name, e.data.address["Id"], "address"); // 点击后传输的数据
           self.selectData[e.data.index] = e.data.address;
           self.selectData.slice(e.data.index);
           var tempArr = [];
@@ -130,9 +128,9 @@
             tempArr[i] = self.selectData[i];
           }
           self.selectData = tempArr;
-          var names = $.map(self.selectData, function(d){ return d["name"]; });
-          self.selectVal = names.join(" ");
-          if($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
+          var names = $.map(self.selectData, function (d) { return d["Name"]; });
+          //self.selectVal = names.join(" ");
+          //if($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
         });
       }
       // 创建学校列表
@@ -143,12 +141,12 @@
           // 增加标签对象
           var areaListLi = $('<li><a></a></li>').appendTo(areaSchoolList);
           // 给标签对象增加事件
-          areaListLi.find("a").html(d["name"]).on("click", { address: d, index: tabIndex, name: d["name"]}, function(e) {
+          areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
             self.panel.find(".tab a:gt(" + e.data.index + ")").each(function() {
               $(this).data("areaData").remove();
               $(this).remove();
             });
-            self.createTab(e.data.name, e.data.address["id"], "school"); // 点击后传输的数据
+            self.createTab(e.data.Name, e.data.address["Id"], "school"); // 点击后传输的数据
             self.selectData[e.data.index] = e.data.address;
             self.selectData.slice(e.data.index);
             var tempArr = [];
@@ -156,9 +154,9 @@
               tempArr[i] = self.selectData[i];
             }
             self.selectData = tempArr;
-            var names = $.map(self.selectData, function(d){ return d["name"]; });
-            self.selectVal = names.join(" ");
-            if($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
+            var names = $.map(self.selectData, function (d) { return d["Name"]; });
+            //self.selectVal = names.join(" ");
+            //if($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
           });
         }
       }
@@ -167,7 +165,7 @@
         // 增加标签对象
         var areaListLi = $('<li><a></a></li>').appendTo(areaList);
         // 给标签对象增加事件
-        areaListLi.find("a").html(d["name"]).on("click", { address: d, index: tabIndex, name: d["name"]}, function(e) {
+        areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
           self.panel.find(".tab a:gt(" + e.data.index + ")").each(function() {
             $(this).data("areaData").remove();
             $(this).remove();
@@ -180,9 +178,9 @@
             tempArr[i] = self.selectData[i];
           }
           self.selectData = tempArr;
-          var names = $.map(self.selectData, function(d){ return d["name"]; });
+          var names = $.map(self.selectData, function (d) { return d["Name"]; });
           self.selectVal = names.join(" ");
-          if($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
+          if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), e.data.Name);
         });
       }
     }
@@ -199,8 +197,9 @@
     var setting = {
       addressUrl: '', // Ajax 请求链接
       schoolUrl: '', // Ajax 请求链接
-      defaultValue: '', // 默认请求的参数值
-      type: 'post', // 请求的方式
+      personUrl: '', // Ajax 请求链接
+      defaultValue: '0', // 默认请求的参数值
+      type: 'get', // 请求的方式
       dataType: 'json', // 数据类型
       requestBefore: null, // 请求之前执行的方法
       requestAfter: null, // 请求之后执行的方法

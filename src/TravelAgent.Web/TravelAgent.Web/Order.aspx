@@ -244,7 +244,11 @@
             <script src="/js/one_proc.js" type="text/javascript"></script>
             <script src="/js/jquery.address.js" type="text/javascript"></script>
             <script type="text/javascript">
-                $("#txt_tuijianren").bindAddress();
+                $("#txt_tuijianren").bindAddress({
+                    addressUrl: "http://localhost:9694/api/Area/Get",
+                    schoolUrl: "http://localhost:9694/api/School/Get",
+                    personUrl: "http://localhost:9694/api/References/Get"
+                });
             </script>
         </div>
     </div>
