@@ -57,7 +57,8 @@ document.addEventListener('touchend',function(e){
 			var $ele = $('#pr_child_num');
 			if($ele.val()<=0)return;
 			$ele.val(Number($ele.val())-1);
-			$("#pr_child_num").trigger('input');        }
+			$("#pr_child_num").trigger('input');
+        }
         else if (ty == 'baox') {
             var $ele = $('#pr_bx_num');
             if ($ele.val() <= 0) return;

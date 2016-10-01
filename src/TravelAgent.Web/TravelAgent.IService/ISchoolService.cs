@@ -11,6 +11,6 @@ namespace TravelAgent.IService
         void Add(School s);
         void Add(IList<School> list);
         void Update(School s);
-        void UploadExcelFile(Stream file);
+        void UploadExcelFile(Stream file);        
     }
 }

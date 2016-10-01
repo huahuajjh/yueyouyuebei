@@ -7,7 +7,8 @@ CREATE TABLE Area (
  Latitude CHAR(15),
  [Level] INT NOT NULL,
  Position VARCHAR(100),
- Sort INT NOT NULL
+ Sort INT NOT NULL,
+ Show bit not null default 1
 );
 
 ALTER TABLE Area ADD CONSTRAINT PK_Area PRIMARY KEY (Id);

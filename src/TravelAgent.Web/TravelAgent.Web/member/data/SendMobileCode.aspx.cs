@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TravelAgent.Tool;
 
 namespace TravelAgent.Web.member.data
 {
@@ -25,7 +26,7 @@ namespace TravelAgent.Web.member.data
             if (count > 0)
             {
                 int pHandle = 0;
-                int loginResult = CSMS.Login(webinfo.SmsHostname, 80, webinfo.SmsUsername, webinfo.SmsPassword, ref pHandle);
+                int loginResult = CSMS.Login(webinfo.SmsHostname, 80, webinfo.SmsUsername, webinfo.SmsPassword, ref pHandle);                
                 if (loginResult < 0)
                 {
                     Response.Write("sendfail");
@@ -38,6 +39,7 @@ namespace TravelAgent.Web.member.data
                     TravelAgent.Tool.CookieHelper.SetCookie("smsyzm", strSMSYZM);
                     string strSMS = "【" + webinfo.WebName + "】验证码：" + strSMSYZM;
                     int sendtextReuslt = CSMS.SendText(pHandle, strSMS, "", 1);
+
                     if (sendtextReuslt > 0)
                     {
                         int sendtelResult = CSMS.SendPhones(pHandle, sendtextReuslt, strmobile);
