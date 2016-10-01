@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\publish_pros\web</_PublishTargetUrl>
+    <_PublishTargetUrl>G:\发布项目\yueyouyuebie</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="403.html">
@@ -2035,10 +2035,10 @@
       <publishTime>09/14/2016 13:51:47</publishTime>
     </File>
     <File Include="bin/NLog.config">
-      <publishTime>09/20/2016 14:40:24</publishTime>
+      <publishTime>09/20/2016 16:48:06</publishTime>
     </File>
     <File Include="bin/NLog.dll">
-      <publishTime>09/14/2016 17:33:11</publishTime>
+      <publishTime>09/30/2016 17:07:29</publishTime>
     </File>
     <File Include="bin/NLog.xml">
       <publishTime>09/13/2016 16:46:43</publishTime>
@@ -2059,7 +2059,7 @@
       <publishTime>09/15/2016 15:12:25</publishTime>
     </File>
     <File Include="bin/SMS.dll">
-      <publishTime>05/06/2015 16:23:59</publishTime>
+      <publishTime>09/15/2016 15:14:28</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>09/27/2016 20:23:22</publishTime>
@@ -2116,61 +2116,61 @@
       <publishTime>09/27/2016 20:23:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.dll">
-      <publishTime>09/28/2016 15:51:25</publishTime>
+      <publishTime>09/30/2016 17:16:00</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALFactory.dll">
-      <publishTime>09/28/2016 15:51:24</publishTime>
+      <publishTime>09/30/2016 17:16:00</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALFactory.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.dll">
-      <publishTime>09/28/2016 15:51:25</publishTime>
+      <publishTime>09/30/2016 17:16:00</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
     </File>
     <File Include="bin/TravelAgent.IDAL.dll">
-      <publishTime>09/28/2016 15:51:23</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.IDAL.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.IService.dll">
-      <publishTime>09/28/2016 15:51:24</publishTime>
+      <publishTime>09/30/2016 17:16:00</publishTime>
     </File>
     <File Include="bin/TravelAgent.IService.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
     </File>
     <File Include="bin/TravelAgent.Model.dll">
-      <publishTime>09/28/2016 15:51:22</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.Model.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.Pay.dll">
-      <publishTime>09/28/2016 15:51:22</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.Pay.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.dll">
-      <publishTime>09/28/2016 15:51:23</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.WapPay.dll">
-      <publishTime>09/28/2016 15:51:22</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.WapPay.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.dll">
-      <publishTime>09/28/2016 16:26:47</publishTime>
+      <publishTime>09/30/2016 17:16:02</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.dll.config">
       <publishTime>09/28/2016 16:22:50</publishTime>
@@ -2179,7 +2179,7 @@
       <publishTime>09/28/2016 15:15:05</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.UI.dll">
-      <publishTime>09/28/2016 15:51:25</publishTime>
+      <publishTime>09/30/2016 17:16:01</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.UI.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
@@ -2191,13 +2191,13 @@
       <publishTime>09/28/2016 14:27:33</publishTime>
     </File>
     <File Include="bin/TravelAgent.WeiPay.dll">
-      <publishTime>09/28/2016 15:51:23</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.WeiPay.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.WxPay.dll">
-      <publishTime>09/28/2016 15:51:23</publishTime>
+      <publishTime>09/30/2016 17:15:59</publishTime>
     </File>
     <File Include="bin/TravelAgent.WxPay.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
@@ -2326,7 +2326,7 @@
       <publishTime>09/20/2016 14:40:24</publishTime>
     </File>
     <File Include="config/WebInfo.config">
-      <publishTime>09/20/2016 14:40:24</publishTime>
+      <publishTime>09/29/2016 14:03:32</publishTime>
     </File>
     <File Include="CSMS.cs">
       <publishTime>05/06/2015 16:25:29</publishTime>
@@ -2354,6 +2354,9 @@
     </File>
     <File Include="css/help.css">
       <publishTime>09/14/2016 13:37:23</publishTime>
+    </File>
+    <File Include="css/jquery.address.css">
+      <publishTime>09/30/2016 18:26:52</publishTime>
     </File>
     <File Include="css/line.css">
       <publishTime>09/14/2016 13:37:23</publishTime>
@@ -2467,7 +2470,7 @@
       <publishTime>06/08/2015 16:25:48</publishTime>
     </File>
     <File Include="dataDeal/LoadCalendar.aspx">
-      <publishTime>09/21/2016 12:04:24</publishTime>
+      <publishTime>09/14/2016 13:37:23</publishTime>
     </File>
     <File Include="dataDeal/LoadCalendar.aspx.cs">
       <publishTime>07/07/2015 11:30:22</publishTime>
@@ -2512,7 +2515,7 @@
       <publishTime>05/07/2015 08:46:37</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>09/20/2016 18:44:08</publishTime>
+      <publishTime>09/14/2016 13:37:22</publishTime>
     </File>
     <File Include="Default.aspx.cs">
       <publishTime>09/20/2016 14:40:24</publishTime>
@@ -2539,7 +2542,7 @@
       <publishTime>07/27/2015 14:46:28</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>09/20/2016 14:40:24</publishTime>
+      <publishTime>09/14/2016 13:37:22</publishTime>
     </File>
     <File Include="Global.asax.cs">
       <publishTime>09/28/2016 15:36:47</publishTime>
@@ -3610,7 +3613,7 @@
       <publishTime>09/14/2016 13:37:24</publishTime>
     </File>
     <File Include="guide/show.aspx">
-      <publishTime>09/20/2016 14:40:24</publishTime>
+      <publishTime>09/14/2016 16:55:03</publishTime>
     </File>
     <File Include="guide/show.aspx.cs">
       <publishTime>09/20/2016 14:40:24</publishTime>
@@ -3695,6 +3698,9 @@
     </File>
     <File Include="images/132.gif">
       <publishTime>09/21/2015 17:17:38</publishTime>
+    </File>
+    <File Include="images/20130606B.png">
+      <publishTime>09/29/2016 16:27:06</publishTime>
     </File>
     <File Include="images/2015060309080043.jpg">
       <publishTime>09/14/2016 13:37:24</publishTime>
@@ -4311,6 +4317,9 @@
     <File Include="js/jquery-ui.js">
       <publishTime>09/14/2016 13:37:26</publishTime>
     </File>
+    <File Include="js/jquery.address.js">
+      <publishTime>09/30/2016 19:10:22</publishTime>
+    </File>
     <File Include="js/jquery.bgiframe.min.js">
       <publishTime>09/14/2016 13:37:26</publishTime>
     </File>
@@ -4417,7 +4426,7 @@
       <publishTime>07/14/2015 11:49:02</publishTime>
     </File>
     <File Include="Master.Master">
-      <publishTime>09/20/2016 16:10:37</publishTime>
+      <publishTime>09/20/2016 16:48:06</publishTime>
     </File>
     <File Include="Master.Master.cs">
       <publishTime>09/12/2016 16:44:01</publishTime>
@@ -4837,7 +4846,7 @@
       <publishTime>05/08/2015 15:55:24</publishTime>
     </File>
     <File Include="mTravel/Article.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/Article.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -4858,7 +4867,10 @@
       <publishTime>09/14/2016 13:37:27</publishTime>
     </File>
     <File Include="mTravel/css/index.css">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
+    </File>
+    <File Include="mTravel/css/mAddress.css">
+      <publishTime>09/30/2016 12:12:25</publishTime>
     </File>
     <File Include="mTravel/css/mobile-about.css">
       <publishTime>09/14/2016 13:37:27</publishTime>
@@ -4870,10 +4882,10 @@
       <publishTime>09/14/2016 13:37:27</publishTime>
     </File>
     <File Include="mTravel/css/mobile-line.css">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/css/mobile-style.css">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/css/mobile.css">
       <publishTime>09/14/2016 13:37:27</publishTime>
@@ -4882,7 +4894,7 @@
       <publishTime>09/14/2016 13:37:27</publishTime>
     </File>
     <File Include="mTravel/css/style.css">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/css/tuniu_2.eot">
       <publishTime>06/12/2015 11:24:14</publishTime>
@@ -4954,7 +4966,7 @@
       <publishTime>09/14/2016 13:37:28</publishTime>
     </File>
     <File Include="mTravel/images/logo.png">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/images/nav_logo.png">
       <publishTime>09/14/2016 13:37:28</publishTime>
@@ -4966,7 +4978,7 @@
       <publishTime>07/01/2015 08:55:14</publishTime>
     </File>
     <File Include="mTravel/LineDest.aspx">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineDest.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -4975,7 +4987,7 @@
       <publishTime>09/27/2016 20:42:04</publishTime>
     </File>
     <File Include="mTravel/LineDetail.aspx">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineDetail.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -4984,7 +4996,7 @@
       <publishTime>09/27/2016 20:42:04</publishTime>
     </File>
     <File Include="mTravel/LineList.aspx">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineList.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -4993,7 +5005,7 @@
       <publishTime>09/27/2016 20:42:04</publishTime>
     </File>
     <File Include="mTravel/LineOrder.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineOrder.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5002,7 +5014,7 @@
       <publishTime>06/10/2015 10:07:11</publishTime>
     </File>
     <File Include="mTravel/LineTheme.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineTheme.aspx.cs">
       <publishTime>06/17/2015 15:34:15</publishTime>
@@ -5011,7 +5023,7 @@
       <publishTime>06/11/2015 16:48:42</publishTime>
     </File>
     <File Include="mTravel/LineXC.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/LineXC.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5020,7 +5032,7 @@
       <publishTime>06/10/2015 10:10:42</publishTime>
     </File>
     <File Include="mTravel/MOrder.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 19:06:23</publishTime>
     </File>
     <File Include="mTravel/MOrder.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5029,7 +5041,7 @@
       <publishTime>07/09/2016 22:13:21</publishTime>
     </File>
     <File Include="mTravel/MOrderMsg.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/MOrderMsg.aspx.cs">
       <publishTime>12/08/2015 11:26:34</publishTime>
@@ -5038,7 +5050,7 @@
       <publishTime>06/30/2015 15:22:47</publishTime>
     </File>
     <File Include="mTravel/MOrderTips.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/MOrderTips.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5091,20 +5103,23 @@
     <File Include="mTravel/scripts/m.js">
       <publishTime>09/14/2016 13:37:28</publishTime>
     </File>
+    <File Include="mTravel/scripts/mAddress.js">
+      <publishTime>09/30/2016 19:09:42</publishTime>
+    </File>
     <File Include="mTravel/scripts/order_widget.js">
-      <publishTime>09/14/2016 13:37:28</publishTime>
+      <publishTime>09/30/2016 16:54:54</publishTime>
     </File>
     <File Include="mTravel/scripts/script.js">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/20/2016 16:38:37</publishTime>
     </File>
     <File Include="mTravel/scripts/script1.js">
       <publishTime>09/14/2016 13:37:28</publishTime>
     </File>
     <File Include="mTravel/scripts/slide.js">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/20/2016 16:35:38</publishTime>
     </File>
     <File Include="mTravel/SearchResult.aspx">
-      <publishTime>09/14/2016 13:37:26</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/SearchResult.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5113,7 +5128,7 @@
       <publishTime>06/10/2015 10:09:08</publishTime>
     </File>
     <File Include="mTravel/ThemeList.aspx">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/ThemeList.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5122,7 +5137,7 @@
       <publishTime>06/12/2015 09:52:13</publishTime>
     </File>
     <File Include="mTravel/VisaDetail.aspx">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/VisaDetail.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5131,7 +5146,7 @@
       <publishTime>06/15/2015 09:56:23</publishTime>
     </File>
     <File Include="mTravel/VisaList.aspx">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/VisaList.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5140,7 +5155,7 @@
       <publishTime>06/16/2015 08:41:45</publishTime>
     </File>
     <File Include="mTravel/VisaModel.aspx">
-      <publishTime>09/14/2016 13:37:27</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/VisaModel.aspx.cs">
       <publishTime>06/29/2015 14:56:36</publishTime>
@@ -5149,7 +5164,7 @@
       <publishTime>06/12/2015 11:09:39</publishTime>
     </File>
     <File Include="mTravel/weipay/confirmPay.aspx">
-      <publishTime>09/14/2016 13:37:28</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/weipay/confirmPay.aspx.cs">
       <publishTime>01/12/2016 15:16:36</publishTime>
@@ -5167,7 +5182,7 @@
       <publishTime>12/08/2015 14:28:26</publishTime>
     </File>
     <File Include="mTravel/weipay/ordertip.aspx">
-      <publishTime>09/14/2016 13:37:28</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="mTravel/weipay/ordertip.aspx.cs">
       <publishTime>01/12/2016 16:22:29</publishTime>
@@ -5272,7 +5287,7 @@
       <publishTime>09/14/2016 13:37:22</publishTime>
     </File>
     <File Include="M_Default.aspx">
-      <publishTime>09/27/2016 20:42:04</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="M_Default.aspx.cs">
       <publishTime>09/27/2016 20:42:04</publishTime>
@@ -5299,7 +5314,7 @@
       <publishTime>07/29/2015 17:04:52</publishTime>
     </File>
     <File Include="NLog.config">
-      <publishTime>09/20/2016 14:40:24</publishTime>
+      <publishTime>09/20/2016 16:48:06</publishTime>
     </File>
     <File Include="NLog.xsd">
       <publishTime>09/20/2016 14:40:24</publishTime>
@@ -5314,7 +5329,7 @@
       <publishTime>05/07/2015 10:57:08</publishTime>
     </File>
     <File Include="Order.aspx">
-      <publishTime>09/14/2016 13:37:22</publishTime>
+      <publishTime>09/30/2016 18:10:38</publishTime>
     </File>
     <File Include="Order.aspx.cs">
       <publishTime>09/20/2016 14:40:24</publishTime>
@@ -5368,7 +5383,7 @@
       <publishTime>09/25/2014 09:38:33</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>09/28/2016 16:14:33</publishTime>
+      <publishTime>09/30/2016 16:53:59</publishTime>
     </File>
     <File Include="PayApi/Alipay/alipay_default.aspx">
       <publishTime>09/14/2016 13:37:22</publishTime>
@@ -7162,7 +7177,7 @@
       <publishTime>12/08/2015 11:24:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/28/2016 16:22:50</publishTime>
+      <publishTime>09/30/2016 17:19:04</publishTime>
     </File>
     <File Include="wxpay/JKRequest.cs">
       <publishTime>12/03/2015 15:48:47</publishTime>
