@@ -7,6 +7,7 @@ using System.Data;
 using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TravelAgent.Tool;
 
 namespace TravelAgent.Web.admin.club
 {
@@ -19,11 +20,11 @@ namespace TravelAgent.Web.admin.club
         {
             if (!this.IsPostBack)
             {
-                int loginResult = CSMS.Login(webinfo.SmsHostname, 80, webinfo.SmsUsername, webinfo.SmsPassword, ref pHandle);
-                if (loginResult < 0)
-                {
-                    TravelAgent.Tool.Javascript.JsAlert("短信平台连接短信网关失败，请与短信提供商联系！");
-                }
+                //int loginResult = CSMS.Login(webinfo.SmsHostname, 80, webinfo.SmsUsername, webinfo.SmsPassword, ref pHandle);
+                //if (loginResult < 0)
+                //{
+                    //TravelAgent.Tool.Javascript.JsAlert("短信平台连接短信网关失败，请与短信提供商联系！");
+               // }
               
                 BindClubClass();
                 if (Request.QueryString["va"] != null)
@@ -95,10 +96,11 @@ namespace TravelAgent.Web.admin.club
             }
             else
             {
-                int tellength = strtels.Split(',').Length;
-                int sendtextReuslt = CSMS.SendText(Convert.ToInt32(ViewState["pHandle"]), this.txtSMSContent.Value, "", tellength);
+                //int tellength = strtels.Split(',').Length;
+                //int sendtextReuslt = CSMS.SendText(Convert.ToInt32(ViewState["pHandle"]), this.txtSMSContent.Value, "", tellength);
+                bool r = SMSUtil.Send(strtels, this.txtSMSContent.Value);   //write by jjh
 
-                if (sendtextReuslt > 0)
+                if (/*sendtextReuslt > 0*/r)
                 {
                     //int result = CSMS.SendPhones(pHandle, sendtextReuslt, strNumTemp);
                     //if (result == 0)
@@ -110,12 +112,13 @@ namespace TravelAgent.Web.admin.club
                     //    Club.Common.Javascript.JsAlert("发送号码错误：" + result.ToString());
                     //}
                     //循环发送
-                    SendTelphone(strtels.Split(','), sendtextReuslt);
-                    TravelAgent.Tool.Javascript.JsAlert("发送成功");
+                    //SendTelphone(strtels.Split(','), sendtextReuslt);
+                    //TravelAgent.Tool.Javascript.JsAlert("发送成功");
+                    TravelAgent.Tool.Javascript.JsAlert("发送成功");    //modify by jjh
                 }
                 else
                 {
-                    TravelAgent.Tool.Javascript.JsAlert("发送内容错误：" + sendtextReuslt.ToString());
+                    TravelAgent.Tool.Javascript.JsAlert("发送失败");   //modify by jjh
                 }
             }
 
@@ -126,16 +129,16 @@ namespace TravelAgent.Web.admin.club
         /// </summary>
         private void SendTelphone(string[] arryTel, int sendtextReuslt)
         {
-            if (arryTel.Length > 100)
-            {
-                CSMS.SendPhones(pHandle, sendtextReuslt, GetTelephone(arryTel.Take(100).ToArray()));
-
-                SendTelphone(arryTel.Skip(100).ToArray(), sendtextReuslt);
-            }
-            else
-            {
-                CSMS.SendPhones(pHandle, sendtextReuslt, GetTelephone(arryTel));
-            }
+            //if (arryTel.Length > 100)
+            //{
+            //    CSMS.SendPhones(pHandle, sendtextReuslt, GetTelephone(arryTel.Take(100).ToArray()));
+            //
+            //    SendTelphone(arryTel.Skip(100).ToArray(), sendtextReuslt);
+            //}
+            //else
+            //{
+            //    CSMS.SendPhones(pHandle, sendtextReuslt, GetTelephone(arryTel));
+            //}
         }
         /// <summary>
         /// 

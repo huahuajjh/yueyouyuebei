@@ -91,6 +91,7 @@
     <Compile Include="DALTest\TestSchool.cs" />
     <Compile Include="Excel\TestExcel.cs" />
     <Compile Include="JsonTest\TestJson.cs" />
+    <Compile Include="SMS\TestSMS.cs" />
     <Compile Include="TestNLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -136,6 +137,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
