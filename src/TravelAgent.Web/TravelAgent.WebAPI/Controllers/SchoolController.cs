@@ -88,5 +88,10 @@ namespace TravelAgent.WebAPI.Controllers
             }
         }
 
+        public HttpResponseMessage GetById(int id)
+        {
+            return ToJson(Service.GetById(id));
+        }
+
     }
 }

@@ -69,7 +69,15 @@ namespace TravelAgent.DALSQL
 
         public School Get(int id)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("select s.*,a.Name as AreaName from School s left join Area a on s.AreaId=a.Id where s.Id={0}",id);
+            DataSet set = DbHelperSQL.Query(sb.ToString());
+            IList<School> list = DbHelperSQL.DT2List<School>(set.Tables[0]);
+            if(list == null || list.Count <= 0)
+            { 
+                return School.NullSchool();
+            }
+            return list[0];
         }
 
         public IList<School> Get(string where, params string[] parameters)

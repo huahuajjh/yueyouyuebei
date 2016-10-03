@@ -11,3 +11,5 @@ TestResults
 *.testsettings
 *.vsmdi
 TestResult.xml
+*.xls
+*.xlsx

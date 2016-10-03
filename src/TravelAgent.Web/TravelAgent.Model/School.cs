@@ -11,5 +11,11 @@ namespace TravelAgent.Model
         public string Name { get; set; }
         public string ShortName { get; set; }
         public int AreaId { get; set; }
+        public string AreaName { get; set; }
+
+        public static School NullSchool()
+        { 
+            return new School(){ AreaName="未知", Name="未知", AreaId=-1, Id=-1, ShortName="未知"};
+        }
     }
 }

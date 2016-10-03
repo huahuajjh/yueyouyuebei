@@ -15,6 +15,7 @@ namespace TravelAgent.IService
         void Update(References r);
         IList<References> GetByPage(int page_index,int page_count,out int total_page);
         IList<References> GetBySchoolId(int school_id);
-        void UploadExcelFile(Stream file);
+        void UploadExcelFile(Stream file);        
+        References GetById(int id);
     }
 }

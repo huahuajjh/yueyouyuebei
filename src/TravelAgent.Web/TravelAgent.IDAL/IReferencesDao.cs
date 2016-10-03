@@ -15,6 +15,6 @@ namespace TravelAgent.IDAL
         References Get(int id);
         IList<References> Get(string where,params string[] parameters);
         IList<References> Get(string where,int page_index,int page_count,out int total_page, params string[] parameters);
-        
+        References GetById(int id);
     }
 }

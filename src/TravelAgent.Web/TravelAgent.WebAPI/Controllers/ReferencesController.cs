@@ -91,5 +91,10 @@ namespace TravelAgent.WebAPI.Controllers
             IList<References> refs =  service.GetRefsBySchoolName(sch_name);
             return ToJson(refs);            
         }
+
+        public HttpResponseMessage GetById(int id)
+        {
+            return ToJson(Service.GetById(id));
+        }
     }
 }

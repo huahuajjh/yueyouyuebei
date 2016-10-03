@@ -467,5 +467,14 @@ namespace TravelAgent.Web.admin.product
             this.ddlInsurance.Items.Insert(0, new ListItem("选择保险", ""));
             this.ddlInsurance.Items.Insert(1, new ListItem("赠送保险", "0"));
         }
+    
+        //protected void Page_Error(object sender,EventArgs e)
+        //{
+        //    Exception ex = Server.GetLastError();
+        //    if(ex is HttpRequestValidationException)
+        //    {
+        //        Server.ClearError();
+        //    }
+        //}
     }
 }
