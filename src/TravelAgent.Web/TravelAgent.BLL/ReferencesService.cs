@@ -51,8 +51,7 @@ namespace TravelAgent.BLL
         {
             
         }
-
-
+        
         public Model.References GetById(int id)
         {
             return Dao.GetById(id);

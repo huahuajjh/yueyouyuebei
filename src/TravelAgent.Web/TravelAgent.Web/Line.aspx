@@ -24,11 +24,11 @@
                                                         <span>
                                                                 <font style="color: #999">
                                                                         编号：L<%=LineModel.Id.ToString().PadLeft(6, '0')%> 
-                                                                 </font> <%=LineModel.LineSubName%>                                                        
-                                                         </span>                            
+                                                                 </font> <%=LineModel.LineSubName%>
+                                                         </span>
                                                 </div>
                                                 <!--左图片-->
-                                                <div class="linepic">                                                       
+                                                <div class="linepic">
                                                         <img src="<%=LineModel.LinePic %>" alt="<%=LineModel.LineName %>" />
                                                 </div>
                                                 <!--END-->
@@ -258,7 +258,7 @@
                                 <div class="riyd_btn">
                                         <input type="submit" class="riyd_btn2" value=""  />
                                 </div>
-                        </form>                
+                        </form>
                 </div>
                 <!--咨询及点评提示-->
                 <div class="zxdp" id="counsel">

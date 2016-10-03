@@ -27,7 +27,7 @@ namespace TravelAgent.BLL
                 }
             });
 
-            IList<References> refs = refsDao.Get(string.Format("SchoolId in('{0}')",ids));
+            IList<References> refs = refsDao.Get(string.Format("SchoolId in({0})",ids));
             return refs;
         }
     }
