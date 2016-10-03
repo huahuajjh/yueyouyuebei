@@ -85,28 +85,31 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 					currentSelection = -1;
 					proposalList.empty();
 					if ($(this).val() != '') {
-					    var word = "^" + $(this).val() + ".*";
-						proposalList.empty();
-						for(var test in params.hints){
-							if(params.hints[test].match(word)){
-								currentProposals.push(params.hints[test]);	
-								var element = $('<li></li>')
-									.html(params.hints[test])
-									.addClass('proposal')
-									.click(function(){
-									    $(this).val($(this).html());
-										proposalList.empty();
-										params.onSubmit($(this).val());
-									})
-									.mouseenter(function() {
-										$(this).addClass('selected');
-									})
-									.mouseleave(function() {
-										$(this).removeClass('selected');
-									});
-								proposalList.append(element);
-							}
-						}
+					    var word = $(this).val();
+					    proposalList.empty();
+					    $.getJSON("http://localhost:9694/api/References/GetBySchoolName", {
+					        sch_name: word
+					    }, function (data) {
+					        var datas = data.Data;
+					        for (var i = 0, test; test = datas[i++];) {
+					            currentProposals.push(test.Name);
+					            var element = $('<li></li>')
+                                    .html(test.Name)
+                                    .addClass('proposal')
+                                    .click(function () {
+                                        $(this).val($(this).html());
+                                        proposalList.empty();
+                                        params.onSubmit($(this).val());
+                                    })
+                                    .mouseenter(function () {
+                                        $(this).addClass('selected');
+                                    })
+                                    .mouseleave(function () {
+                                        $(this).removeClass('selected');
+                                    });
+					            proposalList.append(element);
+					        }
+					    });
 					}
 				}
 			});

@@ -1,5 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Other.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="TravelAgent.Web.Order" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Other.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="TravelAgent.Web.Order" %>
 <%@ MasterType VirtualPath="~/Other.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/style.css" />
@@ -251,14 +250,10 @@
                     schoolUrl: "http://localhost:9694/api/School/Get",
                     personUrl: "http://localhost:9694/api/References/Get"
                 });
-                var proposals = ['百度1', '百度2', '百度3', '百度4', '百度5', '百度6', '百度7', '呵呵呵呵呵呵呵', '百度', '新浪', 'a1', 'a2', 'a3', 'a4', 'b1', 'b2', 'b3', 'b4'];
                 $('#txt_tuijianren').autocomplete({
                     hints: proposals,
                     width: 300,
                     height: 30,
-                    onSubmit: function (text) {
-                        //$('#message').html('Selected: <b>' + text + '</b>');
-                    }
                 });
 
             </script>

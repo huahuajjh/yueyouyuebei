@@ -4,38 +4,31 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css">
     <link href="/css/pagination.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/artDialog/skins/blue.css">
-    <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="../js/select-ui.min.js"></script>
     <script type="text/javascript" src="/js/jquery.pagination.js"></script>
     <script type="text/javascript" src="/artDialog/artDialog.source.js?skin=blue"></script>
     <script type="text/javascript" src="/artDialog/plugins/iframeTools.source.js"></script>
     <script type="text/javascript">
         $(function () {
-            $(".select1").uedSelect({
-                width: 120
+            $("#addBtn").on("click", function () {
+                var json = { width: "800px", height: "300px", title: "新增学校", lock: true };
+                art.dialog.open("./add.html", json);
             });
-            $(".select2").uedSelect({
-                width: 60
-            });
+
             //分页参数设置
-            $("#Pagination").pagination(38, {
-                callback: pageselectCallback,
+            $("#Pagination").pagination(999, {
+                callback: function (page) {
+                    console.log(page);
+                },
                 prev_text: "« 上一页",
                 next_text: "下一页 »",
                 items_per_page: 15,
                 num_display_entries: 3,
-                current_page: 0,
+                current_page: 10,
                 num_edge_entries: 2,
-                link_to: "?keywords=%e7%94%a8%e6%88%b7%e5%90%8d%2f%e6%89%8b%e6%9c%ba%2f%e9%82%ae%e7%ae%b1&page=__id__"
+                link_to: "javascript:;"
             });
-            $("#chkSelect").click(function () {
-                if ($(this).attr("checked")) {
-                    $(":checkbox[name^='rptClub']").attr("checked", true);
-                }
-                else {
-                    $(":checkbox[name^='rptClub']").attr("checked", false);
-                }
-            })
             $(".club_art").unbind();
             $(".club_art").click(function () {
                 var url = $(this)[0].href;
@@ -45,7 +38,7 @@
                 if (title == "" || title == null) {
                     title = "　";
                 }
-                var json = { width: "650px", height: "300px", title: title, lock: true };
+                var json = { width: "800px", height: "300px", title: "新增学校", lock: true };
                 art.dialog.open("./add.html", json);
                 return false;
             })
@@ -76,133 +69,48 @@
                 });
                 return false;
             })
-            $("#lbtnDel").click(function () {
-                if ($(":checkbox[name^='rptClub']:checked").length == 0) {
-                    art.dialog.alert("请先选择会员！");
-                    return false;
-                }
-            })
         });
         function pageselectCallback(page_id, jq) {
             //alert(page_id); 回调函数，进一步使用请参阅说明文档
-        }
-        //订单跳转
-        function changeopt(url) {
-            location.href = url;
-        }
-        //跳转
-        function gotoUrl(url, type) {
-
-            var chekvalue = "";
-            $("input[name^='rptClub$']").each(function () {
-                //debugger;
-                if (this.checked) {
-                    if (type == "mobile") {
-                        chekvalue = chekvalue + $(this).parent().parent().nextAll().eq(2).attr("rel") + ",";
-                    }
-                    else if (type == "email") {
-                        chekvalue = chekvalue + $(this).parent().parent().nextAll().eq(3).attr("rel") + ";";
-                    }
-                }
-            })
-            if (chekvalue != "") {
-                chekvalue = chekvalue.substring(0, chekvalue.length - 1);
-                location.href = url + "?va=" + chekvalue;
-            }
-            else {
-                alert("请先选择会员！");
-                return false;
-            }
-
         }
     </script>
 </head>
 
 
 <body>
-    <form method="post" action="./ClubList.aspx?date=Sun%2c+02+Oct+2016+08%3a17%3a27+GMT" id="form1">
+    <form>
         <div class="rightinfo">
-
             <div class="tools">
-
                 <ul class="toolbar">
-                    <li><span><img src="../images/t03.png"></span><a id="lbtnDel" href="javascript:__doPostBack('lbtnDel','')">批量删除</a></li>
-
-                    <li><a href="#" onclick="gotoUrl('GroupSMS.aspx','mobile')"><span><img src="../images/t01.png"></span>短信群发</a></li>
-                    <li><a href="#" onclick="gotoUrl('GroupEmail.aspx','email')"><span><img src="../images/email.png" style="width:24px; height:24px"></span>邮件群发</a></li>
-                    <li><span><img src="../images/excel.png" style="width:24px; height:24px"></span><a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导出Excel</a></li>
+                    <li><a href="javascript:;" id="addBtn"><span><img src="../images/t01.png"></span>添加学校</a></li>
+                    <li><span><img src="../images/excel.png" style="width:24px; height:24px"></span><a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导入Excel</a></li>
                 </ul>
                 <div class="usercity">
-                    <div class="cityleft" style=" padding-top:7px;">会员信息:</div>
+                    <div class="cityleft" style=" padding-top:7px;">学校名称:</div>
                     <div class="cityleft">
-                        <input name="txtKeywords" type="text" value="用户名/手机/邮箱" id="txtKeywords" class="dfinput" style="width: 120px; color: rgb(153, 153, 153);">
-                    </div>
-                    <div class="cityleft">
-                        <div class="uew-select">
-                            <select name="ddlClass" id="ddlClass" class="select1" style="width: 120px;">
-                                <option selected="selected" value="">选择会员级别</option>
-                                <option value="2">银牌会员</option>
-                                <option value="1">铜牌会员</option>
-                                <option value="0">普通会员</option>
-                                <option value="3">金牌会员</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="cityleft">
-                        <div class="uew-select">
-                            <select name="ddlState" id="ddlState" class="select1" style="width: 120px;">
-                                <option selected="selected" value="">选择会员状态</option>
-                                <option value="0">正常</option>
-                                <option value="1">锁定</option>
-
-                            </select>
-                        </div>
+                        <input name="txtKeywords" type="text" value="学校名称" id="txtKeywords" class="dfinput" style="width: 120px; color: rgb(153, 153, 153);">
                     </div>
                     <div class="cityleft">
                         <input type="submit" name="btnQuery" value="查询" id="btnQuery" class="scbtn">
                     </div>
                 </div>
-
             </div>
-
-
             <table class="tablelist">
                 <thead>
                     <tr>
-                        <th style="width:3%; text-align:center"><input id="chkSelect" name="chkSelect" type="checkbox" value=""></th>
                         <th style="width:4%">编号</th>
-                        <th style="width:12%">会员名</th>
-                        <th style="width:14%">手机</th>
-                        <th style="width:18%">邮箱</th>
-                        <th style="width:8%">会员级别</th>
-                        <th style="width:6%">积分</th>
-                        <th style="width:6%">状态</th>
-                        <th style="width:12%">注册时间</th>
-                        <th style="width:8%">订单</th>
-                        <th style="">操作</th>
+                        <th style="width:30%">学校名称</th>
+                        <th style="width:30%">学校简称</th>
+                        <th style="width:30%">地区名称</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr>
-                        <td style="text-align:center"><span class="checkall"><input id="rptClub_cb_id_0" type="checkbox" name="rptClub$ctl00$cb_id"></span></td>
-                        <td style="text-align:center"><span id="rptClub_lb_id_0">1060</span></td>
+                        <td style="text-align:center">1060</td>
                         <td style="text-align:center">club15801850699</td>
-                        <td style="text-align:center" rel="15801850699">15801850699[<span style="color:red">未验证</span>]</td>
-                        <td style="text-align:center" rel=""></td>
                         <td style="text-align:center">普通会员</td>
                         <td style="text-align:center">0</td>
-                        <td style="text-align:center">正常</td>
-                        <td style="text-align:center">2016/9/29 10:20:40</td>
-                        <td style="text-align:center; padding-top:10px;">
-                            <div class="uew-select">
-                                <select name="select" onchange="changeopt(this.options[this.selectedIndex].value)" class="select2" style="width: 60px;">
-                                    <option>类型</option>
-                                    <option value="/admin/product/LineOrderList.aspx?clubid=1060">线路</option>
-                                    <option value="/admin/visa/VisaOrderList.aspx?clubid=1060">签证</option>
-                                </select>
-                            </div>
-                        </td>
                         <td style="text-align:center">
                             <a href="EditClub.aspx?id=1060" class="tablelink club_art" title="修改会员信息">修改</a>
                             <a id="1060" href="#" class="tablelink club_delete">删除</a>
@@ -215,12 +123,10 @@
 
                     <tr id="trPagination" style="display:;">
                         <td colspan="11">
-
-                            <div id="Pagination" class="right flickr"><span class="disabled">« 上一页</span><span class="current">1</span><a href="?keywords=%e7%94%a8%e6%88%b7%e5%90%8d%2f%e6%89%8b%e6%9c%ba%2f%e9%82%ae%e7%ae%b1&amp;page=1" class="current">2</a><a href="?keywords=%e7%94%a8%e6%88%b7%e5%90%8d%2f%e6%89%8b%e6%9c%ba%2f%e9%82%ae%e7%ae%b1&amp;page=2" class="current">3</a><a href="?keywords=%e7%94%a8%e6%88%b7%e5%90%8d%2f%e6%89%8b%e6%9c%ba%2f%e9%82%ae%e7%ae%b1&amp;page=1" class="disabled">下一页 »</a></div>
+                            <div id="Pagination" class="right flickr"></div>
                             <div id="divTotalCount" class="right" style=" margin-right:20px; padding-top:10px;">总共有 <span style="color:Red">38</span> 条记录</div>
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
@@ -244,10 +150,5 @@
             });
         })
     </script>
-
-
-
-
-    <div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div>
 </body>
 </html>
