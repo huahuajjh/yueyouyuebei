@@ -99,5 +99,18 @@ namespace TravelAgent.DALSQL
             DataSet ds = DbHelperSQL.Query(sb.ToString());
             return DbHelperSQL.DT2List<References>(ds.Tables[0]);
         }
+        
+        public References GetById(int id)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("select r.*,s.Name as SchoolName from [References] r left join School s on r.SchoolId=s.Id where r.Id={0}",id);
+            DataSet set = DbHelperSQL.Query(sb.ToString());
+            IList<References> list = DbHelperSQL.DT2List<References>(set.Tables[0]);
+            if (list == null || list.Count <= 0)
+            {
+                return References.NullReferences();
+            }
+            return list[0];
+        }
     }
 }

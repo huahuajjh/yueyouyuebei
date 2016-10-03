@@ -8,9 +8,10 @@ namespace TravelAgent.IService
     {
         IList<School> GetByAreaId(int area_id);
         IList<School> GetByPage(int page_index,int page_count,out int total_page);
+        School GetById(int id);
         void Add(School s);
         void Add(IList<School> list);
         void Update(School s);
-        void UploadExcelFile(Stream file);        
+        void UploadExcelFile(Stream file);
     }
 }

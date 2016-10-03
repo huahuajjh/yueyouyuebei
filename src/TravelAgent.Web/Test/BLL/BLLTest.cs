@@ -23,5 +23,12 @@ namespace Test.BLL
                 Console.WriteLine(o.Name);
             });
         }
+
+        [TestMethod]
+        public void TestGetById()
+        {
+            IReferencesService service = DALBuild.GetObj<IReferencesService>("BLL", "ReferencesService");
+            Console.WriteLine(service.GetById(2).SchoolName);
+        }
     }
 }

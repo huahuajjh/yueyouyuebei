@@ -47,5 +47,11 @@ namespace TravelAgent.BLL
         {
             
         }
+
+
+        public School GetById(int id)
+        {
+            return Dao.Get(id);
+        }
     }
 }
