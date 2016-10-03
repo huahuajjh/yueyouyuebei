@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Other.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="TravelAgent.Web.Order" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Other.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="TravelAgent.Web.Order" %>
 
 <%@ MasterType VirtualPath="~/Other.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -259,7 +259,8 @@
                     onSubmit: function (text) {
                         //$('#message').html('Selected: <b>' + text + '</b>');
                     }
-                });
+                });
+
             </script>
         </div>
     </div>

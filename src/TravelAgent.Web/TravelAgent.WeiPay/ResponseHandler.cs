@@ -24,7 +24,7 @@ namespace TravelAgent.WeiPay
         // 密钥 
         private string key;
         // 参与签名的参数列表
-        private static string SignField = "appid,appkey,timestamp,openid,noncestr,issubscribe";
+        //private static string SignField = "appid,appkey,timestamp,openid,noncestr,issubscribe";
         // 微信服务器编码方式
         private string charset = "gb2312";
 

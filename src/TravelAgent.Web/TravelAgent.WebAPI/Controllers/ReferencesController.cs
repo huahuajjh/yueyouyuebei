@@ -84,5 +84,12 @@ namespace TravelAgent.WebAPI.Controllers
             IList<References> list = Service.GetByPage(index, count, out total);
             return ToJson(list, total: total);
         }
+
+        public HttpResponseMessage GetBySchoolName(string sch_name)
+        {
+            IQueryReferencesService service = GetService<IQueryReferencesService>("QueryReferencesService");
+            IList<References> refs =  service.GetRefsBySchoolName(sch_name);
+            return ToJson(refs);            
+        }
     }
 }

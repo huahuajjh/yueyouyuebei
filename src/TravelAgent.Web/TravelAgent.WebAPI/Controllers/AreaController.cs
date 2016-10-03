@@ -10,6 +10,7 @@ using TravelAgent.Tool;
 
 namespace TravelAgent.WebAPI.Controllers
 {
+    
     public class AreaController : ControllerBase
     {
         public HttpResponseMessage Get(int pid)
