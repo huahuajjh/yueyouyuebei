@@ -22,7 +22,8 @@ namespace Test.Excel
         { 
             ErrMsg msg = new ErrMsg();
             IImport import = ExcelFactory.Instance().GetExcelImporter(new ExcelConfiguration(1, 0, 0), msg);
-            IList<School> list = import.Import<School>(new FileStream(@"F:\a.xls", FileMode.Open));
+            FileStream fs = new FileStream(@"D:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.WebAPI\template\school.xls", FileMode.Open);
+            IList<School> list = import.Import<School>(fs);
 
             if(msg.Count!=0)
             {

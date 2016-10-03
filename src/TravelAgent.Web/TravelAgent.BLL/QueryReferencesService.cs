@@ -15,6 +15,11 @@ namespace TravelAgent.BLL
 
             IList<School> schs = schDao.Get(string.Format("Name like '%{0}%'",school_name));
 
+            if(schs == null || schs.Count <= 0)
+            {
+                return new List<References>();
+            }
+
             string ids =  "";
             ((List<School>)schs).ForEach(s=>{
                 if(string.IsNullOrEmpty(ids))

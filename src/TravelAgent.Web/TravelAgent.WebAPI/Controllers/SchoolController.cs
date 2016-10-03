@@ -1,10 +1,13 @@
-﻿using eh.impls; 
+﻿using eh.impls;
 using eh.impls.errs;
 using eh.interfaces;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using TravelAgent.IService;
@@ -55,13 +58,13 @@ namespace TravelAgent.WebAPI.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Upload(HttpPostedFile file)
-        { 
-            //Service.UploadExcelFile(file.InputStream);
+        public HttpResponseMessage Upload()
+        {
+         
             ErrMsg msg = new ErrMsg();
             IImport import = ExcelFactory.Instance().GetExcelImporter(new eh.impls.configurations.ExcelConfiguration(1, 0, 0), msg);
-            IList<School> list = SchoolDto.ToList(import.Import<SchoolDto>(file.InputStream));
-
+            IList<School> list = SchoolDto.ToList(import.Import<SchoolDto>(null));
+            
             if(msg.Count!=0)
             { 
                 return ToJson(msg.GetErrors(),status_code:0,msg:"fail");
@@ -73,7 +76,7 @@ namespace TravelAgent.WebAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public HttpResponseMessage Update(string school)
         {
             School s = JsonUtil.ToObj<School>(school);
@@ -94,4 +97,5 @@ namespace TravelAgent.WebAPI.Controllers
         }
 
     }
+    
 }
