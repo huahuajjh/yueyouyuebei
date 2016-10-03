@@ -236,6 +236,7 @@
                 <input type="hidden" id='txtHiddentuijianren' name='txtHiddentuijianren' value="1" />
 
             </form>
+            <script type="text/javascript" src="/js/url.js"></script>
             <script src="/js/tooltip.js" type="text/javascript"></script>
             <script src="/js/jquery.bgiframe.min.js" type="text/javascript"></script>
             <script src="/js/jquery.modal.js" type="text/javascript"></script>
@@ -246,12 +247,12 @@
             <script src="/js/autocomplete.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $("#txt_tuijianren").bindAddress({
-                    addressUrl: "http://localhost:9694/api/Area/Get",
-                    schoolUrl: "http://localhost:9694/api/School/Get",
-                    personUrl: "http://localhost:9694/api/References/Get"
+                    addressUrl: apiURL.AreaGet,
+                    schoolUrl: apiURL.SchoolGet,
+                    personUrl: apiURL.ReferencesGet
                 });
                 $('#txt_tuijianren').autocomplete({
-                    hints: proposals,
+                    url: apiURL.ReferencesGetBySchoolName,
                     width: 300,
                     height: 30,
                 });

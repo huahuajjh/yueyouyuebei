@@ -11,6 +11,7 @@
 <link  rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
 <link type="text/css" href="css/mAddress.css" rel="stylesheet" />
 <script src="scripts/jquery.min.js"></script>
+<script src="/js/url.js" type="text/javascript"></script>
 <script type="text/javascript" src="scripts/date.js" ></script>
 <script type="text/javascript" src="scripts/iscroll.js" ></script>
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
@@ -43,9 +44,9 @@
         plusMinusNum("#child_num");
         plusMinusNum("#baoxian_num");
         $("#tuijianren").bindAddress({
-            addressUrl: "http://192.168.1.3:9694/api/Area/Get",
-            schoolUrl: "http://192.168.1.3:9694/api/School/Get",
-            personUrl: "http://192.168.1.3:9694/api/References/Get"
+            addressUrl: apiURL.AreaGet,
+            schoolUrl: apiURL.SchoolGet,
+            personUrl: apiURL.ReferencesGet
         });
         //$('#shijian').date();
         $("#ordertime").val("");

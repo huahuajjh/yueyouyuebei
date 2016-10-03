@@ -91,6 +91,9 @@
     <Content Include="css\autocomplete.css" />
     <Content Include="js\autocomplete.js" />
     <Content Include="js\jquery.json.js" />
+    <Content Include="js\Uploader.swf" />
+    <Content Include="js\url.js" />
+    <Content Include="js\webuploader.min.js" />
     <Content Include="mTravel\css\mAddress.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />

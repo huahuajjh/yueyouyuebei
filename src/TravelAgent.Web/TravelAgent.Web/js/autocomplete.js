@@ -13,7 +13,6 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 		
 		//Default parameters
 		params = $.extend({
-		    hints: [],
             url: "",
 			width: 200,
 			height: 16,
@@ -87,7 +86,7 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 					if ($(this).val() != '') {
 					    var word = $(this).val();
 					    proposalList.empty();
-					    $.getJSON("http://localhost:9694/api/References/GetBySchoolName", {
+					    $.getJSON(params.url, {
 					        sch_name: word
 					    }, function (data) {
 					        var datas = data.Data;

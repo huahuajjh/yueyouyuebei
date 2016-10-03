@@ -9,6 +9,7 @@
     <script type="text/javascript" src="/js/jquery.pagination.js"></script>
     <script type="text/javascript" src="/artDialog/artDialog.source.js?skin=blue"></script>
     <script type="text/javascript" src="/artDialog/plugins/iframeTools.source.js"></script>
+    <script type="text/javascript" src="../../js/webuploader.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#addBtn").on("click", function () {
@@ -17,62 +18,102 @@
             });
 
             //分页参数设置
-            $("#Pagination").pagination(999, {
+            $("#Pagination").pagination(0, {
                 callback: function (page) {
-                    console.log(page);
                 },
                 prev_text: "« 上一页",
                 next_text: "下一页 »",
                 items_per_page: 15,
                 num_display_entries: 3,
-                current_page: 10,
+                current_page: 0,
                 num_edge_entries: 2,
                 link_to: "javascript:;"
             });
-            $(".club_art").unbind();
-            $(".club_art").click(function () {
-                var url = $(this)[0].href;
-                var title = $(this).attr("title") == undefined ? $(this).attr("ajaxtitle") : $(this).attr("title");
-                var width = $(this).attr("width") == undefined ? "800px" : $(this).attr("width");
-                var height = $(this).attr("height") == undefined ? "400px" : $(this).attr("height");
-                if (title == "" || title == null) {
-                    title = "　";
+
+            var uploader = WebUploader.create({
+                // swf文件路径
+                swf: '/js/Uploader.swf',
+                // 文件接收服务端。
+                server: 'http://localhost:9694/api/School/Upload',
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: '#filePicker',
+                // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                resize: false,
+                accept: {
+                    title: '数据文件',
+                    extensions: 'xls,xlsx',
+                    mimeTypes: 'application/vnd.ms-excel'
                 }
-                var json = { width: "800px", height: "300px", title: "新增学校", lock: true };
-                art.dialog.open("./add.html", json);
-                return false;
-            })
-            $(".club_delete").unbind();
-            $(".club_delete").click(function () {
-                var id = $(this).attr("id");
-                art.dialog.confirm("确认删除该会员吗？", function () {
-                    $.ajax({
-                        type: "POST",
-                        url: "../data/Club.aspx",
-                        cache: false,
-                        dataType: "text",
-                        data: { clubid: id },
-                        success: function (msg) {
-                            //提示删除成功消息
-                            if (msg.indexOf("true") >= 0) {
-                                location.href = location.href;
-                                return false;
-                            }
-                            else {
-                                art.dialog.alert("删除失败！");
-                                return false;
-                            }
-                        }
-                    })
-                }, function () {
-                    art.dialog.close();
+            });
+            uploader.on('uploadSuccess', function (file, data) {
+                //$('#' + file.id).find('p.state').text('已上传');
+                console.log(data);
+            });
+
+            var index = 1;
+            var count = 15;
+            function refreshData() {
+                $.getJSON("http://localhost:9694/api/School/GetByPage", {
+                    index: index,
+                    count: count
+                }, function (data) {
+                    var totalCount = data.TotalCount;
+                    var datas = data.Data;
+                    $("#countTxt").html(totalCount)
+                    $("#Pagination").pagination(totalCount || 0, {
+                        callback: function (page) {
+                            index = page + 1;
+                            refreshData();
+                        },
+                        prev_text: "« 上一页",
+                        next_text: "下一页 »",
+                        items_per_page: count,
+                        num_display_entries: 3,
+                        current_page: index - 1,
+                        num_edge_entries: 2,
+                        link_to: "javascript:;"
+                    });
+                    $("#dataBody").empty();
+                    for (var i = 0, d; d = datas[i++];) {
+                        var tr = $("<tr>").appendTo($("#dataBody"));
+                        $('<td style="text-align:center"></td>').html(d.Id).appendTo(tr);
+                        $('<td style="text-align:center"></td>').html(d.Name).appendTo(tr);
+                        $('<td style="text-align:center"></td>').html(d.ShortName).appendTo(tr);
+                        var td = $('<td style="text-align:center"></td>').appendTo(tr);
+                        $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
+                            var json = { width: "800px", height: "300px", title: "修改学校", lock: true };
+                            art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
+                        });
+                        //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
+                        //    art.dialog.confirm("确认删除该数据吗？", function () {
+                        //        //$.ajax({
+                        //        //    type: "POST",
+                        //        //    url: "../data/Club.aspx",
+                        //        //    cache: false,
+                        //        //    dataType: "text",
+                        //        //    data: { clubid: id },
+                        //        //    success: function (msg) {
+                        //        //        //提示删除成功消息
+                        //        //        if (msg.indexOf("true") >= 0) {
+                        //        //            location.href = location.href;
+                        //        //            return false;
+                        //        //        }
+                        //        //        else {
+                        //        //            art.dialog.alert("删除失败！");
+                        //        //            return false;
+                        //        //        }
+                        //        //    }
+                        //        //})
+                        //    }, function () {
+                        //        art.dialog.close();
+                        //    });
+                        //});
+                    }
                 });
-                return false;
-            })
+            }
+            refreshData();
         });
-        function pageselectCallback(page_id, jq) {
-            //alert(page_id); 回调函数，进一步使用请参阅说明文档
-        }
     </script>
 </head>
 
@@ -83,72 +124,34 @@
             <div class="tools">
                 <ul class="toolbar">
                     <li><a href="javascript:;" id="addBtn"><span><img src="../images/t01.png"></span>添加学校</a></li>
-                    <li><span><img src="../images/excel.png" style="width:24px; height:24px"></span><a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导入Excel</a></li>
+                    <li>
+                        <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
+                        <a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导入Excel</a>
+                        <div id="filePicker">选择图片</div>
+                    </li>
                 </ul>
-                <div class="usercity">
-                    <div class="cityleft" style=" padding-top:7px;">学校名称:</div>
-                    <div class="cityleft">
-                        <input name="txtKeywords" type="text" value="学校名称" id="txtKeywords" class="dfinput" style="width: 120px; color: rgb(153, 153, 153);">
-                    </div>
-                    <div class="cityleft">
-                        <input type="submit" name="btnQuery" value="查询" id="btnQuery" class="scbtn">
-                    </div>
-                </div>
             </div>
             <table class="tablelist">
                 <thead>
                     <tr>
                         <th style="width:4%">编号</th>
-                        <th style="width:30%">学校名称</th>
-                        <th style="width:30%">学校简称</th>
-                        <th style="width:30%">地区名称</th>
+                        <th style="width:45%">学校名称</th>
+                        <th style="width:45%">学校简称</th>
                         <th>操作</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align:center">1060</td>
-                        <td style="text-align:center">club15801850699</td>
-                        <td style="text-align:center">普通会员</td>
-                        <td style="text-align:center">0</td>
-                        <td style="text-align:center">
-                            <a href="EditClub.aspx?id=1060" class="tablelink club_art" title="修改会员信息">修改</a>
-                            <a id="1060" href="#" class="tablelink club_delete">删除</a>
-                        </td>
-                    </tr>
-
-                    <tr id="trNoRecord" style="display:none;" class="odd">
-                        <td colspan="11" class="noinfo">暂时没有数据！</td>
-                    </tr>
-
-                    <tr id="trPagination" style="display:;">
-                        <td colspan="11">
-                            <div id="Pagination" class="right flickr"></div>
-                            <div id="divTotalCount" class="right" style=" margin-right:20px; padding-top:10px;">总共有 <span style="color:Red">38</span> 条记录</div>
-                        </td>
-                    </tr>
+                <tbody id="dataBody">
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div id="Pagination" class="right flickr"></div>
+                            <div id="divTotalCount" class="right" style=" margin-right:20px; padding-top:10px;">总共有 <span style="color:Red" id="countTxt"></span> 条记录</div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </form>
-    <script type="text/javascript">
-        $('.tablelist tbody tr:odd').addClass('odd');
-        $(function () {
-            $("#txtKeywords").css("color", "#999");
-            $("#txtKeywords").click(function () {
-                var name = $("#txtKeywords").val();
-                if (name === "用户名/手机/邮箱") {
-                    $("#txtKeywords").val("");
-                    $("#txtKeywords").css("color", "#000");
-                }
-            });
-            $("#txtKeywords").blur(function () {
-                var clubname = $.trim($(this).val());
-                if (!clubname || clubname === "") {
-                    $("#txtKeywords").val("用户名/手机/邮箱").css("color", "#999");
-                }
-            });
-        })
-    </script>
 </body>
 </html>
