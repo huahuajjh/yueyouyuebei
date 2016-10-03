@@ -4,7 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/style.css" />
     <link href="/css/order.css" rel="stylesheet" type="text/css" />
-    <link href="/css/jquery.address.css" rel="stylesheet" />
+    <link href="/css/jquery.address.css" rel="stylesheet" type="text/css" />
+    <link href="/css/autocomplete.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -243,12 +244,22 @@
             <script src="/js/widgetlogin.js" type="text/javascript"></script>
             <script src="/js/one_proc.js" type="text/javascript"></script>
             <script src="/js/jquery.address.js" type="text/javascript"></script>
+            <script src="/js/autocomplete.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $("#txt_tuijianren").bindAddress({
                     addressUrl: "http://localhost:9694/api/Area/Get",
                     schoolUrl: "http://localhost:9694/api/School/Get",
                     personUrl: "http://localhost:9694/api/References/Get"
                 });
+                var proposals = ['百度1', '百度2', '百度3', '百度4', '百度5', '百度6', '百度7', '呵呵呵呵呵呵呵', '百度', '新浪', 'a1', 'a2', 'a3', 'a4', 'b1', 'b2', 'b3', 'b4'];
+                $('#txt_tuijianren').autocomplete({
+                    hints: proposals,
+                    width: 300,
+                    height: 30,
+                    onSubmit: function (text) {
+                        //$('#message').html('Selected: <b>' + text + '</b>');
+                    }
+                });
             </script>
         </div>
     </div>

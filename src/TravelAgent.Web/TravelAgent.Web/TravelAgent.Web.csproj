@@ -78,9 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\guide\CheckList.aspx" />
+    <Content Include="admin\person\add.html" />
+    <Content Include="admin\person\edit.html" />
+    <Content Include="admin\person\index.html" />
+    <Content Include="admin\school\add.html" />
+    <Content Include="admin\school\edit.html" />
+    <Content Include="admin\school\index.html" />
     <Content Include="css\jquery.address.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\line.css" />
+    <Content Include="css\autocomplete.css" />
+    <Content Include="js\autocomplete.js" />
     <Content Include="mTravel\css\mAddress.css" />
     <Content Include="css\style.css" />
     <Content Include="css\theme.css" />

@@ -246,10 +246,12 @@
             }
         }
         // 事件处理
-        dom.on('focusin', function () {
-            addressAction.show()
+        dom.on('click', function () {
+            if (!dom.val()) addressAction.show()
         })
-
+        dom.on('keydown', function () {
+            addressAction.hidden()
+        })
         return addressAction; // 地址操作对象
     }
     $.fn.extend({

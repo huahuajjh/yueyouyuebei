@@ -376,6 +376,24 @@
                                 <input id="Checkbox68" type="checkbox" class="middle club email email_opr" value="email_opr" /><label>修改</label>
                             </td>
                         </tr>
+                        <tr>
+                            <td style="width:15%; background:#F5F5F5; text-align:center"><input type="checkbox" class="middle club school" value="school" onclick="selectAll(this)" /><label>学校管理</label></td>
+<%--                            <td>
+                                <input type="checkbox" class="middle club school school_add" value="school_add" /><label>添加</label>
+                                <input type="checkbox" class="middle club school school_update" value="school_update" /><label>修改</label>
+                                <input type="checkbox" class="middle club school school_del" value="school_del" /><label>删除</label>
+                                <input type="checkbox" class="middle club school school_import" value="school_import" /><label>导入</label>
+                            </td>--%>
+                        </tr>
+                        <tr>
+                            <td style="width:15%; background:#F5F5F5; text-align:center"><input type="checkbox" class="middle club person" value="person" onclick="selectAll(this)" /><label>推介人管理</label></td>
+<%--                            <td>
+                                <input type="checkbox" class="middle club person person_add" value="person_add" /><label>添加</label>
+                                <input type="checkbox" class="middle club person person_update" value="person_update" /><label>修改</label>
+                                <input type="checkbox" class="middle club person person_del" value="person_del" /><label>删除</label>
+                                <input type="checkbox" class="middle club person person_import" value="person_import" /><label>导入</label>
+                            </td>--%>
+                        </tr>
                         </table>
                     </td>
                 </tr>
