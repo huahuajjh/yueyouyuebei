@@ -1,4 +1,4 @@
-; (function ($) {
+﻿; (function ($) {
     // 地址面板数据控制
     var AddressDataPanel = function (setting) {
         var self = this;
@@ -63,41 +63,30 @@
         self.reset = function () {
             self.panel.find(".tab").empty();
             self.panel.find(".area-panel").empty();
-            self.createTab(null, setting.defaultValue, "address");
+            self.createTab(null, setting.defaultValue);
         }
 
         // 创建Tab
-        self.createTab = function (name, id, reqType) {
-            if (reqType == "address") {
-                var sendAddressData = {
-                    pid: id
-                };
-                ajax(setting.addressUrl, sendAddressData, function (data) {
-                    var addressData = data.Data;
-                    var sendSchoolData = {
-                        area_id: id
-                    };
-                    ajax(setting.schoolUrl, sendSchoolData, function (data) {
-                        self.createTabDom(name, addressData, data.Data, []);
-                    });
-                });
-            }
-            else if (reqType == "school") {
-                var sendPersonData = {
-                    school_id: id
-                };
-                ajax(setting.personUrl, sendPersonData, function (data) {
-                    self.createTabDom(name, [], [], data.Data, "选择推介人");
-                });
-            }
+        self.createTab = function (name, id, address) {
+            var sendAddressData = {
+                pid: id
+            };
+            ajax(setting.url, sendAddressData, function (data) {
+                self.createTabDom(name, data.Data, address);
+            });
         }
 
         // 创建标签对象
-        self.createTabDom = function (name, addressData, schoolData, studendData, tabName) {
+        self.createTabDom = function (name, addressData, address) {
             self.panel.find(".tab > li:last a em").html(name);
             self.panel.find(".tab > li").removeClass("curr");
+            if (address && $.isFunction(setting.changeFn)) setting.changeFn(address);
+            if (!addressData || !addressData.length) {
+                self.panel.find(".tab > li:last").addClass("curr").data("areaData").css("display", "block");
+                return;
+            }
             // 渲染标题
-            var tabLi = $('<li><a><em>' + (tabName || '请选择') + '</em><i></i></a></li>').appendTo(self.panel.find(".tab")).addClass("curr");
+            var tabLi = $('<li><a><em>' + '请选择' + '</em><i></i></a></li>').appendTo(self.panel.find(".tab")).addClass("curr");
             var areaData = $("<div>").appendTo(self.panel.find(".area-panel"));
             // 渲染列表
             var areaList = $('<ul class="area-list"></ul>').appendTo(areaData);
@@ -120,7 +109,7 @@
                         $(this).data("areaData").remove();
                         $(this).remove();
                     });
-                    self.createTab(e.data.Name, e.data.address["Id"], "address"); // 点击后传输的数据
+                    self.createTab(e.data.Name, e.data.address["Id"], e.data.address); // 点击后传输的数据
                     self.selectData[e.data.index] = e.data.address;
                     self.selectData.slice(e.data.index);
                     var tempArr = [];
@@ -128,59 +117,9 @@
                         tempArr[i] = self.selectData[i];
                     }
                     self.selectData = tempArr;
-                    var names = $.map(self.selectData, function (d) { return d["Name"]; });
+                    //var names = $.map(self.selectData, function (d) { return d["Name"]; });
                     //self.selectVal = names.join(" ");
                     //if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
-                });
-            }
-            // 创建学校列表
-            if (schoolData && schoolData.length) {
-                var areaSchool = $('<div class="area-school"><div class="school-title">学校</div></div>').appendTo(areaData);
-                var areaSchoolList = $('<ul class="area-list"></ul>').appendTo(areaSchool);
-                for (var i = 0, d = null; d = schoolData[i++];) {
-                    // 增加标签对象
-                    var areaListLi = $('<li><a></a></li>').appendTo(areaSchoolList);
-                    // 给标签对象增加事件
-                    areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
-                        self.panel.find(".tab li:gt(" + e.data.index + ")").each(function () {
-                            $(this).data("areaData").remove();
-                            $(this).remove();
-                        });
-                        self.createTab(e.data.Name, e.data.address["Id"], "school"); // 点击后传输的数据
-                        self.selectData[e.data.index] = e.data.address;
-                        self.selectData.slice(e.data.index);
-                        var tempArr = [];
-                        for (var i = 0; i <= e.data.index; i++) {
-                            tempArr[i] = self.selectData[i];
-                        }
-                        self.selectData = tempArr;
-                        var names = $.map(self.selectData, function (d) { return d["Name"]; });
-                        //self.selectVal = names.join(" ");
-                        //if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), self.selectVal);
-                    });
-                }
-            }
-            // 创建学生列表
-            for (var i = 0, d = null; studendData && studendData.length && (d = studendData[i++]) ;) {
-                // 增加标签对象
-                var areaListLi = $('<li><a></a></li>').appendTo(areaList);
-                // 给标签对象增加事件
-                areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
-                    self.panel.find(".tab li:gt(" + e.data.index + ")").each(function () {
-                        $(this).data("areaData").remove();
-                        $(this).remove();
-                    });
-                    //self.createTab("选择推介人", e.data.address["Id"]); // 点击后传输的数据
-                    self.selectData[e.data.index] = e.data.address;
-                    self.selectData.slice(e.data.index);
-                    var tempArr = [];
-                    for (var i = 0; i <= e.data.index; i++) {
-                        tempArr[i] = self.selectData[i];
-                    }
-                    self.selectData = tempArr;
-                    var names = $.map(self.selectData, function (d) { return d["Name"]; });
-                    self.selectVal = names.join(" ");
-                    if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), e.data.Name);
                 });
             }
         }
@@ -195,9 +134,7 @@
         dom[0]['___Address'] = true;
         config = config || {}
         var setting = {
-            addressUrl: '', // Ajax 请求链接
-            schoolUrl: '', // Ajax 请求链接
-            personUrl: '', // Ajax 请求链接
+            url: '', // 默认请求的参数值
             defaultValue: '0', // 默认请求的参数值
             type: 'get', // 请求的方式
             dataType: 'json', // 数据类型
@@ -207,9 +144,9 @@
         }
         var changeFn = config.changeFn;
         $.extend(setting, config, {
-            changeFn: function (selectData, selectVal) {
-                dom.val(selectVal);
-                if ($.isFunction(changeFn)) changeFn(selectData, selectVal);
+            changeFn: function (selectData) {
+                dom.val(selectData.Name);
+                if ($.isFunction(changeFn)) changeFn(selectData);
             }
         });
         var addressDataPanel = new AddressDataPanel(setting);
@@ -247,11 +184,9 @@
         }
         // 事件处理
         dom.on('click', function () {
-            if (!dom.val()) addressAction.show()
+            addressAction.show()
         })
-        dom.on('keydown', function () {
-            addressAction.hidden()
-        })
+
         return addressAction; // 地址操作对象
     }
     $.fn.extend({

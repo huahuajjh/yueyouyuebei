@@ -1,0 +1,157 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>无标题文档</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/pagination.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/artDialog/skins/blue.css">
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/select-ui.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/artDialog/artDialog.source.js?skin=blue"></script>
+    <script type="text/javascript" src="/artDialog/plugins/iframeTools.source.js"></script>
+    <script type="text/javascript" src="../../js/webuploader.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#addBtn").on("click", function () {
+                var json = { width: "800px", height: "300px", title: "新增学校", lock: true };
+                art.dialog.open("./add.html", json);
+            });
+
+            //分页参数设置
+            $("#Pagination").pagination(0, {
+                callback: function (page) {
+                },
+                prev_text: "« 上一页",
+                next_text: "下一页 »",
+                items_per_page: 15,
+                num_display_entries: 3,
+                current_page: 0,
+                num_edge_entries: 2,
+                link_to: "javascript:;"
+            });
+
+            var uploader = WebUploader.create({
+                // swf文件路径
+                swf: '/js/Uploader.swf',
+                // 文件接收服务端。
+                server: 'http://localhost:9694/api/School/Upload',
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: '#filePicker',
+                // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                resize: false,
+                accept: {
+                    title: '数据文件',
+                    extensions: 'xls,xlsx',
+                    mimeTypes: 'application/vnd.ms-excel'
+                }
+            });
+            uploader.on('uploadSuccess', function (file, data) {
+                //$('#' + file.id).find('p.state').text('已上传');
+                console.log(data);
+            });
+
+            var index = 1;
+            var count = 15;
+            function refreshData() {
+                $.getJSON("http://localhost:9694/api/School/GetByPage", {
+                    index: index,
+                    count: count
+                }, function (data) {
+                    var totalCount = data.TotalCount;
+                    var datas = data.Data;
+                    $("#countTxt").html(totalCount)
+                    $("#Pagination").pagination(totalCount || 0, {
+                        callback: function (page) {
+                            index = page + 1;
+                            refreshData();
+                        },
+                        prev_text: "« 上一页",
+                        next_text: "下一页 »",
+                        items_per_page: count,
+                        num_display_entries: 3,
+                        current_page: index - 1,
+                        num_edge_entries: 2,
+                        link_to: "javascript:;"
+                    });
+                    $("#dataBody").empty();
+                    for (var i = 0, d; d = datas[i++];) {
+                        var tr = $("<tr>").appendTo($("#dataBody"));
+                        $('<td style="text-align:center"></td>').html(d.Id).appendTo(tr);
+                        $('<td style="text-align:center"></td>').html(d.Name).appendTo(tr);
+                        $('<td style="text-align:center"></td>').html(d.ShortName).appendTo(tr);
+                        var td = $('<td style="text-align:center"></td>').appendTo(tr);
+                        $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
+                            var json = { width: "800px", height: "300px", title: "修改学校", lock: true };
+                            art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
+                        });
+                        //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
+                        //    art.dialog.confirm("确认删除该数据吗？", function () {
+                        //        //$.ajax({
+                        //        //    type: "POST",
+                        //        //    url: "../data/Club.aspx",
+                        //        //    cache: false,
+                        //        //    dataType: "text",
+                        //        //    data: { clubid: id },
+                        //        //    success: function (msg) {
+                        //        //        //提示删除成功消息
+                        //        //        if (msg.indexOf("true") >= 0) {
+                        //        //            location.href = location.href;
+                        //        //            return false;
+                        //        //        }
+                        //        //        else {
+                        //        //            art.dialog.alert("删除失败！");
+                        //        //            return false;
+                        //        //        }
+                        //        //    }
+                        //        //})
+                        //    }, function () {
+                        //        art.dialog.close();
+                        //    });
+                        //});
+                    }
+                });
+            }
+            refreshData();
+        });
+    </script>
+</head>
+
+
+<body>
+    <form>
+        <div class="rightinfo">
+            <div class="tools">
+                <ul class="toolbar">
+                    <li><a href="javascript:;" id="addBtn"><span><img src="../images/t01.png"></span>添加学校</a></li>
+                    <li>
+                        <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
+                        <a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导入Excel</a>
+                        <div id="filePicker">选择图片</div>
+                    </li>
+                </ul>
+            </div>
+            <table class="tablelist">
+                <thead>
+                    <tr>
+                        <th style="width:4%">编号</th>
+                        <th style="width:45%">学校名称</th>
+                        <th style="width:45%">学校简称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="dataBody">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div id="Pagination" class="right flickr"></div>
+                            <div id="divTotalCount" class="right" style=" margin-right:20px; padding-top:10px;">总共有 <span style="color:Red" id="countTxt"></span> 条记录</div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

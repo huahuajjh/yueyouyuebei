@@ -149,7 +149,7 @@ $("#save").click(function() {
         $(".error_tip").show();
         return false;
     }
-    else if ($("#tuijianren").val().length < 2)) {
+    else if ($("#tuijianren").val().length < 2) {
         $(".error_tip").text("请填写推荐人！");
         $(".error_tip").show();
         return false;

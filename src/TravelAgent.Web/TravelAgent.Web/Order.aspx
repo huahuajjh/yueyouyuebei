@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Other.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="TravelAgent.Web.Order" %>
-
 <%@ MasterType VirtualPath="~/Other.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="/css/style.css" />
     <link href="/css/order.css" rel="stylesheet" type="text/css" />
-    <link href="/css/jquery.address.css" rel="stylesheet" />
+    <link href="/css/jquery.address.css" rel="stylesheet" type="text/css" />
+    <link href="/css/autocomplete.css" rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -236,6 +236,7 @@
                 <input type="hidden" id='txtHiddentuijianren' name='txtHiddentuijianren' value="1" />
 
             </form>
+            <script type="text/javascript" src="/js/url.js"></script>
             <script src="/js/tooltip.js" type="text/javascript"></script>
             <script src="/js/jquery.bgiframe.min.js" type="text/javascript"></script>
             <script src="/js/jquery.modal.js" type="text/javascript"></script>
@@ -243,12 +244,19 @@
             <script src="/js/widgetlogin.js" type="text/javascript"></script>
             <script src="/js/one_proc.js" type="text/javascript"></script>
             <script src="/js/jquery.address.js" type="text/javascript"></script>
+            <script src="/js/autocomplete.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $("#txt_tuijianren").bindAddress({
-                    addressUrl: "http://yueyouyuebei.com:8081/api/Area/Get",
-                    schoolUrl: "http://yueyouyuebei.com:8081/api/School/Get",
-                    personUrl: "http://yueyouyuebei.com:8081/api/References/Get"
+                    addressUrl: apiURL.AreaGet,
+                    schoolUrl: apiURL.SchoolGet,
+                    personUrl: apiURL.ReferencesGet
                 });
+                $('#txt_tuijianren').autocomplete({
+                    url: apiURL.ReferencesGetBySchoolName,
+                    width: 300,
+                    height: 30,
+                });
+
             </script>
         </div>
     </div>

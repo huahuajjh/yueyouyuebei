@@ -39,7 +39,7 @@ namespace TravelAgent.WebAPI.Controllers
             return ToJson(list,total:total);
         }
 
-        [HttpPost]
+        [HttpGet]
         public HttpResponseMessage Add(string school)
         {
             School s = JsonUtil.ToObj<School>(school);
