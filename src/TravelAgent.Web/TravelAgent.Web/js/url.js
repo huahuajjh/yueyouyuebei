@@ -1,5 +1,6 @@
-﻿var apiURL = (function () {
-    var url = "http://localhost:9694"
+﻿$.support.cors = true;
+var apiURL = (function () {
+    var url = "http://192.168.1.3:9694"
     return {
         AreaGet: url + "/api/Area/Get",
         AreaGetByPage: url + "/api/Area/GetByPage",

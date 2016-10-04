@@ -76,29 +76,31 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 						break;
 				}
 			});
-				
+			var timeObj = null;
 			$(this).bind("change paste keyup", function (e) {
-				if(e.which != 13 && e.which != 27 
-						&& e.which != 38 && e.which != 40){				
-					currentProposals = [];
-					currentSelection = -1;
-					proposalList.empty();
-					if ($(this).val() != '') {
-					    var word = $(this).val();
-					    proposalList.empty();
-					    $.getJSON(params.url, {
-					        sch_name: word
-					    }, function (data) {
-					        var datas = data.Data;
-					        for (var i = 0, test; test = datas[i++];) {
-					            currentProposals.push(test.Name);
-					            var element = $('<li></li>')
+			    var self = $(this);
+			    clearTimeout(timeObj);
+			    var btn = $(this);
+			    timeObj = setTimeout(function () {
+			        currentProposals = [];
+			        currentSelection = -1;
+			        proposalList.empty();
+			        if (self.val() != '') {
+			            var word = self.val();
+			            proposalList.empty();
+			            $.getJSON(params.url, {
+			                sch_name: word
+			            }, function (data) {
+			                var datas = data.Data;
+			                for (var i = 0, test; test = datas[i++];) {
+			                    currentProposals.push(test.Name);
+			                    var element = $('<li></li>')
                                     .html(test.Name)
                                     .addClass('proposal')
                                     .click(function () {
-                                        $(this).val($(this).html());
+                                        self.val($(this).html());
                                         proposalList.empty();
-                                        params.onSubmit($(this).val());
+                                        params.onSubmit(self.val());
                                     })
                                     .mouseenter(function () {
                                         $(this).addClass('selected');
@@ -106,11 +108,11 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
                                     .mouseleave(function () {
                                         $(this).removeClass('selected');
                                     });
-					            proposalList.append(element);
-					        }
-					    });
-					}
-				}
+			                    proposalList.append(element);
+			                }
+			            });
+			        }
+			    }, 500);
 			});
 			
 			$(this).blur(function (e) {

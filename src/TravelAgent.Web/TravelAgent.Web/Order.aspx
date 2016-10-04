@@ -172,7 +172,7 @@
                                         <tr>
                                             <td class="td1"><i>*</i>推荐人：</td>
                                             <td colspan="3">
-                                                <input maxlength="200" style="width: 510px; color: #aaa;" name="txt_tuijianren" class="input2 J_place" id="txt_tuijianren" placeholder="请填写本校校园经理或代理姓名，或学校名称" alt="请填写本校校园经理或代理姓名，或学校名称" />
+                                                <input autocomplete="off" maxlength="200" style="width: 510px; color: #aaa;" name="txt_tuijianren" class="input2 J_place" id="txt_tuijianren" placeholder="请填写本校校园经理或代理姓名，或学校名称" alt="请填写本校校园经理或代理姓名，或学校名称" />
                                                 <span style="color: Red;" id="span_tuijianren"></span>
                                             </td>
                                         </tr>
