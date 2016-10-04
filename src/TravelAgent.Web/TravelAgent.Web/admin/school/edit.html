@@ -6,6 +6,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery.address.css" rel="stylesheet" />
     <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../js/url.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/js/validate.js"></script>
     <script type="text/javascript" src="/js/jquery.form.js"></script>
@@ -30,7 +31,7 @@
         };
         //保存目的地
         var EditClub = function () {
-            $.post("http://localhost:9694/api/School/Update", {
+            $.post(apiURL.SchoolUpdate, {
                 school: $.toJSON(sendData)
             }, function (responseText, statusText) {
                 // 如果父页面重载或者关闭其子对话框全部会关闭
@@ -39,7 +40,7 @@
             });
         }
         $(function () {
-            $.getJSON("http://localhost:9694/api/School/GetById", {
+            $.getJSON(apiURL.SchoolGetById, {
                 id: getQueryString("id")
             }, function (data) {
                 var d = data.Data;
@@ -70,7 +71,7 @@
                 }
             });
             $("#txtAddress").bindAddress({
-                url: "http://localhost:9694/api/Area/Get",
+                url: apiURL.AreaGet,
                 changeFn: function (address) {
                     sendData.AreaId = address.Id;
                 }
@@ -87,7 +88,7 @@
                     <td style=" padding-top:10px;">
                         <input type="text" value="" id="txtClubName" name="txtClubName" class="aspNetDisabled dfinput required" style="width:200px;" />
                     </td>
-                    <td style="text-align:right; color:#056dae;background: #F5F5F5;width:80px;">学校简称：<span class="red">*</span>：</td>
+                    <td style="text-align:right; color:#056dae;background: #F5F5F5;width:80px;">学校简称<span class="red">*</span>：</td>
                     <td>
                         <input type="text" value="" id="txtAbbreviation" name="txtAbbreviation" class="aspNetDisabled dfinput required" style="width: 200px;" />
                     </td>
