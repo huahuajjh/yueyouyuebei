@@ -60,10 +60,11 @@ namespace TravelAgent.WebAPI.Controllers
         [HttpPost]
         public HttpResponseMessage Upload()
         {
-         
+            HttpPostedFile file = HttpContext.Current.Request.Files["school"];
+
             ErrMsg msg = new ErrMsg();
             IImport import = ExcelFactory.Instance().GetExcelImporter(new eh.impls.configurations.ExcelConfiguration(1, 0, 0), msg);
-            IList<School> list = SchoolDto.ToList(import.Import<SchoolDto>(null));
+            IList<School> list = SchoolDto.ToList(import.Import<SchoolDto>(file.InputStream));
             
             if(msg.Count!=0)
             { 
@@ -94,6 +95,11 @@ namespace TravelAgent.WebAPI.Controllers
         public HttpResponseMessage GetById(int id)
         {
             return ToJson(Service.GetById(id));
+        }
+
+        public HttpResponseMessage GetByFuzzyName(string name)
+        {
+            return ToJson(Service.GetByFuzzyName(name));
         }
 
     }

@@ -4,7 +4,9 @@ using eh.impls.errs;
 using eh.interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using TravelAgent.IService;
@@ -56,9 +58,9 @@ namespace TravelAgent.WebAPI.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Upload(HttpPostedFile file)
-        { 
-            //Service.UploadExcelFile(file.InputStream);
+        public HttpResponseMessage Upload()
+        {
+            HttpPostedFile file = HttpContext.Current.Request.Files["references"];
             ErrMsg msg = new ErrMsg();
             IImport import = ExcelFactory.Instance().GetExcelImporter(new eh.impls.configurations.ExcelConfiguration(1,0,0),msg);
             IList<References> list = ReferencesDto.ToList(import.Import<ReferencesDto>(file.InputStream));
@@ -68,7 +70,8 @@ namespace TravelAgent.WebAPI.Controllers
                 return ToJson(msg.GetErrors(),status_code:0,msg:"fail");
             }
             else
-            { 
+            {
+                Service.Add(list);
                 return ToJson("success");
             }
         }

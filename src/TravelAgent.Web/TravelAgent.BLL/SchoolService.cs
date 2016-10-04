@@ -53,5 +53,11 @@ namespace TravelAgent.BLL
         {
             return Dao.Get(id);
         }
+
+
+        public IList<School> GetByFuzzyName(string name)
+        {
+            return Dao.Get("Name like '%"+name+"%'");
+        }
     }
 }
