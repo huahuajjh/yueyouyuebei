@@ -34,7 +34,7 @@ namespace TravelAgent.WebAPI.Controllers
         }
         public HttpResponseMessage Get(int area_id)
         { 
-            return ToJson(Service.GetByAreaId(area_id));
+            return ToJsonp(Service.GetByAreaId(area_id));
         }
 
         public HttpResponseMessage GetByPage(int index,int count)

@@ -83,63 +83,71 @@
             var index = 1;
             var count = 15;
             function refreshData() {
-                $.getJSON(apiURL.ReferencesGetByPage, {
-                    index: index,
-                    count: count
-                }, function (data) {
-                    var totalCount = data.TotalCount;
-                    var datas = data.Data;
-                    $("#countTxt").html(totalCount)
-                    $("#Pagination").pagination(totalCount || 0, {
-                        callback: function (page) {
-                            index = page + 1;
-                            refreshData();
-                        },
-                        prev_text: "« 上一页",
-                        next_text: "下一页 »",
-                        items_per_page: count,
-                        num_display_entries: 3,
-                        current_page: index - 1,
-                        num_edge_entries: 2,
-                        link_to: "javascript:;"
-                    });
-                    $("#dataBody").empty();
-                    for (var i = 0, d; d = datas[i++];) {
-                        var tr = $("<tr>").appendTo($("#dataBody"));
-                        $('<td style="text-align:center"></td>').html(d.Id).appendTo(tr);
-                        $('<td style="text-align:center"></td>').html(d.Name).appendTo(tr);
-                        $('<td style="text-align:center"></td>').html(d.Tel).appendTo(tr);
-                        var td = $('<td style="text-align:center"></td>').appendTo(tr);
-                        $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
-                            var json = { width: "800px", height: "500px", title: "修改推介人", lock: true };
-                            art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
+                $.ajax({
+                    dataType: "jsonp",//数据类型为jsonp  
+                    jsonp: "callback",//服务端用于接收callback调用的function名的参数
+                    type: "get",
+                    url: apiURL.ReferencesGetByPage,
+                    async: false,
+                    data: {
+                        index: index,
+                        count: count
+                    },
+                    success: function (data) {
+                        var totalCount = data.TotalCount;
+                        var datas = data.Data;
+                        $("#countTxt").html(totalCount)
+                        $("#Pagination").pagination(totalCount || 0, {
+                            callback: function (page) {
+                                index = page + 1;
+                                refreshData();
+                            },
+                            prev_text: "« 上一页",
+                            next_text: "下一页 »",
+                            items_per_page: count,
+                            num_display_entries: 3,
+                            current_page: index - 1,
+                            num_edge_entries: 2,
+                            link_to: "javascript:;"
                         });
-                        //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
-                        //    art.dialog.confirm("确认删除该数据吗？", function () {
-                        //        //$.ajax({
-                        //        //    type: "POST",
-                        //        //    url: "../data/Club.aspx",
-                        //        //    cache: false,
-                        //        //    dataType: "text",
-                        //        //    data: { clubid: id },
-                        //        //    success: function (msg) {
-                        //        //        //提示删除成功消息
-                        //        //        if (msg.indexOf("true") >= 0) {
-                        //        //            location.href = location.href;
-                        //        //            return false;
-                        //        //        }
-                        //        //        else {
-                        //        //            art.dialog.alert("删除失败！");
-                        //        //            return false;
-                        //        //        }
-                        //        //    }
-                        //        //})
-                        //    }, function () {
-                        //        art.dialog.close();
-                        //    });
-                        //});
+                        $("#dataBody").empty();
+                        for (var i = 0, d; d = datas[i++];) {
+                            var tr = $("<tr>").appendTo($("#dataBody"));
+                            $('<td style="text-align:center"></td>').html(d.Id).appendTo(tr);
+                            $('<td style="text-align:center"></td>').html(d.Name).appendTo(tr);
+                            $('<td style="text-align:center"></td>').html(d.Tel).appendTo(tr);
+                            var td = $('<td style="text-align:center"></td>').appendTo(tr);
+                            $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
+                                var json = { width: "800px", height: "500px", title: "修改推介人", lock: true };
+                                art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
+                            });
+                            //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
+                            //    art.dialog.confirm("确认删除该数据吗？", function () {
+                            //        //$.ajax({
+                            //        //    type: "POST",
+                            //        //    url: "../data/Club.aspx",
+                            //        //    cache: false,
+                            //        //    dataType: "text",
+                            //        //    data: { clubid: id },
+                            //        //    success: function (msg) {
+                            //        //        //提示删除成功消息
+                            //        //        if (msg.indexOf("true") >= 0) {
+                            //        //            location.href = location.href;
+                            //        //            return false;
+                            //        //        }
+                            //        //        else {
+                            //        //            art.dialog.alert("删除失败！");
+                            //        //            return false;
+                            //        //        }
+                            //        //    }
+                            //        //})
+                            //    }, function () {
+                            //        art.dialog.close();
+                            //    });
+                            //});
+                        }
                     }
-                });
+                })
             }
             refreshData();
         });

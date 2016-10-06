@@ -88,31 +88,39 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 			        if (self.val() != '') {
 			            var word = self.val();
 			            proposalList.empty();
-			            $.getJSON(params.url, {
-			                sch_name: word
-			            }, function (data) {
-			                var datas = data.Data;
-			                for (var i = 0, test; test = datas[i++];) {
-			                    currentProposals.push(test.Name);
-			                    var element = $('<li></li>')
-                                    .html(test.Name)
-                                    .addClass('proposal')
-                                    .click(function () {
-                                        self.val($(this).html());
-                                        proposalList.empty();
-                                        params.onSubmit(self.val());
-                                    })
-                                    .mouseenter(function () {
-                                        $(this).addClass('selected');
-                                    })
-                                    .mouseleave(function () {
-                                        $(this).removeClass('selected');
-                                    });
-			                    proposalList.append(element);
+			            $.ajax({
+			                dataType: "jsonp",//数据类型为jsonp  
+			                jsonp: "callback",//服务端用于接收callback调用的function名的参数
+			                type: "get",
+			                url: params.url,
+			                async: false,
+			                data: {
+			                    sch_name: word
+			                },
+			                success: function (data) {
+			                    var datas = data.Data;
+			                    for (var i = 0, test; test = datas[i++];) {
+			                        currentProposals.push(test.Name);
+			                        var element = $('<li></li>')
+                                        .html(test.Name)
+                                        .addClass('proposal')
+                                        .click(function () {
+                                            self.val($(this).html());
+                                            proposalList.empty();
+                                            params.onSubmit(self.val());
+                                        })
+                                        .mouseenter(function () {
+                                            $(this).addClass('selected');
+                                        })
+                                        .mouseleave(function () {
+                                            $(this).removeClass('selected');
+                                        });
+			                        proposalList.append(element);
+			                    }
 			                }
-			            });
+			            })
 			        }
-			    }, 500);
+			    }, 1000);
 			});
 			
 			$(this).blur(function (e) {

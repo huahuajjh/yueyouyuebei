@@ -22,16 +22,23 @@
         };
         //保存目的地
         var EditClub = function () {
-            $.post(apiURL.ReferencesAdd, {
-                references: $.toJSON(sendData)
-            }, function (responseText, statusText) {
-                $("#btnSave").attr("disabled", "");
-                $("#btnSave").removeAttr("disabled");
-                $("#btnSave").val("确定保存");
-                // 如果父页面重载或者关闭其子对话框全部会关闭
-                parent.location.reload();
-                return false;
-            });
+            $.ajax({
+                dataType: "jsonp",//数据类型为jsonp  
+                jsonp: "callback",//服务端用于接收callback调用的function名的参数
+                type: "get",
+                url: apiURL.ReferencesAdd,
+                data: {
+                    references: $.toJSON(sendData)
+                },
+                success: function (responseText, statusText) {
+                    $("#btnSave").attr("disabled", "");
+                    $("#btnSave").removeAttr("disabled");
+                    $("#btnSave").val("确定保存");
+                    // 如果父页面重载或者关闭其子对话框全部会关闭
+                    //parent.location.reload();
+                    return false;
+                }
+            })
         }
         $(function () {
             //表单验证JS

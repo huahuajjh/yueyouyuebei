@@ -11,8 +11,10 @@
         if ($.isFunction(setting.requestBefore)) setting.requestBefore(sendData);
 
         $.ajax({
-            dataType: setting.dataType,
-            type: setting.type,
+            dataType: "jsonp",//数据类型为jsonp  
+            jsonp: "callback",//服务端用于接收callback调用的function名的参数
+            type: "get",
+            async: false,
             url: url,
             data: sendData,
             success: function (data) {
