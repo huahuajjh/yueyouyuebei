@@ -82,7 +82,7 @@ namespace TravelAgent.WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage Update()
         {
-            string school = HttpContext.Current.Request.Form["school"];
+            string school = HttpContext.Current.Request.QueryString["school"];
             try
             {
                 School s = JsonUtil.ToObj<School>(school);

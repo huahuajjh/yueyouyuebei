@@ -30,7 +30,7 @@ namespace TravelAgent.WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage Add()
         { 
-            string references = HttpContext.Current.Request.Form["references"];
+            string references = HttpContext.Current.Request.QueryString["references"];
             try
             {
                 References r = JsonUtil.ToObj<References>(references);
@@ -46,7 +46,7 @@ namespace TravelAgent.WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage Update()
         {
-            string references = HttpContext.Current.Request.Form["references"];            
+            string references = HttpContext.Current.Request.QueryString["references"];            
             try
             {
                 References r = JsonUtil.ToObj<References>(references);
