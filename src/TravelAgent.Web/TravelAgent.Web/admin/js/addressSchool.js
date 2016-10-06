@@ -145,6 +145,7 @@
                         self.selectData = tempArr;
                         //var names = $.map(self.selectData, function (d) { return d["Name"]; });
                         //self.selectVal = names.join(" ");
+                        self.panel.css('display', 'none');
                         if ($.isFunction(setting.changeFn)) setting.changeFn(e.data.school, e.data.school.Name);
                     });
                 }
@@ -212,7 +213,7 @@
         }
         // 事件处理
         dom.on('click', function () {
-            if (!dom.val()) addressAction.show()
+            addressAction.show()
         })
         dom.on('keydown', function () {
             addressAction.hidden()

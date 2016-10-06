@@ -27,33 +27,35 @@ namespace TravelAgent.WebAPI.Controllers
             { }
         }
     
-        [HttpPost]
-        public HttpResponseMessage Add(string references)
+        [HttpGet]
+        public HttpResponseMessage Add()
         { 
-            References r = JsonUtil.ToObj<References>(references);
+            string references = HttpContext.Current.Request.Form["references"];
             try
             {
+                References r = JsonUtil.ToObj<References>(references);
                 Service.Add(r);
-                return ToJson("success");
+                return ToJsonp("success");
             }
             catch (System.Exception ex)
             {
-                return ToJson(ex.Message, status_code: 0, msg: ex.Message);
+                return ToJsonp(ex.Message, status_code: 0, msg: ex.Message);
             }
         }
 
-        [HttpPost]
-        public HttpResponseMessage Update(string references)
-        { 
-            References r = JsonUtil.ToObj<References>(references);
+        [HttpGet]
+        public HttpResponseMessage Update()
+        {
+            string references = HttpContext.Current.Request.Form["references"];            
             try
             {
+                References r = JsonUtil.ToObj<References>(references);
                 Service.Update(r);
-                return ToJson("success");
+                return ToJsonp("success");
             }
             catch (System.Exception ex)
             {
-                return ToJson(ex.Message, status_code: 0, msg: ex.Message);
+                return ToJsonp(ex.Message, status_code: 0, msg: ex.Message);
             }
         }
 
@@ -75,29 +77,33 @@ namespace TravelAgent.WebAPI.Controllers
                 return ToJson("success");
             }
         }
-
+        
+        [HttpGet]
         public HttpResponseMessage Get(int school_id)
         {
-            return ToJson(Service.GetBySchoolId(school_id));
+            return ToJsonp(Service.GetBySchoolId(school_id));
         }
 
+        [HttpGet]
         public HttpResponseMessage GetByPage(int index, int count)
         {
             int total = 0;
             IList<References> list = Service.GetByPage(index, count, out total);
-            return ToJson(list, total: total);
+            return ToJsonp(list, total: total);
         }
 
+        [HttpGet]
         public HttpResponseMessage GetBySchoolName(string sch_name)
         {
             IQueryReferencesService service = GetService<IQueryReferencesService>("QueryReferencesService");
             IList<References> refs =  service.GetRefsBySchoolName(sch_name);
-            return ToJson(refs);            
+            return ToJsonp(refs);            
         }
 
+        [HttpGet]
         public HttpResponseMessage GetById(int id)
         {
-            return ToJson(Service.GetById(id));
+            return ToJsonp(Service.GetById(id));
         }
     }
 }

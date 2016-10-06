@@ -14,8 +14,8 @@ namespace TravelAgent.WebAPI.Models
         public string Name { get; set; }
 
         [Col("B")]
-        [ColDataConstraint(ConstraintsEnum.NULL)]
-        [ColDataValid(DataTypeEnum.STRING_N)]
+        [ColDataConstraint(ConstraintsEnum.NOTNULL)]
+        [ColDataValid(DataTypeEnum.STRING)]
         public string Tel { get; set; }
 
         [Col("C")]

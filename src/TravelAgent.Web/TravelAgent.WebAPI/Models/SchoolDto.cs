@@ -38,5 +38,15 @@ namespace TravelAgent.WebAPI.Models
             }
             return list;
         }
+
+        public static IList<SchoolDto> ToList(IList<School> list)
+        {
+            IList<SchoolDto> dto_list = new List<SchoolDto>();
+            foreach (School item in list)
+            {
+                dto_list.Add(new SchoolDto() { Id = item.Id, Name = item.Name });
+            }
+            return dto_list;
+        }
     }
 }

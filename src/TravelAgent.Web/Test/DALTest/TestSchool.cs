@@ -41,5 +41,6 @@ namespace Test.DALTest
             School s = new SchoolDao().Get(2);
             Console.WriteLine(s.AreaName);
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using eh.impls;
+using eh.impls.configurations;
 using eh.impls.errs;
 using eh.interfaces;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -39,7 +41,7 @@ namespace TravelAgent.WebAPI.Controllers
         { 
             int total = 0;
             IList<School> list = Service.GetByPage(index,count,out total);
-            return ToJson(list,total:total);
+            return ToJsonp(list,total:total);
         }
 
         [HttpGet]
@@ -49,11 +51,11 @@ namespace TravelAgent.WebAPI.Controllers
             try
             {
                 Service.Add(s);
-                return ToJson("success");
+                return ToJsonp("success");
             }
             catch (System.Exception ex)
             {
-                return ToJson(ex.Message, status_code: 0, msg: ex.Message);
+                return ToJsonp(ex.Message, status_code: 0, msg: ex.Message);
             }
         }
 
@@ -78,28 +80,49 @@ namespace TravelAgent.WebAPI.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage Update(string school)
+        public HttpResponseMessage Update()
         {
-            School s = JsonUtil.ToObj<School>(school);
+            string school = HttpContext.Current.Request.Form["school"];
             try
             {
+                School s = JsonUtil.ToObj<School>(school);
                 Service.Update(s);
-                return ToJson("success");
+                return ToJsonp("success");
             }
             catch (System.Exception ex)
             {
-                return ToJson(ex.Message, status_code: 0, msg: ex.Message);
+                return ToJsonp(ex.Message, status_code: 0, msg: ex.Message);
             }
         }
 
         public HttpResponseMessage GetById(int id)
         {
-            return ToJson(Service.GetById(id));
+            return ToJsonp(Service.GetById(id));
         }
 
         public HttpResponseMessage GetByFuzzyName(string name)
         {
-            return ToJson(Service.GetByFuzzyName(name));
+            return ToJsonp(Service.GetByFuzzyName(name));
+        }
+
+        [HttpGet]
+        public HttpResponseMessage DownSchoolCodeFile()
+        { 
+            IList<School> list = Service.GetSchoolCode();
+            IList<SchoolCodeFileDto> dto_list = SchoolCodeFileDto.ToList(list);
+
+            ErrMsg msg = new ErrMsg();
+            ExcelConfiguration cfg = new ExcelConfiguration();
+            cfg.TemplatePath = @"D:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.WebAPI\template\school.xlsx";
+            cfg.TemplateRowIndex = 1;
+            IExport export = ExcelFactory.Instance().GetExcelExporter(cfg, msg);
+            byte[] data = export.Export<SchoolCodeFileDto>(dto_list);
+            MemoryStream ms = new MemoryStream(data);
+            HttpResponseMessage res = new HttpResponseMessage(HttpStatusCode.OK);
+            res.Content = new StreamContent(ms);
+            res.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            res.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName="school_codefile.xlsx" };
+            return res;
         }
 
     }

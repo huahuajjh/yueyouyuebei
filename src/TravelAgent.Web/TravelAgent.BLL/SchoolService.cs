@@ -48,7 +48,6 @@ namespace TravelAgent.BLL
             
         }
 
-
         public School GetById(int id)
         {
             return Dao.Get(id);
@@ -58,6 +57,12 @@ namespace TravelAgent.BLL
         public IList<School> GetByFuzzyName(string name)
         {
             return Dao.Get("Name like '%"+name+"%'");
+        }
+
+
+        public IList<School> GetSchoolCode()
+        {
+            return Dao.GetBySql("select Id,Name from School");
         }
     }
 }

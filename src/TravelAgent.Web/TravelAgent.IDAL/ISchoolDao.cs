@@ -12,5 +12,6 @@ namespace TravelAgent.IDAL
         School Get(int id);
         IList<School> Get(string where, params string[] parameters);
         IList<School> Get(string where, int page_index, int page_count, out int total_page, params string[] parameters);
+        IList<School> GetBySql(string sql);
     }
 }

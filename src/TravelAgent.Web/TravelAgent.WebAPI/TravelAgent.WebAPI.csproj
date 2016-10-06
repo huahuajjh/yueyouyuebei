@@ -198,6 +198,7 @@
     </Compile>
     <Compile Include="Models\JsonFormat.cs" />
     <Compile Include="Models\ReferencesDto.cs" />
+    <Compile Include="Models\SchoolCodeFileDto.cs" />
     <Compile Include="Models\SchoolDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

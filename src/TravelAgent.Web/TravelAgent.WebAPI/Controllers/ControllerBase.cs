@@ -41,6 +41,24 @@ namespace TravelAgent.WebAPI.Controllers
                 return res;
             }
         }
-    
+
+        protected HttpResponseMessage ToJsonp(object o, int status_code = 1, string msg = "success", int total = 0)
+        {
+            string callback =  HttpContext.Current.Request.QueryString["callback"];
+
+            if(!string.IsNullOrEmpty(callback))
+            {
+                JsonFormat jf = new JsonFormat() { Code = status_code, Data = o, Msg = msg, TotalCount = total };
+                string json = JsonUtil.ToJson(jf);
+                string script = callback+"("+json+")";
+                HttpResponseMessage res = new HttpResponseMessage { Content = new StringContent(script, Encoding.GetEncoding("UTF-8"), "application/json") };
+                return res;
+            }
+            else 
+            { 
+                return new HttpResponseMessage { Content = new StringContent("not jsonp", Encoding.GetEncoding("UTF-8"), "application/json") };;
+            }
+        }
+
     }
 }

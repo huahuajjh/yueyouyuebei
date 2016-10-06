@@ -16,14 +16,14 @@ namespace TravelAgent.WebAPI.Controllers
         public HttpResponseMessage Get(int pid)
         {
             IList<Area> list = GetService<IAreaService>("AreaService").GetByParent(pid);
-            return ToJson(list);
+            return ToJsonp(list);
         }
 
         public HttpResponseMessage GetByPage(int index,int count)
         {
             int total = 0;
             IList<Area> list = GetService<IAreaService>("AreaService").GetByPage(index,count,out total);
-            return ToJson(list,total:total);
+            return ToJsonp(list,total:total);
 
         }
     }

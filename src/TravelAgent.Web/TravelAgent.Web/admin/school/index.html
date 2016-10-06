@@ -29,7 +29,7 @@
     <script type="text/javascript">
         $(function () {
             $("#addBtn").on("click", function () {
-                var json = { width: "800px", height: "300px", title: "新增学校", lock: true };
+                var json = { width: "800px", height: "500px", title: "新增学校", lock: true };
                 art.dialog.open("./add.html", json);
             });
 
@@ -47,6 +47,7 @@
             });
 
             var uploader = WebUploader.create({
+                fileVal:'school',
                 duplicate: false,
                 // 自动上传
                 auto: true,
@@ -109,7 +110,7 @@
                         $('<td style="text-align:center"></td>').html(d.ShortName).appendTo(tr);
                         var td = $('<td style="text-align:center"></td>').appendTo(tr);
                         $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
-                            var json = { width: "800px", height: "300px", title: "修改学校", lock: true };
+                            var json = { width: "800px", height: "500px", title: "修改学校", lock: true };
                             art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
                         });
                         //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
@@ -153,7 +154,15 @@
                     <li><a href="javascript:;" id="addBtn"><span><img src="../images/t01.png"></span>添加学校</a></li>
                     <li style="position:relative">
                         <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
-                        <a id="lbtnExport" href="javascript:__doPostBack('lbtnExport','')">导入Excel</a>
+                        <a href="../../template/school.xls" target="_blank">下载学校模板</a>
+                    </li>
+                    <li style="position:relative">
+                        <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
+                        <a href="../../template/areas.xlsx" target="_blank">下载地区代码</a>
+                    </li>                    
+                    <li style="position:relative">
+                        <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
+                        <a href="javascript:;">导入Excel</a>
                         <div id="filePicker">选择文件</div>
                     </li>
                 </ul>

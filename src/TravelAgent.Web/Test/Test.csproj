@@ -87,6 +87,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BLL\BLLTest.cs" />
+    <Compile Include="BLL\TestSchool.cs" />
     <Compile Include="DALTest\TestSBuilderFormat.cs" />
     <Compile Include="DALTest\TestArea.cs" />
     <Compile Include="DALTest\TestSchool.cs" />

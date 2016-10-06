@@ -5,6 +5,7 @@
     <title></title>
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery.address.css" rel="stylesheet" />
+    <link href="../css/autocomplete.css" rel="stylesheet" />
     <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="../../js/url.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
@@ -14,6 +15,7 @@
     <script type="text/javascript" src="/js/calendar.js"></script>
     <script type="text/javascript" src="../../js/jquery.json.js"></script>
     <script src="../js/addressSchool.js"></script>
+    <script src="../js/autocomplete.js"></script>
     <script type="text/javascript">
         function getQueryString(name) {
             var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -50,7 +52,7 @@
                 if (!d) return;
                 $("#txtClubName").val(d.Name);
                 $("#txtTel").val(d.Tel);
-                $("#txtSchool").val(d.School);
+                $("#txtSchool").val(d.SchoolName);
                 sendData.Name = d.Name;
                 sendData.Tel = d.Tel;
                 sendData.SchoolId = d.SchoolId;
@@ -80,6 +82,7 @@
                     sendData.SchoolId = school.Id;
                 }
             });
+
         });
     </script>
 </head>
@@ -100,7 +103,7 @@
                 <tr>
                     <td style="text-align:right; color:#056dae;background: #F5F5F5; ">所属学校 <span class="red">*</span>：</td>
                     <td style=" padding-top:10px;" colspan="3">
-                        <input type="text" readonly="readonly" id="txtSchool" name="txtSchool" class="dfinput valid required" value="" style="width:300px;" />
+                        <input readonly="readonly" type="text" id="txtSchool" name="txtSchool" class="dfinput valid required" value="" style="width:300px;" />
                     </td>
                 </tr>
                 <tr>

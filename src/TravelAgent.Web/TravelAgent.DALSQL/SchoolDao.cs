@@ -105,7 +105,27 @@ namespace TravelAgent.DALSQL
             sb.AppendFormat("ORDER BY Id OFFSET {0} ROW FETCH NEXT {1} ROWS ONLY ", (page_index - 1)*page_count, page_count);
             
             DataSet ds = DbHelperSQL.Query(sb.ToString());
+            if (ds == null || ds.Tables.Count <= 0)
+            {
+                return new List<School>() { School.NullSchool() };
+            }
             return DbHelperSQL.DT2List<School>(ds.Tables[0]);
+        }
+
+        public IList<School> GetBySql(string sql)
+        {
+            if(string.IsNullOrEmpty(sql))
+            { 
+                throw new NullReferenceException("null err,parameter sql is null");
+            }
+            DataSet set = DbHelperSQL.Query(sql);
+
+            if(set == null || set.Tables.Count <= 0)
+            { 
+                return new List<School>(){School.NullSchool()};
+            }
+
+           return DbHelperSQL.DT2List<School>(set.Tables[0]);
         }
 
     }
