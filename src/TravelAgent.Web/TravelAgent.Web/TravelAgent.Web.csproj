@@ -516,6 +516,7 @@
     <Content Include="images\zhangjiajie.jpg" />
     <Content Include="js\jquery.address.js" />
     <Content Include="js\jquery-2.0.0.js" />
+    <Content Include="mTravel\css\mAutocomplete.css" />
     <Content Include="mTravel\scripts\mAddress.js" />
     <Content Include="js\model.js" />
     <Content Include="js\fullcalendar.js" />
@@ -524,6 +525,7 @@
     <Content Include="js\jquery.cookie.js" />
     <Content Include="js\select_meihua.js" />
     <Content Include="js\tours_page.js" />
+    <Content Include="mTravel\scripts\mAutocomplete.js" />
     <Content Include="ueditor\dialogs\anchor\anchor.htm" />
     <Content Include="ueditor\dialogs\attachment\attachment.htm" />
     <Content Include="ueditor\dialogs\background\background.htm" />

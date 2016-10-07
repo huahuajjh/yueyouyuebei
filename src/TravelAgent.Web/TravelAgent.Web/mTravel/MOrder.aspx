@@ -9,13 +9,13 @@
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <link type="text/css" rel="stylesheet" href="css/yuding.css" />
 <link  rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
-<link type="text/css" href="css/mAddress.css" rel="stylesheet" />
+<link href="css/mAutocomplete.css" type="text/css" rel="stylesheet" />
 <script src="scripts/jquery.min.js"></script>
 <script src="/js/url.js" type="text/javascript"></script>
 <script type="text/javascript" src="scripts/date.js" ></script>
 <script type="text/javascript" src="scripts/iscroll.js" ></script>
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
-<script type="text/javascript" src="scripts/mAddress.js"></script>
+<script src="scripts/mAutocomplete.js" type="text/javascript"></script>
 <script type="text/javascript">
     function plusMinusNum(domVal) {
         var dom = $(domVal);
@@ -43,10 +43,15 @@
         plusMinusNum("#adult_num");
         plusMinusNum("#child_num");
         plusMinusNum("#baoxian_num");
-        $("#tuijianren").bindAddress({
-            addressUrl: apiURL.AreaGet,
-            schoolUrl: apiURL.SchoolGet,
-            personUrl: apiURL.ReferencesSchoolGetBySchId
+        //$("#tuijianren").bindAddress({
+        //    addressUrl: apiURL.AreaGet,
+        //    schoolUrl: apiURL.SchoolGet,
+        //    personUrl: apiURL.ReferencesSchoolGetBySchId
+        //});
+        $('#tuijianren').autocomplete({
+            url: apiURL.ReferencesSchoolGetByFuzzy,
+            width: 300,
+            height: 30,
         });
         //$('#shijian').date();
         $("#ordertime").val("");
