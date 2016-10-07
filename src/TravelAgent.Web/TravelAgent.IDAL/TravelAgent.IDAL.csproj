@@ -86,6 +86,7 @@
     <Compile Include="ILineTheme.cs" />
     <Compile Include="ILinks.cs" />
     <Compile Include="IReferencesDao.cs" />
+    <Compile Include="IReferencesSchoolDao.cs" />
     <Compile Include="ISchoolDao.cs" />
     <Compile Include="ISupply.cs" />
     <Compile Include="ITourComment.cs" />

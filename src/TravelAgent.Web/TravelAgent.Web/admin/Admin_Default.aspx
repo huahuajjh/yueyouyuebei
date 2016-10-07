@@ -10,6 +10,16 @@
     <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="js/adminCommon.js"></script>
     <script type="text/javascript" src="../js/genneral.js"></script>
+    <style>
+        #form1 { overflow:hidden; }
+    </style>
+
+    <script>
+        $(function () {
+            var window_height = $(document).height();
+            $("#mainRight").css("height", window_height);
+        })
+    </script>
 </head>
 <body>
 <form id="form1" runat="server">

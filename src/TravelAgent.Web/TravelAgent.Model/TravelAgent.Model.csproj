@@ -89,6 +89,7 @@
     <Compile Include="Links.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="References.cs" />
+    <Compile Include="ReferencesSchool.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SMSRecord.cs" />
     <Compile Include="SMSServer.cs" />
