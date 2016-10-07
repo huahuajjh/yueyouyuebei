@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="IAreaService.cs" />
     <Compile Include="IQueryReferencesService.cs" />
+    <Compile Include="IReferencesSchoolService.cs" />
     <Compile Include="IReferencesService.cs" />
     <Compile Include="ISchoolService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

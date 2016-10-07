@@ -113,7 +113,7 @@ namespace TravelAgent.WebAPI.Controllers
 
             ErrMsg msg = new ErrMsg();
             ExcelConfiguration cfg = new ExcelConfiguration();
-            cfg.TemplatePath = @"D:\projects\yueyouyuebei\src\TravelAgent.Web\TravelAgent.WebAPI\template\school.xlsx";
+            cfg.TemplatePath = ConfigurationManager.AppSettings["schoolDataPath"];
             cfg.TemplateRowIndex = 1;
             IExport export = ExcelFactory.Instance().GetExcelExporter(cfg, msg);
             byte[] data = export.Export<SchoolCodeFileDto>(dto_list);
