@@ -87,7 +87,7 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
                             url: params.url,
                             async: false,
                             data: {
-                                sch_name: word
+                                fuzzy: word
                             },
                             success: function (data) {
                                 var datas = data.Data;
