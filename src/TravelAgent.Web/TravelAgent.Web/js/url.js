@@ -19,6 +19,10 @@ var apiURL = (function () {
         ReferencesGetBySchoolName: url + "/api/References/GetBySchoolName",
         ReferencesGetById: url + "/api/References/GetById",
         SchoolCodeFile: url + "/api/school/DownSchoolCodeFile",
-        SchoolGetByFuzzyName: url + "/api/school/GetBuFuzzyName"
+        SchoolGetByFuzzyName: url + "/api/school/GetBuFuzzyName",
+
+        ReferencesSchoolGetByFuzzy: url + "/api/ReferencesSchool/GetByFuzzy",
+        ReferencesSchoolGetBySchId: url + "/api/ReferencesSchool/GetBySchId",
+        ReferencesSchoolGetByPage: url + "/api/ReferencesSchool/GetByPage",
     };
 })()

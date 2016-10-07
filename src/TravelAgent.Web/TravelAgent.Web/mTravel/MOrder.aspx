@@ -46,7 +46,7 @@
         $("#tuijianren").bindAddress({
             addressUrl: apiURL.AreaGet,
             schoolUrl: apiURL.SchoolGet,
-            personUrl: apiURL.ReferencesGet
+            personUrl: apiURL.ReferencesSchoolGetBySchId
         });
         //$('#shijian').date();
         $("#ordertime").val("");

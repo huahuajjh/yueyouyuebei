@@ -100,9 +100,9 @@ Author: Lorenzo Cioni - https://github.com/lorecioni
 			                success: function (data) {
 			                    var datas = data.Data;
 			                    for (var i = 0, test; test = datas[i++];) {
-			                        currentProposals.push(test.Name);
+			                        currentProposals.push(test.FullName);
 			                        var element = $('<li></li>')
-                                        .html(test.Name)
+                                        .html(test.FullName)
                                         .addClass('proposal')
                                         .click(function () {
                                             self.val($(this).html());

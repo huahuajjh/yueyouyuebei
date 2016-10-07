@@ -86,7 +86,7 @@
             }
             else if (reqType == "school") {
                 var sendPersonData = {
-                    school_id: id
+                    sid: id
                 };
                 ajax(setting.personUrl, sendPersonData, function (data) {
                     self.createTabDom(name, [], [], data.Data, "选择推介人");
@@ -167,7 +167,7 @@
                 // 增加标签对象
                 var areaListLi = $('<li><a></a></li>').appendTo(areaList);
                 // 给标签对象增加事件
-                areaListLi.find("a").html(d["Name"]).on("click", { address: d, index: tabIndex, Name: d["Name"] }, function (e) {
+                areaListLi.find("a").html(d["FullName"]).on("click", { address: d, index: tabIndex, FullName: d["FullName"] }, function (e) {
                     self.panel.find(".tab li:gt(" + e.data.index + ")").each(function () {
                         $(this).data("areaData").remove();
                         $(this).remove();
@@ -180,9 +180,9 @@
                         tempArr[i] = self.selectData[i];
                     }
                     self.selectData = tempArr;
-                    var names = $.map(self.selectData, function (d) { return d["Name"]; });
+                    var names = $.map(self.selectData, function (d) { return d["FullName"]; });
                     self.selectVal = names.join(" ");
-                    if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), e.data.Name);
+                    if ($.isFunction(setting.changeFn)) setting.changeFn($.extend([], self.selectData), e.data.FullName);
                 });
             }
         }
