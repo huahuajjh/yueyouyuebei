@@ -24,5 +24,10 @@ var apiURL = (function () {
         ReferencesSchoolGetByFuzzy: url + "/api/ReferencesSchool/GetByFuzzy",
         ReferencesSchoolGetBySchId: url + "/api/ReferencesSchool/GetBySchId",
         ReferencesSchoolGetByPage: url + "/api/ReferencesSchool/GetByPage",
+
+        SchoolDel: url + "/api/School/Del",
+        ReferencesDel: url + "/api/References/Del",
+        SchoolsDelRange: url + "/api/School/DelRange",
+        ReferencesDelRange: url + "/api/References/DelRange"
     };
 })()
