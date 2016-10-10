@@ -4,6 +4,7 @@ using eh.impls.errs;
 using eh.interfaces;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -74,8 +75,16 @@ namespace TravelAgent.WebAPI.Controllers
             }
             else
             {
-                Service.Add(list);
-                return ToJson("success");
+                try
+                {
+                    Service.Add(list);
+                    return ToJson("success");
+                }
+                catch (SqlException ex)
+                {
+                    msg.AddErrMsg(ex.InnerException.ToString());
+                    return ToJson(msg.GetErrors(), status_code: 0, msg: "fail");
+                }
             }
         }
 
