@@ -30,6 +30,11 @@ namespace TravelAgent.WebAPI.Models
 
         public static IList<References> ToList(IList<ReferencesDto> dto_list)
         { 
+            if(dto_list == null)
+            {
+                return new List<References>();
+            }
+
             IList<References> list = new List<References>();
             foreach (ReferencesDto item in dto_list)
             {
