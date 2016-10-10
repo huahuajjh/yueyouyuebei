@@ -70,8 +70,8 @@ namespace TravelAgent.WebAPI.Controllers
             IList<References> list = ReferencesDto.ToList(import.Import<ReferencesDto>(file.InputStream));
 
             if(msg.Count!=0)
-            { 
-                return ToJson(msg.GetErrors(),status_code:0,msg:"fail");
+            {
+                return ToJson(msg.GetErrors(), status_code: 0, msg: "fail");
             }
             else
             {
@@ -81,7 +81,7 @@ namespace TravelAgent.WebAPI.Controllers
                     return ToJson("success");
                 }catch(SqlException ex)
                 {
-                    msg.AddErrMsg(ex.InnerException.ToString());
+                    msg.AddErrMsg(ex.Message);
                     return ToJson(msg.GetErrors(), status_code: 0, msg: "fail");
                 }
 

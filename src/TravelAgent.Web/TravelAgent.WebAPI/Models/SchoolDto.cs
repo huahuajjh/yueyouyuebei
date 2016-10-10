@@ -49,6 +49,8 @@ namespace TravelAgent.WebAPI.Models
             IList<SchoolDto> dto_list = new List<SchoolDto>();
             foreach (School item in list)
             {
+                if (string.IsNullOrWhiteSpace(item.ShortName)) { item.ShortName = "NA"; }
+                if (item.ShortName.ToLower().Contains("null")) { item.ShortName = "NA"; }
                 dto_list.Add(new SchoolDto() { Id = item.Id, Name = item.Name });
             }
             return dto_list;

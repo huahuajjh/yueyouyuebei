@@ -52,7 +52,7 @@
       <publishTime>09/27/2016 20:23:24</publishTime>
     </File>
     <File Include="bin/attributes.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:19</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
       <publishTime>09/27/2016 20:23:23</publishTime>
@@ -64,13 +64,13 @@
       <publishTime>09/27/2016 20:23:23</publishTime>
     </File>
     <File Include="bin/eh.impls.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:19</publishTime>
     </File>
     <File Include="bin/eh.interfaces.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:18</publishTime>
     </File>
     <File Include="bin/eh.util.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:18</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/27/2016 20:23:15</publishTime>
@@ -208,28 +208,28 @@
       <publishTime>09/27/2016 20:23:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.dll">
-      <publishTime>10/07/2016 18:50:46</publishTime>
+      <publishTime>10/10/2016 18:39:50</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALFactory.dll">
-      <publishTime>10/07/2016 18:50:45</publishTime>
+      <publishTime>10/10/2016 17:24:22</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.dll">
-      <publishTime>10/07/2016 18:50:45</publishTime>
+      <publishTime>10/10/2016 18:39:49</publishTime>
     </File>
     <File Include="bin/TravelAgent.IDAL.dll">
-      <publishTime>10/07/2016 18:50:45</publishTime>
+      <publishTime>10/10/2016 17:24:22</publishTime>
     </File>
     <File Include="bin/TravelAgent.IService.dll">
-      <publishTime>10/07/2016 18:50:45</publishTime>
+      <publishTime>10/10/2016 17:24:22</publishTime>
     </File>
     <File Include="bin/TravelAgent.Model.dll">
-      <publishTime>10/07/2016 18:50:44</publishTime>
+      <publishTime>10/10/2016 17:24:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.dll">
-      <publishTime>10/07/2016 18:50:44</publishTime>
+      <publishTime>10/10/2016 18:39:49</publishTime>
     </File>
     <File Include="bin/TravelAgent.WebAPI.dll">
-      <publishTime>10/07/2016 18:50:46</publishTime>
+      <publishTime>10/10/2016 18:39:50</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/27/2016 20:23:24</publishTime>
@@ -466,16 +466,16 @@
       <publishTime>09/30/2016 15:41:41</publishTime>
     </File>
     <File Include="lib/attributes.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:19</publishTime>
     </File>
     <File Include="lib/eh.impls.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:19</publishTime>
     </File>
     <File Include="lib/eh.interfaces.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:18</publishTime>
     </File>
     <File Include="lib/eh.util.dll">
-      <publishTime>09/30/2016 15:41:42</publishTime>
+      <publishTime>10/10/2016 18:34:18</publishTime>
     </File>
     <File Include="NLog.config">
       <publishTime>10/03/2016 17:01:24</publishTime>

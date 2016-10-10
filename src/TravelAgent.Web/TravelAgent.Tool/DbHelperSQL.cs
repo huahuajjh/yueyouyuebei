@@ -655,7 +655,7 @@ namespace TravelAgent.Tool
                     if(dt.Columns.Contains(p.Name))
                     {
                         if (!p.CanWrite) { continue;}
-                        p.SetValue(t,row[p.Name],null);                        
+                        p.SetValue(t,row[p.Name],null);
                     }
                 }
                 list.Add(t);
