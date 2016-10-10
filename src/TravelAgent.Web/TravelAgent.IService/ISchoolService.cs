@@ -15,5 +15,7 @@ namespace TravelAgent.IService
         void UploadExcelFile(Stream file);
         IList<School> GetByFuzzyName(string name);
         IList<School> GetSchoolCode();
+        void Del(int id);
+        void Del(int[] id);
     }
 }

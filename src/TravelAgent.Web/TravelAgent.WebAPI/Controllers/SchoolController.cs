@@ -125,6 +125,30 @@ namespace TravelAgent.WebAPI.Controllers
             return res;
         }
 
+        [HttpGet]
+        public HttpResponseMessage Del(int id)
+        { 
+            Service.Del(id);
+            return ToJsonp("success");
+        }
+
+        [HttpGet]
+        public HttpResponseMessage DelRange()
+        {
+            string ids = HttpContext.Current.Request.QueryString["ids"];
+            if (!string.IsNullOrWhiteSpace(ids))
+            {
+                string[] temp = ids.Split(',');
+                int[] temp2 = new int[temp.Length];
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    temp2[i] = int.Parse(temp[i]);
+                }
+                Service.Del(temp2);
+            }
+            return ToJsonp("success");
+        }
+
     }
     
 }

@@ -62,10 +62,6 @@ namespace TravelAgent.DALSQL
             return DbHelperSQL.ExecuteSql(sb.ToString(), parameters);
         }
 
-        public int Del(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public School Get(int id)
         {
@@ -128,5 +124,26 @@ namespace TravelAgent.DALSQL
            return DbHelperSQL.DT2List<School>(set.Tables[0]);
         }
 
+
+        public void Del(int id)
+        {
+            //事务操作，推荐人SchoolId关联学校Id，先查询推荐人数据，删除之
+            DbHelperSQL.ExecuteSql("DELETE FROM [References] WHERE SchoolId =@Id", new SqlParameter("@Id", id));
+
+            SqlParameter[] ps = { new SqlParameter("@Id", SqlDbType.Int) };
+            ps[0].Value = id;
+            DbHelperSQL.ExecuteSql("DELETE FROM [School] WHERE Id=@Id", ps);
+        }
+
+        public void Del(int[] ids)
+        {
+            if (ids != null && ids.Length > 0)
+            {
+                foreach (int id in ids)
+                {
+                    Del(id);
+                }
+            }
+        }
     }
 }

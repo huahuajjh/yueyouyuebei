@@ -11,10 +11,11 @@ namespace TravelAgent.IDAL
         void Add(References r);
         void AddRange(IList<References> rs);
         int Update(References r);
-        int Del(int id);
         References Get(int id);
         IList<References> Get(string where,params string[] parameters);
         IList<References> Get(string where,int page_index,int page_count,out int total_page, params string[] parameters);
         References GetById(int id);
+        void Del(int id);
+        void Del(int[] ids);
     }
 }

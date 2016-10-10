@@ -17,5 +17,7 @@ namespace TravelAgent.IService
         IList<References> GetBySchoolId(int school_id);
         void UploadExcelFile(Stream file);        
         References GetById(int id);
+        void Del(int id);
+        void Del(int[] ids);
     }
 }

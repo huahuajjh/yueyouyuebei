@@ -64,5 +64,16 @@ namespace TravelAgent.BLL
         {
             return Dao.GetBySql("select Id,Name from School");
         }
+
+
+        public void Del(int id)
+        {
+            Dao.Del(id);
+        }
+
+        public void Del(int[] ids)
+        {
+            Dao.Del(ids);
+        }
     }
 }

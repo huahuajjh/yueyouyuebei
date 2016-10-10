@@ -161,7 +161,7 @@
                  <li> 
                 <label class = "label_hd">推荐人</label>
                 <span class="t2">
-                <input type='text' id="tuijianren" placeholder="推荐人（必填）" class="order-txt" name="tuijianren" maxlength="50" value="" />
+                <input type='text' id="tuijianren" placeholder="请输入本校名称或者推荐人姓名即可查找推荐人信息，无推荐人输入学校名称即可" class="order-txt" name="tuijianren" maxlength="50" value="" />
                 </span></li>
                  <li> 
                 <label class = "label_hd"></label>
