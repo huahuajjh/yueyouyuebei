@@ -31,6 +31,11 @@ namespace TravelAgent.WebAPI.Models
 
         public static IList<School> ToList(IList<SchoolDto> dto_list)
         {
+            if(dto_list == null)
+            {
+                return new List<School>();
+            }
+
             IList<School> list = new List<School>();
             foreach (SchoolDto item in dto_list)
             {
