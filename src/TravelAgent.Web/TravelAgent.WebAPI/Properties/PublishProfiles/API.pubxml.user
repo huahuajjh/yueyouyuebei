@@ -208,13 +208,13 @@
       <publishTime>09/27/2016 20:23:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.dll">
-      <publishTime>10/10/2016 18:39:50</publishTime>
+      <publishTime>10/11/2016 12:07:29</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALFactory.dll">
       <publishTime>10/10/2016 17:24:22</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.dll">
-      <publishTime>10/10/2016 18:39:49</publishTime>
+      <publishTime>10/11/2016 12:07:28</publishTime>
     </File>
     <File Include="bin/TravelAgent.IDAL.dll">
       <publishTime>10/10/2016 17:24:22</publishTime>
@@ -226,10 +226,10 @@
       <publishTime>10/10/2016 17:24:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.dll">
-      <publishTime>10/10/2016 18:39:49</publishTime>
+      <publishTime>10/11/2016 12:07:28</publishTime>
     </File>
     <File Include="bin/TravelAgent.WebAPI.dll">
-      <publishTime>10/10/2016 18:39:50</publishTime>
+      <publishTime>10/11/2016 12:07:29</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/27/2016 20:23:24</publishTime>

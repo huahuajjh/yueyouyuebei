@@ -59,7 +59,7 @@ namespace TravelAgent.Tool
               NPOI.SS.UserModel.IFont font = book.CreateFont();
               NPOI.SS.UserModel.ICellStyle style = book.CreateCellStyle();
               font.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
-              font.FontName = "宋体";
+              font.FontName = "微软雅黑";
               
               style.SetFont(font);
 

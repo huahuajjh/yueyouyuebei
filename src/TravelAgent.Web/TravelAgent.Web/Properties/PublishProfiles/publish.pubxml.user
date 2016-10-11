@@ -2146,7 +2146,7 @@
       <publishTime>09/27/2016 20:23:21</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.dll">
-      <publishTime>10/10/2016 16:00:52</publishTime>
+      <publishTime>10/11/2016 11:56:07</publishTime>
     </File>
     <File Include="bin/TravelAgent.BLL.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
@@ -2158,7 +2158,7 @@
       <publishTime>09/28/2016 15:15:04</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.dll">
-      <publishTime>10/10/2016 16:16:26</publishTime>
+      <publishTime>10/11/2016 11:56:07</publishTime>
     </File>
     <File Include="bin/TravelAgent.DALSQL.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
@@ -2188,7 +2188,7 @@
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.dll">
-      <publishTime>10/10/2016 15:18:10</publishTime>
+      <publishTime>10/11/2016 11:56:06</publishTime>
     </File>
     <File Include="bin/TravelAgent.Tool.pdb">
       <publishTime>09/28/2016 15:15:03</publishTime>
@@ -2200,7 +2200,7 @@
       <publishTime>09/28/2016 15:15:03</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.dll">
-      <publishTime>10/10/2016 17:02:56</publishTime>
+      <publishTime>10/11/2016 11:56:09</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.dll.config">
       <publishTime>09/28/2016 16:22:50</publishTime>
@@ -2209,7 +2209,7 @@
       <publishTime>09/28/2016 15:15:05</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.UI.dll">
-      <publishTime>10/10/2016 16:13:54</publishTime>
+      <publishTime>10/11/2016 11:56:08</publishTime>
     </File>
     <File Include="bin/TravelAgent.Web.UI.pdb">
       <publishTime>09/28/2016 15:15:04</publishTime>
@@ -4474,7 +4474,7 @@
       <publishTime>07/14/2015 11:49:02</publishTime>
     </File>
     <File Include="Master.Master">
-      <publishTime>09/20/2016 16:10:37</publishTime>
+      <publishTime>10/11/2016 11:53:45</publishTime>
     </File>
     <File Include="Master.Master.cs">
       <publishTime>09/12/2016 16:44:01</publishTime>

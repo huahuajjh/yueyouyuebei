@@ -136,7 +136,7 @@ namespace TravelAgent.Web.admin.product
             }
             if (!_orderenddate.Equals(""))
             {
-                strTemp.Append(" and a.orderDate>='" + Convert.ToDateTime(_orderenddate) + "'");
+                strTemp.Append(" and a.orderDate<='" + Convert.ToDateTime(_orderenddate) + "'");
             }
             if (!_startdate.Equals(""))
             {
@@ -283,6 +283,10 @@ namespace TravelAgent.Web.admin.product
             dt.Columns.Add(new DataColumn("状态", typeof(string)));
             dt.Columns.Add(new DataColumn("联系人", typeof(string)));
             dt.Columns.Add(new DataColumn("联系电话", typeof(string)));
+            dt.Columns.Add(new DataColumn("推荐人", typeof(string)));
+            dt.Columns.Add(new DataColumn("身份证", typeof(string)));
+            dt.Columns.Add(new DataColumn("邮箱", typeof(string)));
+            dt.Columns.Add(new DataColumn("手机", typeof(string)));
             DataRow row = null, qrow = null;
             Hashtable ht = new Hashtable();
             for (int i = 0; i <= dsQueryClub.Tables[0].Rows.Count - 1; i++)
@@ -292,14 +296,18 @@ namespace TravelAgent.Web.admin.product
                 row["编号"] = qrow[0];
                 row["订单号"] = qrow[2];
                 row["下单时间"] = qrow[6];
-                row["线路名称"] = qrow[31];
+                row["线路名称"] = qrow[33];
                 row["出发日期"] = qrow[7];
                 row["成人"] = qrow[4];
                 row["儿童"] = qrow[5];
                 row["应支付"] = ShowTotal(Convert.ToInt32(qrow[5]), Convert.ToInt32(qrow[9]),Convert.ToInt32(qrow[23]));
                 row["状态"] = TravelAgent.Tool.EnumHelper.GetMemberName<TravelAgent.Tool.EnumSummary.OrderState>(qrow[18]);
                 row["联系人"] = qrow[12];
-                row["联系电话"] = qrow[13] + "/" + qrow[14] + "/" + qrow[15];
+                row["联系电话"] = qrow[13].ToString().Length < 11 ? "NA" : qrow[13];
+                row["邮箱"] = qrow[14];
+                row["手机"] = qrow[15].ToString().Length < 11 ? "NA" : qrow[15];
+                row["身份证"] = qrow[32];
+                row["推荐人"] = qrow[31];
                 dt.Rows.Add(row);
             }
 
