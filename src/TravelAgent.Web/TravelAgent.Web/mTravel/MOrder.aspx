@@ -17,32 +17,7 @@
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
 <script src="scripts/mAutocomplete.js" type="text/javascript"></script>
 <script type="text/javascript">
-    function plusMinusNum(domVal) {
-        var dom = $(domVal);
-        var firstOrderBtn = dom.find(".order-btn:first");
-        var lastOrderBtn = dom.find(".order-btn:last");
-        var inp = dom.find("input");
-        firstOrderBtn.on("click", function(){
-            var val = inp.val();
-            if(val.match(/\d*/i) && parseInt(val) > 0) {
-                inp.val(parseInt(val) - 1);
-            } else {
-                inp.val("0");
-            }
-        });
-        lastOrderBtn.on("click", function(){
-            var val = inp.val();
-            if(val.match(/\d*/i)) {
-                inp.val(parseInt(val) + 1);
-            } else {
-                inp.val("1");
-            }
-        });
-    }
     $(function() {
-        plusMinusNum("#adult_num");
-        plusMinusNum("#child_num");
-        plusMinusNum("#baoxian_num");
         //$("#tuijianren").bindAddress({
         //    addressUrl: apiURL.AreaGet,
         //    schoolUrl: apiURL.SchoolGet,
@@ -116,7 +91,7 @@
               <li> 
                 <label>成人</label>
                 <span class="t2" id="adult_price_span">￥0</span> <span class="t3" id="adult_num"> <span class="j-linkage order-btn minus minus-active" data-type="adults"></span>
-                <input type='number' id="pr_d_num" min="1" max="100" class="order-txt-n" name="renshu1" value="0" />
+                <input type='number' id="pr_d_num" min="0" max="100" class="order-txt-n" name="renshu1" value="0" />
                 <span class="j-linkage order-btn plus plus-active" data-type="adults"></span> </span>  </li>
               <li>
                 <label>儿童</label>
@@ -127,7 +102,7 @@
                 <label>保险</label>
                 <span class="t2" id="baoxian"> ￥<%=LineModel.Insure!=null?LineModel.Insure.InsurePrice.ToString():"0" %> </span> <span class="t3" id="baoxian_num"> <span class="j-linkage order-btn minus minus-active" data-type="baox"></span>
                 <input type='number' min="0" max="100" id="pr_bx_num" class="order-txt-n" name="renshu3" value="0" />
-                <span class="j-linkage order-btn plus plus-active" data-type="teens"></span> </span> 
+                <span class="j-linkage order-btn plus plus-active" data-type="baox"></span> </span> 
               </li>
               <li> 
                 <label>订单总额</label>

@@ -7,7 +7,7 @@ function checkout_totalprice(){
 	
 	var adult_num = $('#pr_d_num').val();
 	var child_num = $('#pr_child_num').val();
-	$("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
+	//$("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
 	var baoxian_num = $("#pr_bx_num").val();
 	//var dingjin = $('#dingjin').val();
 	var total_price = Number(adult_price * adult_num) + Number(child_price * child_num) + Number(baoxian_price*baoxian_num);
@@ -44,13 +44,17 @@ document.addEventListener('touchend',function(e){
 			var $ele = $('#pr_child_num');
 			$ele.val(Number($ele.val())+1);
 			$("#pr_child_num").trigger('input');
+		} else if (ty == 'baox') {
+		    var $ele = $('#pr_bx_num');
+		    $ele.val(Number($ele.val()) + 1);
+		    $("#pr_bx_num").trigger('input');
 		}
 		
 	}else if(e.target.className.match(/minus-active/)){
 		var ty = e.target.getAttribute('data-type');
 		if(ty == 'adults'){
 			var $ele = $('#pr_d_num');
-			if($ele.val()<=1)return;
+			if($ele.val()<=0)return;
 			$ele.val(Number($ele.val())-1);
 			$("#pr_d_num").trigger('input');
 		}else if(ty == 'teens'){
@@ -70,24 +74,24 @@ document.addEventListener('touchend',function(e){
 
 $("#pr_d_num").bind('input',function(){
 	var adult_num = $('#pr_d_num').val();
-	if(adult_num>0)$("#pr_d_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-	if(adult_num<=0)$("#pr_d_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+	//if(adult_num>0)$("#pr_d_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+	//if(adult_num<=0)$("#pr_d_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
 	checkout_totalprice();
 
 });
 
 $("#pr_child_num").bind('input',function(){
 	var child_num = $('#pr_child_num').val();
-	if(child_num>0)$("#pr_child_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-	if(child_num<=0)$("#pr_child_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+	//if(child_num>0)$("#pr_child_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+	//if(child_num<=0)$("#pr_child_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
 	checkout_totalprice();
 });
 
 $("#pr_bx_num").bind('input', function() {
     var child_num = $('#pr_bx_num').val();
-    if (child_num > 0) $("#pr_bx_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-    if (child_num <= 0) $("#pr_bx_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
-    checkout_totalprice1();
+    //if (child_num > 0) $("#pr_bx_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+    //if (child_num <= 0) $("#pr_bx_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+    checkout_totalprice();
 });
 /*
 根据出发日期价钱相应变化
