@@ -517,6 +517,10 @@
     <Content Include="js\jquery.address.js" />
     <Content Include="js\jquery-2.0.0.js" />
     <Content Include="mTravel\css\mAutocomplete.css" />
+    <Content Include="mTravel\font-awesome-4.6.3\css\font-awesome.css" />
+    <Content Include="mTravel\font-awesome-4.6.3\css\font-awesome.min.css" />
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
+    <Content Include="mTravel\font-awesome-4.6.3\HELP-US-OUT.txt" />
     <Content Include="mTravel\scripts\mAddress.js" />
     <Content Include="js\model.js" />
     <Content Include="js\fullcalendar.js" />
@@ -3081,6 +3085,39 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.eot" />
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.ttf" />
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
+    <Content Include="mTravel\font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\animated.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\bordered-pulled.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\core.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\fixed-width.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\font-awesome.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\icons.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\larger.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\list.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\mixins.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\path.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\rotated-flipped.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\screen-reader.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\stacked.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\less\variables.less" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\font-awesome.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_animated.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_bordered-pulled.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_core.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_fixed-width.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_icons.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_larger.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_list.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_mixins.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_path.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_rotated-flipped.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_screen-reader.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_stacked.scss" />
+    <Content Include="mTravel\font-awesome-4.6.3\scss\_variables.scss" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
