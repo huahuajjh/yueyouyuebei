@@ -7,7 +7,7 @@ function checkout_totalprice(){
 	
 	var adult_num = $('#pr_d_num').val();
 	var child_num = $('#pr_child_num').val();
-	//$("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
+	$("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
 	var baoxian_num = $("#pr_bx_num").val();
 	//var dingjin = $('#dingjin').val();
 	var total_price = Number(adult_price * adult_num) + Number(child_price * child_num) + Number(baoxian_price*baoxian_num);
