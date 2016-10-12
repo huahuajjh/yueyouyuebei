@@ -1,5 +1,5 @@
 ﻿var codeReg = new RegExp(/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/);
-function checkout_totalprice(){
+function checkout_totalprice(notBX){
 	var adult_price = $('#adult_price').val();
 	var child_price = $('#child_price').val();
 
@@ -7,7 +7,7 @@ function checkout_totalprice(){
 	
 	var adult_num = $('#pr_d_num').val();
 	var child_num = $('#pr_child_num').val();
-	$("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
+	if (notBX) $("#pr_bx_num").val(parseInt(adult_num) + parseInt(child_num));
 	var baoxian_num = $("#pr_bx_num").val();
 	//var dingjin = $('#dingjin').val();
 	var total_price = Number(adult_price * adult_num) + Number(child_price * child_num) + Number(baoxian_price*baoxian_num);
@@ -39,15 +39,15 @@ document.addEventListener('touchend',function(e){
 		if(ty == 'adults'){
 			var $ele = $('#pr_d_num');
 			$ele.val(Number($ele.val())+1);
-			$("#pr_d_num").trigger('input');
+			checkout_totalprice(true);
 		}else if(ty == 'teens'){
 			var $ele = $('#pr_child_num');
 			$ele.val(Number($ele.val())+1);
-			$("#pr_child_num").trigger('input');
+			checkout_totalprice(true);
 		} else if (ty == 'baox') {
 		    var $ele = $('#pr_bx_num');
 		    $ele.val(Number($ele.val()) + 1);
-		    $("#pr_bx_num").trigger('input');
+		    checkout_totalprice();
 		}
 		
 	}else if(e.target.className.match(/minus-active/)){
@@ -56,43 +56,43 @@ document.addEventListener('touchend',function(e){
 			var $ele = $('#pr_d_num');
 			if($ele.val()<=0)return;
 			$ele.val(Number($ele.val())-1);
-			$("#pr_d_num").trigger('input');
+			checkout_totalprice(true);
 		}else if(ty == 'teens'){
 			var $ele = $('#pr_child_num');
 			if($ele.val()<=0)return;
 			$ele.val(Number($ele.val())-1);
-			$("#pr_child_num").trigger('input');
+			checkout_totalprice(true);
         }
         else if (ty == 'baox') {
             var $ele = $('#pr_bx_num');
             if ($ele.val() <= 0) return;
             $ele.val(Number($ele.val()) - 1);
-            $("#pr_bx_num").trigger('input');
+            checkout_totalprice();
         }
 	}
 },false);
 
-$("#pr_d_num").bind('input',function(){
-	var adult_num = $('#pr_d_num').val();
-	//if(adult_num>0)$("#pr_d_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-	//if(adult_num<=0)$("#pr_d_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
-	checkout_totalprice();
+//$("#pr_d_num").bind('input',function(){
+//	var adult_num = $('#pr_d_num').val();
+//	//if(adult_num>0)$("#pr_d_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+//	//if(adult_num<=0)$("#pr_d_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+//	checkout_totalprice(true);
 
-});
+//});
 
-$("#pr_child_num").bind('input',function(){
-	var child_num = $('#pr_child_num').val();
-	//if(child_num>0)$("#pr_child_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-	//if(child_num<=0)$("#pr_child_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
-	checkout_totalprice();
-});
+//$("#pr_child_num").bind('input',function(){
+//	var child_num = $('#pr_child_num').val();
+//	//if(child_num>0)$("#pr_child_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+//	//if(child_num<=0)$("#pr_child_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+//	checkout_totalprice(true);
+//});
 
-$("#pr_bx_num").bind('input', function() {
-    var child_num = $('#pr_bx_num').val();
-    //if (child_num > 0) $("#pr_bx_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
-    //if (child_num <= 0) $("#pr_bx_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
-    checkout_totalprice();
-});
+//$("#pr_bx_num").bind('input', function() {
+//    var child_num = $('#pr_bx_num').val();
+//    //if (child_num > 0) $("#pr_bx_num").prev('.minus').removeClass('minus-disabled').addClass('minus-active');
+//    //if (child_num <= 0) $("#pr_bx_num").prev('.minus').removeClass('minus-active').addClass('minus-disabled');
+//    checkout_totalprice();
+//});
 /*
 根据出发日期价钱相应变化
 */
