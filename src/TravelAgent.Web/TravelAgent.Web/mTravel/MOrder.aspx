@@ -101,20 +101,9 @@
 				</li>--%>
               <li> 
                 <label>成人</label>
-<<<<<<< HEAD
-                <span class="t2" id="adult_price_span">￥0</span>
-                    <span class="t3" id="adult_num">
-                        <span  class="j-linkage order-btn minus minus-active" data-type="adults"></span>
-                        <input type='number' id="pr_d_num" min="0" max="100" class="order-txt-n" name="renshu1" value="0" />
-                        <span class="j-linkage order-btn plus plus-active" data-type="adults"></span>
-                 </span>  
-
-              </li>
-=======
                 <span class="t2" id="adult_price_span">￥0</span> <span class="t3" id="adult_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="adults"></span>
                 <input type='number' id="pr_d_num" min="0" max="100" class="order-txt-n" name="renshu1" value="0" />
                 <span class="j-linkage order-btn plus plus-active fa fa-plus" data-type="adults"></span> </span>  </li>
->>>>>>> 3f961efbefe73aee7f47da8b81075feb23a52987
               <li>
                 <label>儿童</label>
                 <span class="t2" id="child_price_span"> ￥0 </span> <span class="t3" id="child_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="teens"></span>
