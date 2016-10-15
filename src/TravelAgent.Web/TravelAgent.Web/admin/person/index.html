@@ -19,6 +19,52 @@
                 top: 0 !important;
                 left: 0 !important;
             }
+        .modal-excel {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height: 100%;
+            overflow:auto;
+        }
+            .modal-excel .modal-bg {
+                background: #000;
+                opacity: 0.7;
+                filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+                width: 100%;
+                height: 100%;
+                position:absolute;
+                top:0;
+                left:0;
+            }
+            .modal-excel .modal-body {
+                position: relative;
+                margin: 70px auto;
+                width: 800px;
+                background: #F0F9FD;
+            }
+            .modal-excel .modal-body ul{
+                padding:20px;
+            }
+                .modal-excel .modal-body ul li{
+                    margin:5px 0;
+                    color:#ce0000
+                }
+            .modal-excel .modal-title {
+                background: #5895CE;
+                color: #fff;
+                font-size: 12px;
+                padding: 5px 15px;
+            }
+                .modal-excel .modal-title a {
+                    color: #fff;
+                    top: 0;
+                    font-size: 15px;
+                    position: absolute;
+                    right: 0;
+                    margin: 2px 5px;
+                    cursor: pointer;
+                }
     </style>
     <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="../../js/url.js"></script>
@@ -29,9 +75,22 @@
     <script type="text/javascript" src="../../js/webuploader.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            $("#chkSelect").click(function () {
+                if ($(this).attr("checked")) {
+                    $(":checkbox[name^='rptClub']").attr("checked", true);
+                }
+                else {
+                    $(":checkbox[name^='rptClub']").attr("checked", false);
+                }
+            })
+
             $("#addBtn").on("click", function () {
                 var json = { width: "800px", height: "500px", title: "新增推介人", lock: true };
                 art.dialog.open("./add.html", json);
+            });
+
+            $("#import-error .modal-title a").on("click", function () {
+                $("#import-error").css("display", "none");
             });
 
             //分页参数设置
@@ -69,6 +128,18 @@
             });
             uploader.on('uploadSuccess', function (file, data) {
                 uploader.removeFile(file);
+                if (data._raw) {
+                    var rData = $.parseJSON(data._raw);
+                    if (!rData.Code) {
+                        alert("上传失败!");
+                        $("#excel-error-list").empty();
+                        for (var i = 0, d; d = rData.Data[i++];) {
+                            $("<li>").html(d).appendTo("#excel-error-list");
+                        }
+                        $("#import-error").css("display", "block");
+                        return;
+                    }
+                }
                 refreshData();
                 alert("上传成功!");
             });
@@ -113,42 +184,56 @@
                         $("#dataBody").empty();
                         for (var i = 0, d; d = datas[i++];) {
                             var tr = $("<tr>").appendTo($("#dataBody"));
+                            $('<td style="text-align:center"><input name="rptClub" type="checkbox" value="' + d.Id + '" class="checkall" /></td>').appendTo(tr);
                             $('<td style="text-align:center"></td>').html(d.Id).appendTo(tr);
                             $('<td style="text-align:center"></td>').html(d.Name).appendTo(tr);
                             $('<td style="text-align:center"></td>').html(d.Tel).appendTo(tr);
                             var td = $('<td style="text-align:center"></td>').appendTo(tr);
-                            $('<a href="javascript:;" class="tablelink club_art">修改</a>').appendTo(td).on("click", { school: d }, function (e) {
+                            $('<a href="javascript:;" class="tablelink club_art">修改</a>').css({"margin-right": "10px"}).appendTo(td).on("click", { school: d }, function (e) {
                                 var json = { width: "800px", height: "500px", title: "修改推介人", lock: true };
                                 art.dialog.open("./edit.html?id=" + e.data.school.Id, json);
                             });
-                            //$('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d }, function (e) {
-                            //    art.dialog.confirm("确认删除该数据吗？", function () {
-                            //        //$.ajax({
-                            //        //    type: "POST",
-                            //        //    url: "../data/Club.aspx",
-                            //        //    cache: false,
-                            //        //    dataType: "text",
-                            //        //    data: { clubid: id },
-                            //        //    success: function (msg) {
-                            //        //        //提示删除成功消息
-                            //        //        if (msg.indexOf("true") >= 0) {
-                            //        //            location.href = location.href;
-                            //        //            return false;
-                            //        //        }
-                            //        //        else {
-                            //        //            art.dialog.alert("删除失败！");
-                            //        //            return false;
-                            //        //        }
-                            //        //    }
-                            //        //})
-                            //    }, function () {
-                            //        art.dialog.close();
-                            //    });
-                            //});
+                            $('<a id="1060" href="#" class="tablelink club_delete">删除</a>').appendTo(td).on("click", { school: d, tr: tr }, function (e) {
+                                art.dialog.confirm("确认删除该数据吗？", function () {
+                                    $.ajax({
+                                        dataType: "jsonp",//数据类型为jsonp  
+                                        jsonp: "callback",//服务端用于接收callback调用的function名的参数
+                                        type: "get",
+                                        url: apiURL.ReferencesDel,
+                                        async: false,
+                                        cache: false,
+                                        data: { id: e.data.school.Id },
+                                        success: function (msg) {
+                                            refreshData();
+                                        }
+                                    })
+                                }, function () {
+                                    art.dialog.close();
+                                });
+                            });
                         }
                     }
                 })
             }
+            $("#delAll").on("click", function () {
+                var ids = $.makeArray($(":checkbox[name^='rptClub']:checked").map(function () { return $(this).val(); }));
+                if (ids.length <= 0) return;
+                art.dialog.confirm("确认删除该数据吗？", function () {
+                    $.ajax({
+                        dataType: "jsonp",//数据类型为jsonp  
+                        jsonp: "callback",//服务端用于接收callback调用的function名的参数
+                        type: "get",
+                        url: apiURL.ReferencesDelRange,
+                        async: false,
+                        data: { ids: ids.join(",") },
+                        success: function (msg) {
+                            refreshData();
+                        }
+                    })
+                }, function () {
+                    art.dialog.close();
+                });
+            });
             refreshData();
         });
     </script>
@@ -160,6 +245,9 @@
         <div class="rightinfo">
             <div class="tools">
                 <ul class="toolbar">
+                    <li>
+                        <span><img src="../images/t03.png" /></span><a id="delAll">批量删除</a>
+                    </li>
                     <li><a href="javascript:;" id="addBtn"><span><img src="../images/t01.png"></span>添加推介人</a></li>
                     <li style="position:relative">
                         <span><img src="../images/excel.png" style="width:24px; height:24px"></span>
@@ -179,8 +267,9 @@
             <table class="tablelist">
                 <thead>
                     <tr>
+                        <th style="width:3%; text-align:center"><input id="chkSelect" name="chkSelect" type="checkbox" value="" /></th>
                         <th style="width:4%">编号</th>
-                        <th style="width:45%">推介人名称</th>
+                        <th style="width:42%">推介人名称</th>
                         <th style="width:45%">推介人联系号码</th>
                         <th>操作</th>
                     </tr>
@@ -188,7 +277,7 @@
                 <tbody id="dataBody"></tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             <div id="Pagination" class="right flickr"></div>
                             <div id="divTotalCount" class="right" style=" margin-right:20px; padding-top:10px;">总共有 <span style="color:Red" id="countTxt"></span> 条记录</div>
                         </td>
@@ -197,5 +286,13 @@
             </table>
         </div>
     </form>
+    <div class="modal-excel" id="import-error" style="display:none;">
+        <div class="modal-bg"></div>
+        <div class="modal-body">
+            <div class="modal-title">导入错误列表<a>×</a></div>
+            <ul id="excel-error-list">
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

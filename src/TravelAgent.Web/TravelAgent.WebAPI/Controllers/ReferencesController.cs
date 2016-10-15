@@ -2,8 +2,10 @@
 using eh.impls;
 using eh.impls.errs;
 using eh.interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -68,13 +70,22 @@ namespace TravelAgent.WebAPI.Controllers
             IList<References> list = ReferencesDto.ToList(import.Import<ReferencesDto>(file.InputStream));
 
             if(msg.Count!=0)
-            { 
-                return ToJson(msg.GetErrors(),status_code:0,msg:"fail");
+            {
+                return ToJson(msg.GetErrors(), status_code: 0, msg: "fail");
             }
             else
             {
-                Service.Add(list);
-                return ToJson("success");
+                try
+                {
+                    Service.Add(list);
+                    return ToJson("success");
+                }catch(SqlException ex)
+                {
+                    msg.AddErrMsg(ex.Message);
+                    return ToJson(msg.GetErrors(), status_code: 0, msg: "fail");
+                }
+
+                
             }
         }
         
@@ -104,6 +115,30 @@ namespace TravelAgent.WebAPI.Controllers
         public HttpResponseMessage GetById(int id)
         {
             return ToJsonp(Service.GetById(id));
+        }
+    
+        [HttpGet]
+        public HttpResponseMessage Del(int id)
+        { 
+            Service.Del(id);
+            return ToJsonp("success");
+        }
+
+        [HttpGet]
+        public HttpResponseMessage DelRange()
+        { 
+            string ids = HttpContext.Current.Request.QueryString["ids"];
+            if(!string.IsNullOrWhiteSpace(ids))
+            { 
+                string[] temp = ids.Split(',');
+                int[] temp2 = new int[temp.Length];
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    temp2[i] = int.Parse(temp[i]);
+                }
+                Service.Del(temp2);
+            }
+            return ToJsonp("success");
         }
     }
 }

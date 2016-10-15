@@ -112,5 +112,23 @@ namespace TravelAgent.DALSQL
             }
             return list[0];
         }
+
+        void IReferencesDao.Del(int id)
+        {            
+            SqlParameter[] ps = { new SqlParameter("@Id",SqlDbType.Int)};
+            ps[0].Value = id;
+            DbHelperSQL.ExecuteSql("DELETE FROM [References] WHERE Id=@Id",ps);
+        }
+
+        public void Del(int[] ids)
+        {
+            if(ids !=null && ids.Length>0)
+            {
+                foreach (int id in ids)
+                {
+                    Del(id);
+                }
+            }
+        }
     }
 }

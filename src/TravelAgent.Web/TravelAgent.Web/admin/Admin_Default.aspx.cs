@@ -199,36 +199,39 @@ namespace TravelAgent.Web.admin
                 sbNav.Append("</dd>");
             }
 
+            #region old code
             //租车产品，记得要改
-            if (Admin.Role.roleAuth.IndexOf(",provisa,") > -1)
-            {
-                sbNav.Append("<dd class=\"product noshow\">");
-                sbNav.Append("<div class=\"title\"><span><img src=\"images/leftico01.png\" /></span>租车产品</div>");
-                sbNav.Append("<ul class=\"menuson noshow\">");
-                if (Admin.Role.roleAuth.IndexOf(",visalist,") > -1)
-                {
-                    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarList.aspx')\">租车列表</a><i></i></li>");
-                }
-                if (Admin.Role.roleAuth.IndexOf(",lingqu,") > -1)
-                {
-                    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarCity.aspx')\">租车城市</a><i></i></li>");
-                }
-                if (Admin.Role.roleAuth.IndexOf(",area,") > -1)
-                {
-                    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarNumber.aspx')\">汽车厢数</a><i></i></li>");
-                }
-                if (Admin.Role.roleAuth.IndexOf(",visatype,") > -1)
-                {
-                    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarBrand.aspx')\">汽车品牌</a><i></i></li>");
-                }
-                if (Admin.Role.roleAuth.IndexOf(",visaset,") > -1)
-                {
-                    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarClass.aspx')\">车辆级别</a><i></i></li>");
-                }
-
-                sbNav.Append("</ul>");
-                sbNav.Append("</dd>");
-            }
+            //if (Admin.Role.roleAuth.IndexOf(",provisa,") > -1)
+            //{
+            //    sbNav.Append("<dd class=\"product noshow\">");
+            //    sbNav.Append("<div class=\"title\"><span><img src=\"images/leftico01.png\" /></span>租车产品</div>");
+            //    sbNav.Append("<ul class=\"menuson noshow\">");
+            //    if (Admin.Role.roleAuth.IndexOf(",visalist,") > -1)
+            //    {
+            //        sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarList.aspx')\">租车列表</a><i></i></li>");
+            //    }
+            //    if (Admin.Role.roleAuth.IndexOf(",lingqu,") > -1)
+            //    {
+            //        sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarCity.aspx')\">租车城市</a><i></i></li>");
+            //    }
+            //    if (Admin.Role.roleAuth.IndexOf(",area,") > -1)
+            //    {
+            //        sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarNumber.aspx')\">汽车厢数</a><i></i></li>");
+            //    }
+            //    if (Admin.Role.roleAuth.IndexOf(",visatype,") > -1)
+            //    {
+            //        sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarBrand.aspx')\">汽车品牌</a><i></i></li>");
+            //    }
+            //    if (Admin.Role.roleAuth.IndexOf(",visaset,") > -1)
+            //    {
+            //        sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarClass.aspx')\">车辆级别</a><i></i></li>");
+            //    }
+            //
+            //    sbNav.Append("</ul>");
+            //    sbNav.Append("</dd>");
+            //}
+            #endregion
+            
             return sbNav.ToString();
         }
         /// <summary>
@@ -246,10 +249,13 @@ namespace TravelAgent.Web.admin
             {
                 sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('visa/VisaOrderList.aspx')\">签证订单</a><i></i></li>");
             }
-            if (Admin.Role.roleAuth.IndexOf(",carorder,") > -1)
-            {
-                sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarOrder.aspx')\">租车订单</a><i></i></li>");
-            }
+            #region useless code
+            //if (Admin.Role.roleAuth.IndexOf(",carorder,") > -1)
+            //{
+            //    sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('car/CarOrder.aspx')\">租车订单</a><i></i></li>");
+            //}
+            #endregion
+            
             if (Admin.Role.roleAuth.IndexOf(",customerorder,") > -1)
             {
                 sbNav.Append("<li><cite></cite><a href=\"javascript:void(0);\" onclick=\"Tabs('product/CusomerOrderList.aspx')\">定制列表</a><i></i></li>");

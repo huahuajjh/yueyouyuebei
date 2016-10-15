@@ -512,15 +512,19 @@ namespace TravelAgent.DALSQL
         public DataSet GetList(int Top, string strWhere, string filedOrder)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select ");
+            strSql.Append("SELECT ");
             if (Top > 0)
             {
                 strSql.Append(" top " + Top.ToString());
             }
-            strSql.Append(" *,(select lineName from Line where lineId=Id) as ProName,(select linePic from Line where lineId=Id) as LinePic");
+            #region old damn code
+            //strSql.Append(" *,(select b.lineName from Line b where a.lineId=b.Id) as ProName,(select linePic from Line b where a.lineId=b.Id) as LinePic");            
             //strSql.Append(" Id,lineName,lineSubName,linePic,seoTitle,seoKey,seoDisc,cityId,dayNumber,aheadNumber,supplyId,destId,dest,proIds,themeIds,trafficIds,Sort,");
             //strSql.Append("lineFeature,lineCost,orderTips,travelNotice,State,editModel,lineContent,usePoints,donatePoints,adddate,priceSdate,priceEdate,priceEditModel,priceContent,dealType,priceSetting,isLock,gzd");
-            strSql.Append(" FROM [Order] ");
+            //strSql.Append(" FROM [Order] a");
+            #endregion
+
+            strSql.Append(" a.*,b.lineName AS ProName,b.linePic AS LinePic FROM [Order] a LEFT JOIN Line b ON a.lineId=b.Id ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);

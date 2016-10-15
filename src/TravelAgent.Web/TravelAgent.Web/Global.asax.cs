@@ -18,7 +18,7 @@ namespace TravelAgent.Web
 
         //protected void Application_Start(object sender,EventArgs e)
         //{ 
-        //    
+        //    string url = Request.Url.AbsolutePath;
         //}
     }
 }

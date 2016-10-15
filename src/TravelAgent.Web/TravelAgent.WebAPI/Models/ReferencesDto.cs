@@ -14,7 +14,7 @@ namespace TravelAgent.WebAPI.Models
         public string Name { get; set; }
 
         [Col("B")]
-        [ColDataConstraint(ConstraintsEnum.NOTNULL)]
+        [ColDataConstraint(ConstraintsEnum.NULL)]
         [ColDataValid(DataTypeEnum.STRING)]
         public string Tel { get; set; }
 
@@ -30,9 +30,16 @@ namespace TravelAgent.WebAPI.Models
 
         public static IList<References> ToList(IList<ReferencesDto> dto_list)
         { 
+            if(dto_list == null)
+            {
+                return new List<References>();
+            }
+
             IList<References> list = new List<References>();
             foreach (ReferencesDto item in dto_list)
             {
+                if (string.IsNullOrWhiteSpace(item.Tel)) { item.Tel = "NA";}
+                if (item.Tel.ToLower().Contains("null")) { item.Tel = "NA"; }
                 list.Add(item.ToModel());
             }
             return list;

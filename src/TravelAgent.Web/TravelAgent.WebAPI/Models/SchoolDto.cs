@@ -31,6 +31,11 @@ namespace TravelAgent.WebAPI.Models
 
         public static IList<School> ToList(IList<SchoolDto> dto_list)
         {
+            if(dto_list == null)
+            {
+                return new List<School>();
+            }
+
             IList<School> list = new List<School>();
             foreach (SchoolDto item in dto_list)
             {
@@ -44,6 +49,8 @@ namespace TravelAgent.WebAPI.Models
             IList<SchoolDto> dto_list = new List<SchoolDto>();
             foreach (School item in list)
             {
+                if (string.IsNullOrWhiteSpace(item.ShortName)) { item.ShortName = "NA"; }
+                if (item.ShortName.ToLower().Contains("null")) { item.ShortName = "NA"; }
                 dto_list.Add(new SchoolDto() { Id = item.Id, Name = item.Name });
             }
             return dto_list;

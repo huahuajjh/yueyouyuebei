@@ -8,10 +8,11 @@ namespace TravelAgent.IDAL
         void Add(School s);
         void AddRange(IList<School> ss);
         int Update(School s);
-        int Del(int id);
         School Get(int id);
         IList<School> Get(string where, params string[] parameters);
         IList<School> Get(string where, int page_index, int page_count, out int total_page, params string[] parameters);
         IList<School> GetBySql(string sql);
+        void Del(int id);
+        void Del(int[] ids);
     }
 }
