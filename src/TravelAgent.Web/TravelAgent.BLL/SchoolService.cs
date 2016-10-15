@@ -52,14 +52,12 @@ namespace TravelAgent.BLL
         {
             return Dao.Get(id);
         }
-
-
+        
         public IList<School> GetByFuzzyName(string name)
-        {
+        {            
             return Dao.Get("Name like '%"+name+"%'");
         }
-
-
+        
         public IList<School> GetSchoolCode()
         {
             return Dao.GetBySql("select Id,Name from School");

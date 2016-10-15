@@ -1,8 +1,8 @@
 CREATE TABLE Area (
  Id INT NOT NULL,
- Name VARCHAR(50) NOT NULL,
+ Name NVARCHAR(50) NOT NULL,
  Pid INT NOT NULL,
- ShortName VARCHAR(50),
+ ShortName NVARCHAR(50),
  Longitude CHAR(15),
  Latitude CHAR(15),
  [Level] INT NOT NULL,
@@ -16,8 +16,8 @@ ALTER TABLE Area ADD CONSTRAINT PK_Area PRIMARY KEY (Id);
 
 CREATE TABLE School (
  Id INT identity(1,1) NOT NULL,
- Name VARCHAR(15) NOT NULL,
- ShortName VARCHAR(5),
+ Name NVARCHAR(15) NOT NULL,
+ ShortName NVARCHAR(5),
  AreaId INT NOT NULL
 );
 
@@ -26,7 +26,7 @@ ALTER TABLE School ADD CONSTRAINT PK_School PRIMARY KEY (Id);
 
 CREATE TABLE [References] (
  Id INT identity(1,1) NOT NULL,
- Name VARCHAR(10) NOT NULL,
+ Name NVARCHAR(10) NOT NULL,
  Tel CHAR(11),
  SchoolId INT NOT NULL
 );
