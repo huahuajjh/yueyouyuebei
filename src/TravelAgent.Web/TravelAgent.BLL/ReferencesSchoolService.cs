@@ -36,5 +36,11 @@ namespace TravelAgent.BLL
         {
             return Dao.GetBySchoolId(schId,index,count,out total);
         }
+
+
+        public IList<Model.ReferencesSchool> GetAll()
+        {
+            return Dao.GetAll();
+        }
     }
 }

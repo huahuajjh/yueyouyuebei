@@ -32,5 +32,6 @@ namespace TravelAgent.IService
         /// <param name="total">总记录数</param>
         /// <returns>ReferencesSchool</returns>
         IList<ReferencesSchool> GetBySchoolId(int schId, int index, int count, out int total);
+        IList<ReferencesSchool> GetAll();
     }
 }
