@@ -33,5 +33,7 @@ namespace TravelAgent.IDAL
         /// <returns>ReferencesSchool</returns>
         IList<ReferencesSchool> GetBySchoolId(int schId,int index,int count,out int total);
 
+        IList<ReferencesSchool> GetAll();
+
     }
 }

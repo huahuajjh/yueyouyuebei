@@ -118,7 +118,7 @@ $(".order-xuyao li a").click(function(){
 	$(this).toggleClass('xuyao-active');
 })
 $("#save").click(function() {
-    var regexp = /^1[3|4|5|8][0-9]\d{8}$/;
+    var regexp = /^1[3,4,5,8,7][0-9]\d{8}$/;
     if ($("#total_price").text() == "0") {
         alert("订单金额为0！");
         return false;

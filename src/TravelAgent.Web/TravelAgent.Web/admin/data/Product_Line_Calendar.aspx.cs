@@ -170,6 +170,7 @@ namespace TravelAgent.Web.admin.data
                     if (price.tag == 1)//新增的价格
                     {
                         strprice = "销：" + price.linePrice.Split(',')[2] + "     余：" + price.linePrice.Split(',')[11];
+
                     }
                     else if (price.tag == 0)//删除的价格
                     {
@@ -187,11 +188,11 @@ namespace TravelAgent.Web.admin.data
         private List<TravelAgent.Model.LineSpePrice> getCacheData(int lineid)
         {
             List<TravelAgent.Model.LineSpePrice> lstSpePrice = null;
-            bool bolExist = TravelAgent.Tool.CacheHelper.Exists("speprice");
+            bool bolExist = false;//TravelAgent.Tool.CacheHelper.Exists("speprice");
 
             if (bolExist)
             {
-                lstSpePrice = TravelAgent.Tool.CacheHelper.Get<List<TravelAgent.Model.LineSpePrice>>("speprice");
+                //lstSpePrice = TravelAgent.Tool.CacheHelper.Get<List<TravelAgent.Model.LineSpePrice>>("speprice");
             }
             else
             {

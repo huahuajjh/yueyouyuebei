@@ -143,11 +143,11 @@ namespace TravelAgent.Web.dataDeal
         private List<TravelAgent.Model.LineSpePrice> getCacheData(int lineid)
         {
             List<TravelAgent.Model.LineSpePrice> lstSpePrice = null;
-            bool bolExist = TravelAgent.Tool.CacheHelper.Exists("speprice");
+            bool bolExist = false;//TravelAgent.Tool.CacheHelper.Exists("speprice");
 
             if (bolExist)
             {
-                lstSpePrice = TravelAgent.Tool.CacheHelper.Get<List<TravelAgent.Model.LineSpePrice>>("speprice");
+                //lstSpePrice = TravelAgent.Tool.CacheHelper.Get<List<TravelAgent.Model.LineSpePrice>>("speprice");
             }
             else
             {

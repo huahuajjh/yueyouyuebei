@@ -46,5 +46,18 @@ namespace TravelAgent.DALSQL
 
             return DbHelperSQL.DT2List<ReferencesSchool>(set.Tables[0]);
         }
+
+
+        public IList<ReferencesSchool> GetAll()
+        {
+            DataSet set = DbHelperSQL.Query("select RName,Tel, SName from v_sch_refs");
+
+            if(set != null && set.Tables.Count >0)
+            {
+                return DbHelperSQL.DT2List<ReferencesSchool>(set.Tables[0]);
+            }
+
+            return new List<ReferencesSchool>() { new ReferencesSchool()};
+        }
     }
 }
