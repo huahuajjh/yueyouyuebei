@@ -225,7 +225,7 @@ namespace TravelAgent.Web.admin.product
             {
                 //Access
                 //strTemp.Append(" and InStr('"+_code+"',Id)>0");
-                strTemp.Append(" and CHARINDEX(Id,'" + _code.TrimStart('0') + "')>0");
+                //strTemp.Append(" and CHARINDEX(Id,'" + _code.TrimStart('0') + "')>0");
             }
             return strTemp.ToString();
         }
