@@ -33,6 +33,7 @@ function checkout_totalprice1() {
     $('#totalprice').val(total_price);
 
 }
+
 document.addEventListener('touchend',function(e){
 	if(e.target.className.match(/plus-active/)){
 		var ty = e.target.getAttribute('data-type');
@@ -46,6 +47,10 @@ document.addEventListener('touchend',function(e){
 			checkout_totalprice(true);
 		} else if (ty == 'baox') {
 		    var $ele = $('#pr_bx_num');
+		    if (Number($ele.val()) >= 1) {
+		        $ele.val(1)
+		        return;
+		    }
 		    $ele.val(Number($ele.val()) + 1);
 		    checkout_totalprice();
 		}

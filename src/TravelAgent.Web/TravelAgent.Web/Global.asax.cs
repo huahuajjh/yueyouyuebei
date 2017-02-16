@@ -12,7 +12,7 @@ namespace TravelAgent.Web
             Exception ex = HttpContext.Current.Server.GetLastError();
             if(ex != null)
             {
-                logger.Error("error={0}\n\n  url={1}\n\n  user_ip={2}\n\n  stacktrace={3}\n\n  inner_exception={4}\n\n", ex.Message, HttpContext.Current.Request.RawUrl, HttpContext.Current.Request.UserHostAddress, ex.StackTrace, ex.InnerException.Message);
+                logger.Error("error={0}\n\n  url={1}\n\n  user_ip={2}\n\n  stacktrace={3}\n\n  inner_exception={4}\n\n Referer={5}\n\n", ex.Message, HttpContext.Current.Request.RawUrl, HttpContext.Current.Request.UserHostAddress, ex.StackTrace, ex.InnerException.Message, HttpContext.Current.Request.Headers["Referer"]);
             }
         }
 

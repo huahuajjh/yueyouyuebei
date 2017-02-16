@@ -99,20 +99,20 @@
                              </select>
 				        </span>
 				</li>--%>
-              <li> 
+              <li style="display: none;"> 
                 <label>成人</label>
                 <span class="t2" id="adult_price_span">￥0</span> <span class="t3" id="adult_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="adults"></span>
-                <input type='number' id="pr_d_num" min="0" max="100" class="order-txt-n" name="renshu1" value="0" />
+                <input type='number' id="pr_d_num" min="0" max="100" class="order-txt-n" name="renshu1" value="1" />
                 <span class="j-linkage order-btn plus plus-active fa fa-plus" data-type="adults"></span> </span>  </li>
-              <li>
+              <li style="display: none;">
                 <label>儿童</label>
                 <span class="t2" id="child_price_span"> ￥0 </span> <span class="t3" id="child_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="teens"></span>
                 <input type='number' min="0" max="100" id="pr_child_num" class="order-txt-n" name="renshu2" value="0" />
                 <span class="j-linkage order-btn plus plus-active fa fa-plus" data-type="teens"></span> </span> </li>
-              <li>
+              <li style="margin-top: 10px;">
                 <label>保险</label>
                 <span class="t2" id="baoxian"> ￥<%=LineModel.Insure!=null?LineModel.Insure.InsurePrice.ToString():"0" %> </span> <span class="t3" id="baoxian_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="baox"></span>
-                <input type='number' min="0" max="100" id="pr_bx_num" class="order-txt-n" name="renshu3" value="0" />
+                <input type='number' min="0" max="1" id="pr_bx_num" class="order-txt-n" name="renshu3" value="0" readonly />
                 <span class="j-linkage order-btn plus plus-active fa fa-plus" data-type="baox"></span> </span> 
               </li>
               <li> 
@@ -223,7 +223,8 @@
 //                                            $("#hidden_div").find("input[name='ordertime']").val($.fullCalendar.formatDate(calEvent.start,"yyyy-MM-dd"));
                                                //$(this).css('background-color', '#f60');
                                                $("#price_calendar_lt").fullCalendar('select',calEvent.start,calEvent.end,true);
-                                     }
+                                    }
+                                    checkout_totalprice();
                                      return false;
                                 }
 //                                dayClick:function(date, allDay, jsEvent, view){

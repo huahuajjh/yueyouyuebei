@@ -382,12 +382,13 @@
                             left: 'prev',
                             center: 'title',
                             right: 'next'
-                        },
-                        eventClick: function(calEvent, jsEvent, view) {
+                        },                        
+                        eventClick: function(calEvent, jsEvent, view) { //日期控件day的单击事件
                             $("#hidden_div").css({ top: jsEvent.pageY + 10, left: jsEvent.pageX - 160 }).show();
                             $("#hidden_div").find(".spanCurrentDate").html($.fullCalendar.formatDate(calEvent.start,"yyyy-MM-dd"));
                             $("#btnPriceDelete").removeAttr("disabled");
                             var price=calEvent.price.split(',');
+                            console.log(price);
                             $("#menshi_adult").val(price[0]);
                             $("#menshi_child").val(price[1]);
                             $("#price_adult").val(price[2]);

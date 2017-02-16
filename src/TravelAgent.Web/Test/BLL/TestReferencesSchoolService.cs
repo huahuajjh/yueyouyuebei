@@ -65,5 +65,15 @@ namespace Test.BLL
               
              }
          }
+
+        [TestMethod]
+        public void TestGetAll()
+        {
+            IList<ReferencesSchool> list = Service.GetAll();
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.RName);
+            }
+        }
     }
 }
