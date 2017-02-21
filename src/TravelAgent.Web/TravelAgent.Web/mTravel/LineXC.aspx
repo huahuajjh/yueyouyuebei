@@ -7,14 +7,20 @@
                 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
                 <link rel="stylesheet" type="text/css" href="/mTravel/css/mobile-style.css" />
 		<link rel="stylesheet" type="text/css" href="/mTravel/css/mobile-line.css" />
+            <link rel="stylesheet" href="new/css/style.css" />
                 <script src="/mTravel/scripts/jquery.min.js"></script>
         </head>
-        <body>
-		<header class="header">
-		<a href="javascript:window.history.go(-1);" class="ic_back"></a>
-		<h2>行程参考</h2>
-		<a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a>
-	</header>
+            <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1>行程参考</h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
 	<!--详细内容-->
 	<div class="threeBox">
 		   <%=BindLineXC()%>
@@ -28,6 +34,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+            <!--#include file="new/temp/bottom.html"-->
 <script type="text/javascript" src="/mTravel/scripts/script.js"></script>
 <!--遮挡层-->
 <div class="zhedang"></div>

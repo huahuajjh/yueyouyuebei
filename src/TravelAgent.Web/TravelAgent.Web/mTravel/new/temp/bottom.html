@@ -1,0 +1,41 @@
+﻿<div class="wx-footer">
+    <ul class="wx-footer-menu">
+        <li class="wx-footer-menu-btn-home">
+            <a href="/M_Default.aspx">
+                首页
+            </a>
+        </li>
+        <li class="wx-footer-menu-btn-type">
+            <a id="bottomMenuDom" href="javascript:;">
+                分类
+            </a>
+            <ul>
+                <li>
+                    <a href="/mTravel/LineList.aspx">特价产品</a>
+                </li>
+                <li>
+                    <a href="/mTravel/LineList.aspx?d=1">出境旅游</a>
+                </li>
+                <li>
+                    <a href="/mTravel/LineList.aspx?d=2">国内旅游</a>
+                </li>
+                <li><a href="/mTravel/LineList.aspx?d=3">周边旅游</a></li>
+            </ul>
+        </li>
+        <li class="wx-footer-menu-btn-dd">
+            <a href="/mTravel/user/orderAll.aspx">
+                订单
+            </a>
+        </li>
+        <li class="wx-footer-menu-btn-user">
+            <a href="/mTravel/user/userIndex.aspx">
+                个人中心
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $("#bottomMenuDom").on("click", function () {
+        $(this).closest("li").toggleClass("active");
+    });
+</script>

@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" type="text/css" href="css/header.css" />
 <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <link rel="stylesheet" href="new/css/style.css" />
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <title><%=Visa.visaName %>-<%=webinfo.WebName %></title>
     <script type="text/javascript" src="scripts/base.js"></script>
@@ -17,12 +18,17 @@
     <script type="text/javascript" src="scripts/imglazyload.js"></script>
 
 </head>
-<body>
-<header class="header">
-		<a href="javascript:window.history.go(-1);" class="ic_back"></a>
-		<h2><%=Visa.visaName %></h2>
-		<a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a>
-</header>
+                                                    <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1><%=Visa.visaName %></h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
 <div class="wraper">
     <div class="wrap">
         
@@ -82,6 +88,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+        <!--#include file="new/temp/bottom.html"-->
     </div>
 </div>
  <!--预订按钮-->

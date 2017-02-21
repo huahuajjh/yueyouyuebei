@@ -21,6 +21,7 @@
             width:40px;
         }
     </style>
+    <link rel="stylesheet" href="new/css/style.css" />
 <script src="scripts/jquery.min.js"></script>
 <script src="/js/url.js" type="text/javascript"></script>
 <script type="text/javascript" src="scripts/date.js" ></script>
@@ -58,12 +59,18 @@
     });
 </script>
 </head>
-<body>
-       
+                <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1>在线预订</h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
 <div class = "page_first">
-<header class="header"> <a href="javascript:window.history.go(-1);" class="ic_back"></a>
-  <h2>在线预订</h2>
-  <a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a> </header>
 
 <div id="page_1">
   <div class="m-main">
@@ -174,6 +181,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+    <!--#include file="new/temp/bottom.html"-->
 <script type="text/javascript" src="scripts/script1.js"></script>
 <div class="zhedang"></div>
 <div class="roboxs">

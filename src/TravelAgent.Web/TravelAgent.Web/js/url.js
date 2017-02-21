@@ -1,7 +1,7 @@
 ﻿$.support.cors = true;
 var apiURL = (function () {
     //var url = "http://yueyouyuebei.com:8081";
-    var url = "http://localhost:9694";
+    var url = "http://192.168.1.8:9694";
     return {
         AreaGet: url + "/api/Area/Get",
         AreaGetByPage: url + "/api/Area/GetByPage",
@@ -28,6 +28,19 @@ var apiURL = (function () {
         SchoolDel: url + "/api/School/Del",
         ReferencesDel: url + "/api/References/Del",
         SchoolsDelRange: url + "/api/School/DelRange",
-        ReferencesDelRange: url + "/api/References/DelRange"
+        ReferencesDelRange: url + "/api/References/DelRange",
+
+        Login: url + "/Api/Login/Login",
+        
+        Register: url + "/Api/Register/Register",
+
+        ChangePwd: url + "/Api/User/ChangePwd",
+        ChangeName: url + "/Api/User/ChangeName",
+        ChangeTel: url + "/Api/User/ChangeTel",
+        ChangeEmail: url + "/Api/User/ChangeEmail",
+        ChangeGender: url + "/Api/User/ChangeGender",
+        GetOrdersByUser: url + "/Api/Order/GetOrdersByUser",
+        GetNotPayOrder: url + "/Api/Order/GetNotPayOrder",
+        GetOrderDetails: url + "/Api/Order/GetOrderDetails"
     };
 })()

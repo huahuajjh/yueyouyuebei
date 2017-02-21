@@ -9,6 +9,7 @@
                 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
                 <link rel="stylesheet" type="text/css" href="css/mobile-style.css" />
 		<link rel="stylesheet" type="text/css" href="css/mobile-channel.css" />
+            <link rel="stylesheet" href="new/css/style.css" />
                 <script src="scripts/jquery.min.js"></script>
                 <script type="text/javascript">
                     //获取URL中参数的值
@@ -50,24 +51,18 @@
                     })
                 </script>
         </head>
-        <body>
-		                <header class="header">
-                        <a href="javascript:window.history.go(-1);" class="ic_back"></a>
-                        <h2><%=dest%>旅游</h2>
-                        <a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a>
-                </header>
-                <!--搜索-->
-		<div class="nav_search_on">
-			<div class="searchbox">
-				<div class="searchbox_top">
-					<form method="get" name="form1" action="SearchResult.aspx">
-						<input name="keyword" type="text" class="s_ipt" onclick="this.value = '';" value="请输入关键词" />
-						<input type="submit" value="搜索" class="d_ico" />
-					</form>
-					<div class="x_ico"></div>
-				</div>
-			</div>
-		</div>
+                <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1><%=dest%>旅游</h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
+        
         <div class="shai">
 	<ul class="shaibox">
 		<li class="curr" rel=""><a href="LineDest.aspx?td=<%=td %>&name=<%=dest %>">全部</a></li>
@@ -87,6 +82,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+            <!--#include file="new/temp/bottom.html"-->
 <script type="text/javascript" src="/mTravel/scripts/script.js"></script>
 <!--遮挡层-->
 <div class="zhedang"></div>

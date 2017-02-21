@@ -8,13 +8,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <link type="text/css" rel="stylesheet" href="css/style.css" />
 <link type="text/css" rel="stylesheet" href="css/yuding.css" />
+    <link rel="stylesheet" href="new/css/style.css" />
 <script src="scripts/jquery.min.js"></script>
 </head>
-<body> 
+                    <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1>提交结果</h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
 <div class = "page_first">
-<header class="header"> <a href="javascript:window.history.go(-1);" class="ic_back"></a>
-  <h2>提交结果</h2>
-  <a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a> </header>
 <div id="page_1">
   <div class="m-main">
       <section class="main" id="order-next-m">
@@ -41,6 +49,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+    <!--#include file="new/temp/bottom.html"-->
 <script type="text/javascript" src="scripts/script1.js"></script>
 <div class="zhedang"></div>
 <div class="roboxs">
