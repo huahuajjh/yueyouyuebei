@@ -28,6 +28,8 @@
 <script type="text/javascript" src="scripts/iscroll.js" ></script>
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
 <script src="scripts/mAutocomplete.js" type="text/javascript"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/jquery.json.js"></script>
 <script type="text/javascript">
     $(function() {
         //$("#tuijianren").bindAddress({
@@ -75,6 +77,7 @@
 <div id="page_1">
   <div class="m-main">
 <form action="data/addorder.aspx" enctype="multipart/form-data" method="post">
+    <input type="text" name="uid" value="-1" id="uid" />
 <input type="hidden" name="action" value="post" />
 <input type="hidden" name="lineid" value="<%=LineModel.Id %>" />
 <input type="hidden" name="linename" value="<%=LineModel.LineName %>" />
@@ -202,6 +205,10 @@
 <script src="scripts/order_widget.js"></script>
 <script type="text/javascript">
     $(function() { 
+        if ($.cookie("msg")) {
+            var data = $.evalJSON($.cookie("msg"));
+            $("#uid").val(data.Id);
+        }
         if ($('#price_calendar_lt').size() > 0) {
                             $('#price_calendar_lt').fullCalendar({
                                 aspectRatio: 1.4,
