@@ -208,6 +208,10 @@
         if ($.cookie("msg")) {
             var data = $.evalJSON($.cookie("msg"));
             $("#uid").val(data.Id);
+            $("#user").val(data.Name);
+            $("#phone").val(data.Phone);
+        } else {
+            location.href = "user/login.aspx";
         }
         if ($('#price_calendar_lt').size() > 0) {
                             $('#price_calendar_lt').fullCalendar({
