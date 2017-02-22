@@ -77,7 +77,7 @@
 <div id="page_1">
   <div class="m-main">
 <form action="data/addorder.aspx" enctype="multipart/form-data" method="post">
-    <input type="text" name="uid" value="-1" id="uid" />
+    <input type="hidden" name="uid" value="-1" id="uid" />
 <input type="hidden" name="action" value="post" />
 <input type="hidden" name="lineid" value="<%=LineModel.Id %>" />
 <input type="hidden" name="linename" value="<%=LineModel.LineName %>" />
