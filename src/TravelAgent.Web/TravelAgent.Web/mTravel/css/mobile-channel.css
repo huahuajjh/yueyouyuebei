@@ -1,6 +1,31 @@
 /*推荐抬头*/
-.gy_tit{position: relative; height: 1px; border-bottom: 1px solid #CCCCCC; margin: 25px 10px;}
-.gy_tit em{position: absolute; display: inline-block; width: 120px; text-align: center; background: #F5F5F5; left: 50%; margin-left: -60px; top: -8px; font-weight: 700;color: #333; line-height: 20px; font-size: 1rem;}
+.gy_tit{
+    position: relative;
+    margin: 0 10px;
+    height: 50px;
+    text-align: center;
+    line-height: 2;
+}
+.gy_tit:after{
+    height: 1px;
+    border-bottom: 1px solid #CCCCCC;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 25px;
+}
+.gy_tit em{
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    background: #F5F5F5;
+    font-weight: 700;
+    color: #333;
+    font-size: 1rem;
+    z-index: 1;
+}
 
 /*线路部分*/
 .show_line{

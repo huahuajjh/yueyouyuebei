@@ -14,3 +14,4 @@ TestResults
 *.testsettings
 *.vsmdi
 TestResult.xml
+.vs/

@@ -53,20 +53,11 @@ namespace TravelAgent.Web
             {
                 sbLine.Append("<li>");
                 sbLine.Append("<a href=\"mTravel/LineDetail.aspx?id=" + row["Id"] + "\">");
-                sbLine.Append("<div class=\"m-img\"><img src=\"" + row["linePic"] + "\"></div>");
-                sbLine.Append("<div class=\"m-c\">");
-                sbLine.Append("<p class=\"m-c-tit\"><code>" + row["lineName"] + "</code></p>");
-                sbLine.Append("<p class=\"m-c-txt\">");
-                sbLine.Append("<span>" + row["dayNumber"] + "日游</span>");
-                if (row["priceCommon"].ToString().Equals("0") || row["priceCommon"].ToString().Equals(""))
-                {
-                    sbLine.Append("<em>电询</em>");
-                }
-                else
-                {
-                    sbLine.Append("<em>¥ " + row["priceCommon"] + "</em>");
-                }
-                sbLine.Append("</p>");
+                sbLine.Append("<img src=\"" + row["linePic"] + "\">");
+                sbLine.Append("<div class=\"wx-tuijian-data-money\"><p>￥<span>" + row["priceCommon"]+ "</span>起</p></div>");
+                sbLine.Append("<div class=\"wx-tuijian-data-info\">");
+                sbLine.Append("<div class=\"wx-tuijian-data-title\"><div class=\"wx-tuijian-data-title-val\">" + row["lineName"] + "<span class=\"wx-tuijian-data-hot\"></span></div></div>");
+                sbLine.Append("<span class=\"wx-tuijian-data-span\">" + row["dayNumber"] + "日游</span>");
                 sbLine.Append("</div>");
                 sbLine.Append("</a>");
                 sbLine.Append("</li>");

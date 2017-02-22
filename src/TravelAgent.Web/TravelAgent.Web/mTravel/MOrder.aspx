@@ -21,12 +21,15 @@
             width:40px;
         }
     </style>
+    <link rel="stylesheet" href="new/css/style.css" />
 <script src="scripts/jquery.min.js"></script>
 <script src="/js/url.js" type="text/javascript"></script>
 <script type="text/javascript" src="scripts/date.js" ></script>
 <script type="text/javascript" src="scripts/iscroll.js" ></script>
 <script type="text/javascript" src="scripts/fullcalendar.js"></script>
 <script src="scripts/mAutocomplete.js" type="text/javascript"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/jquery.json.js"></script>
 <script type="text/javascript">
     $(function() {
         //$("#tuijianren").bindAddress({
@@ -58,16 +61,23 @@
     });
 </script>
 </head>
-<body>
-       
+                <body style="padding-top: 43.5px;">
+            <div class="wx-header-back">
+                <a href="javascript:window.history.go(-1);" class="wx-header-back-btn"></a>
+                <h1>在线预订</h1>
+                <div class="wx-header-back-input">
+                    <form method="get" name="form1" action="/mTravel/SearchResult.aspx">
+                        <input type="text" name="keyword">
+                        <button type="submit"></button>
+                    </form>
+                </div>
+            </div>
 <div class = "page_first">
-<header class="header"> <a href="javascript:window.history.go(-1);" class="ic_back"></a>
-  <h2>在线预订</h2>
-  <a href="javascript:;" class="navbtn"><span></span><span></span><span></span></a> </header>
 
 <div id="page_1">
   <div class="m-main">
 <form action="data/addorder.aspx" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="uid" value="-1" id="uid" />
 <input type="hidden" name="action" value="post" />
 <input type="hidden" name="lineid" value="<%=LineModel.Id %>" />
 <input type="hidden" name="linename" value="<%=LineModel.LineName %>" />
@@ -174,6 +184,7 @@
 	<p>Copyright &copy; 2015-<%=DateTime.Now.Year %></p>
 	<p>技术支持：约游约呗</p>
 </footer>
+    <!--#include file="new/temp/bottom.html"-->
 <script type="text/javascript" src="scripts/script1.js"></script>
 <div class="zhedang"></div>
 <div class="roboxs">
@@ -194,6 +205,10 @@
 <script src="scripts/order_widget.js"></script>
 <script type="text/javascript">
     $(function() { 
+        if ($.cookie("msg")) {
+            var data = $.evalJSON($.cookie("msg"));
+            $("#uid").val(data.Id);
+        }
         if ($('#price_calendar_lt').size() > 0) {
                             $('#price_calendar_lt').fullCalendar({
                                 aspectRatio: 1.4,

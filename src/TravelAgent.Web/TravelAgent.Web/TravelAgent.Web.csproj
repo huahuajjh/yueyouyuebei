@@ -521,6 +521,47 @@
     <Content Include="mTravel\font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="mTravel\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
     <Content Include="mTravel\font-awesome-4.6.3\HELP-US-OUT.txt" />
+    <Content Include="mTravel\new\css\style.css" />
+    <Content Include="mTravel\new\edit\user.edit.gender.html" />
+    <Content Include="mTravel\new\edit\user.edit.mail.html" />
+    <Content Include="mTravel\new\edit\user.edit.name.html" />
+    <Content Include="mTravel\new\edit\user.edit.nc.html" />
+    <Content Include="mTravel\new\edit\user.edit.password.html" />
+    <Content Include="mTravel\new\edit\user.edit.phone.html" />
+    <Content Include="mTravel\new\images\1changgui.png" />
+    <Content Include="mTravel\new\images\1huwai.png" />
+    <Content Include="mTravel\new\images\1qianzheng.png" />
+    <Content Include="mTravel\new\images\1te.png" />
+    <Content Include="mTravel\new\images\1zhoubian.png" />
+    <Content Include="mTravel\new\images\1zhuti.png" />
+    <Content Include="mTravel\new\images\2find.png" />
+    <Content Include="mTravel\new\images\2logo.png" />
+    <Content Include="mTravel\new\images\3dingdan grey.png" />
+    <Content Include="mTravel\new\images\3dingdan.png" />
+    <Content Include="mTravel\new\images\3fenlei grey.png" />
+    <Content Include="mTravel\new\images\3fenlei.png" />
+    <Content Include="mTravel\new\images\3home gry.png" />
+    <Content Include="mTravel\new\images\3home.png" />
+    <Content Include="mTravel\new\images\3user grey.png" />
+    <Content Include="mTravel\new\images\3user.png" />
+    <Content Include="mTravel\new\images\4all.png" />
+    <Content Include="mTravel\new\images\4pay.png" />
+    <Content Include="mTravel\new\images\5men.png" />
+    <Content Include="mTravel\new\images\5women.png" />
+    <Content Include="mTravel\new\images\back.png" />
+    <Content Include="mTravel\new\images\bg.jpg" />
+    <Content Include="mTravel\new\images\bk1.png" />
+    <Content Include="mTravel\new\images\bk3.png" />
+    <Content Include="mTravel\new\images\fire.png" />
+    <Content Include="mTravel\new\images\go.png" />
+    <Content Include="mTravel\new\images\gou.png" />
+    <Content Include="mTravel\new\images\home.png" />
+    <Content Include="mTravel\new\images\ico-edit.png" />
+    <Content Include="mTravel\new\images\picture1.png" />
+    <Content Include="mTravel\new\images\picture2.png" />
+    <Content Include="mTravel\new\images\up.png" />
+    <Content Include="mTravel\new\temp\bottom.html" />
+    <Content Include="mTravel\new\temp\top.html" />
     <Content Include="mTravel\scripts\mAddress.js" />
     <Content Include="js\model.js" />
     <Content Include="js\fullcalendar.js" />
@@ -530,6 +571,20 @@
     <Content Include="js\select_meihua.js" />
     <Content Include="js\tours_page.js" />
     <Content Include="mTravel\scripts\mAutocomplete.js" />
+    <Content Include="mTravel\user\edit\userEditGender.aspx" />
+    <Content Include="mTravel\user\edit\userEditMail.aspx" />
+    <Content Include="mTravel\user\edit\userEditName.aspx" />
+    <Content Include="mTravel\user\edit\userEditNc.aspx" />
+    <Content Include="mTravel\user\edit\userEditPassword.aspx" />
+    <Content Include="mTravel\user\edit\userEditPhone.aspx" />
+    <Content Include="mTravel\user\login.aspx" />
+    <Content Include="mTravel\user\orderAll.aspx" />
+    <Content Include="mTravel\user\orderInfo.aspx" />
+    <Content Include="mTravel\user\orderNot.aspx" />
+    <Content Include="mTravel\user\userIndex.aspx" />
+    <Content Include="mTravel\user\userInfo.aspx" />
+    <Content Include="mTravel\user\zcEmail.aspx" />
+    <Content Include="mTravel\user\zcPhone.aspx" />
     <Content Include="ueditor\dialogs\anchor\anchor.htm" />
     <Content Include="ueditor\dialogs\attachment\attachment.htm" />
     <Content Include="ueditor\dialogs\background\background.htm" />
@@ -1928,6 +1983,104 @@
     <Compile Include="mTravel\ThemeList.aspx.designer.cs">
       <DependentUpon>ThemeList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="mTravel\user\edit\userEditGender.aspx.cs">
+      <DependentUpon>userEditGender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditGender.aspx.designer.cs">
+      <DependentUpon>userEditGender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditMail.aspx.cs">
+      <DependentUpon>userEditMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditMail.aspx.designer.cs">
+      <DependentUpon>userEditMail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditName.aspx.cs">
+      <DependentUpon>userEditName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditName.aspx.designer.cs">
+      <DependentUpon>userEditName.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditNc.aspx.cs">
+      <DependentUpon>userEditNc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditNc.aspx.designer.cs">
+      <DependentUpon>userEditNc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditPassword.aspx.cs">
+      <DependentUpon>userEditPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditPassword.aspx.designer.cs">
+      <DependentUpon>userEditPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditPhone.aspx.cs">
+      <DependentUpon>userEditPhone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\edit\userEditPhone.aspx.designer.cs">
+      <DependentUpon>userEditPhone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\orderAll.aspx.cs">
+      <DependentUpon>orderAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\orderAll.aspx.designer.cs">
+      <DependentUpon>orderAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\orderInfo.aspx.cs">
+      <DependentUpon>orderInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\orderInfo.aspx.designer.cs">
+      <DependentUpon>orderInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\orderNot.aspx.cs">
+      <DependentUpon>orderNot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\orderNot.aspx.designer.cs">
+      <DependentUpon>orderNot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\userIndex.aspx.cs">
+      <DependentUpon>userIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\userIndex.aspx.designer.cs">
+      <DependentUpon>userIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\userInfo.aspx.cs">
+      <DependentUpon>userInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\userInfo.aspx.designer.cs">
+      <DependentUpon>userInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\zcEmail.aspx.cs">
+      <DependentUpon>zcEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\zcEmail.aspx.designer.cs">
+      <DependentUpon>zcEmail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mTravel\user\zcPhone.aspx.cs">
+      <DependentUpon>zcPhone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mTravel\user\zcPhone.aspx.designer.cs">
+      <DependentUpon>zcPhone.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mTravel\VisaDetail.aspx.cs">
       <DependentUpon>VisaDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3118,6 +3271,7 @@
     <Content Include="mTravel\font-awesome-4.6.3\scss\_screen-reader.scss" />
     <Content Include="mTravel\font-awesome-4.6.3\scss\_stacked.scss" />
     <Content Include="mTravel\font-awesome-4.6.3\scss\_variables.scss" />
+    <Content Include="mTravel\new\font\NotoSansHans-Light.otf" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -3384,7 +3538,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="log\" />
+    <Folder Include="mTravel\new\js\" />
     <Folder Include="wxpay\log\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
