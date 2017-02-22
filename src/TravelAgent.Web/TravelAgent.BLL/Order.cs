@@ -162,5 +162,60 @@ namespace TravelAgent.BLL
         {
             return dal.GetModelByCode1(code); 
         }
+
+        public List<TravelAgent.Model.Order> GetList(int index,int size, string where,string order)
+        {
+            DataSet ds = GetList(size,where,order);
+            if(null == ds || ds.Tables.Count <= 0)
+            {
+                return null;
+            }
+
+            DataTable tb = ds.Tables[0];
+            List<TravelAgent.Model.Order> list = new List<Model.Order>();
+                
+                foreach (DataRow r in tb.Rows)
+                {
+                    TravelAgent.Model.Order o = new Model.Order();
+
+                    o.account = int.Parse(r["account"].ToString());
+                    o.adultNumber = int.Parse(r["adultNumber"].ToString());
+                    o.adultPrice = int.Parse(r["adultPrice"].ToString());
+                    o.attachPrice = int.Parse(r["attachPrice"].ToString());
+                    o.childNumber = int.Parse(r["childNumber"].ToString());
+                    o.childPrice = int.Parse(r["childPrice"].ToString());
+                    o.clubid = int.Parse(r["clubid"].ToString());
+                    o.contactEmail = r["contactEmail"].ToString();
+                    o.contactMobile = r["contactMobile"].ToString();
+                    o.contactName = r["contactName"].ToString();
+                    o.contactSex = r["contactSex"].ToString();
+                    o.contactTelephone = r["contactTelephone"].ToString();
+                    o.donatePoints = int.Parse(r["donatePoints"].ToString());
+                    o.huandate = r["huandate"].ToString();
+                    o.Id = int.Parse(r["Id"].ToString());
+                    o.IDcard = r["IDcard"].ToString();
+                    o.lineId = int.Parse(r["lineId"].ToString());
+                    o.operRemark = r["operRemark"].ToString();
+                    o.ordercode = r["ordercode"].ToString();
+                    o.orderDate = DateTime.Parse(r["orderDate"].ToString());
+                    o.orderPrice = int.Parse(r["orderPrice"].ToString());
+                    o.orderRemark = r["orderRemark"].ToString();
+                    o.orderState = int.Parse(r["orderState"].ToString());
+                    o.orderType = int.Parse(r["orderType"].ToString());
+                    o.payType = int.Parse(r["payType"].ToString());
+                    o.peopleNumber = int.Parse(r["peopleNumber"].ToString());
+                    o.sourceType = int.Parse(r["sourceType"].ToString());
+                    o.subPrice = int.Parse(r["subPrice"].ToString());
+                    o.timedot = int.Parse(r["timedot"].ToString());
+                    o.TravelDate = r["TravelDate"].ToString();
+                    o.tuijianren = r["tuijianren"].ToString();
+                    o.usedate = r["usedate"].ToString();
+                    o.usePoints = int.Parse(r["usePoints"].ToString());
+
+                    list.Add(o);
+                }
+            return list;
+        }
+
     }
 }

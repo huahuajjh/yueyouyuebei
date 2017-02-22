@@ -45,6 +45,7 @@
     <Compile Include="IReferencesSchoolService.cs" />
     <Compile Include="IReferencesService.cs" />
     <Compile Include="ISchoolService.cs" />
+    <Compile Include="IVOrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

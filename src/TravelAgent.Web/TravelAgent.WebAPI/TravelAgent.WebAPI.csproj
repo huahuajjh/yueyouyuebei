@@ -194,6 +194,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\ControllerBase.cs" />
+    <Compile Include="Areas\Filters\AuthFilterAttribute.cs" />
+    <Compile Include="Areas\Filters\SkipAuthFilterAttribute.cs" />
+    <Compile Include="Areas\mobile\Controllers\LoginController.cs" />
+    <Compile Include="Areas\mobile\Controllers\OrderController.cs" />
+    <Compile Include="Areas\mobile\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\mobile\Controllers\UserController.cs" />
+    <Compile Include="Areas\Models\LoginInput.cs" />
+    <Compile Include="Areas\Models\LoginOutput.cs" />
+    <Compile Include="Areas\Models\RegisterInput.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
@@ -242,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\" />
     <Folder Include="Content\" />
     <Folder Include="Images\" />
     <Folder Include="Scripts\" />
@@ -264,6 +273,10 @@
     <ProjectReference Include="..\TravelAgent.DALSQL\TravelAgent.DALSQL.csproj">
       <Project>{c6590989-8c02-4d17-a7d4-91fccf4d205f}</Project>
       <Name>TravelAgent.DALSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
+      <Project>{6CEFB7BA-7A36-4A2B-8317-AD5C22178472}</Project>
+      <Name>TravelAgent.IDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.IService\TravelAgent.IService.csproj">
       <Project>{fedfc6cc-1340-46e5-95e5-05e1fe4b8bb5}</Project>

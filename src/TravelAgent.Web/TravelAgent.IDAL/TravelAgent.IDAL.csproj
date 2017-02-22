@@ -101,6 +101,7 @@
     <Compile Include="IVisaCountry.cs" />
     <Compile Include="IVisaList.cs" />
     <Compile Include="IVisaType.cs" />
+    <Compile Include="IVOrderDao.cs" />
     <Compile Include="IWebInfo.cs" />
     <Compile Include="IWebNav.cs" />
     <Compile Include="ILineConsult.cs" />

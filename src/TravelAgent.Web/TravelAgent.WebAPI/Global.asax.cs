@@ -1,7 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 
 namespace TravelAgent.WebAPI
 {
@@ -20,6 +23,17 @@ namespace TravelAgent.WebAPI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //return json data configuration
             //GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();            
+        }
+
+        public override void Init()
+        {
+            PostAuthenticateRequest += MvcApplication_PostAuthenticateRequest;
+            base.Init();
+        }
+
+        void MvcApplication_PostAuthenticateRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
         }
 
         //private ILogger logger = LogManager.GetCurrentClassLogger();

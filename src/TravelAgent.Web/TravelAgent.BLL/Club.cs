@@ -28,11 +28,19 @@ namespace TravelAgent.BLL
         {
             return dal.GetCount(strWhere);
         }
+
         /// <summary>
         /// 增加一条数据
         /// </summary>
         public int Add(TravelAgent.Model.Club model)
         {
+            int count = dal.GetCount(string.Format("clubMobile='{0}' OR clubEmail='{1}'",model.clubMobile,model.clubEmail));
+
+            if(count != 0)
+            {
+                return -1;
+            }
+
             int clubid = 0;
             if (dal.Add(model) > 0)
             {

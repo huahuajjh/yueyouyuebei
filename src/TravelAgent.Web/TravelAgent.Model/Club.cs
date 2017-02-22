@@ -132,5 +132,30 @@ namespace TravelAgent.Model
             get { return _classId;}
             set { _classId=value;}
         }
+
+        public static Club Register(string phone,string email,string pwd)
+        {
+
+            if(String.IsNullOrEmpty(pwd) || (String.IsNullOrEmpty(phone) && String.IsNullOrEmpty(email)))
+            {
+                throw new Exception("用户名密码不能为空");
+            }
+
+            return new Club() {
+                _clubMobile = phone,
+                _clubEmail = email,
+                _clubPwd = pwd,
+                _regDate = DateTime.Now,
+                _emailIsValid = 0,
+                _mobileIsValid = 0,
+                _isLock = 0,
+                _classId = 0,
+                _currentPoints = 0,
+                _clubName = "NA",
+                _clubSex = "NA",
+                _clubBirthday = "NA",
+                _trueName = "NA"
+            };
+        }
     }
 }

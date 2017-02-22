@@ -188,11 +188,10 @@ namespace TravelAgent.Web.admin.data
         private List<TravelAgent.Model.LineSpePrice> getCacheData(int lineid)
         {
             List<TravelAgent.Model.LineSpePrice> lstSpePrice = null;
-<<<<<<< HEAD
+
             //此处有bug，每次使用缓存查询特殊日期价格，由于每次在后台修改了特殊日期价格后，缓存将会记录新的特殊日期价格；导致其他线路产品在该日期下面也从缓存获取了价格，导致一处产品线路价格更改，所有该日期下线路价格变化。 --jjh
             //对于不同产品相同日期下面要求有不同的特殊价格的业务需求，该处设置有逻辑bug
-=======
->>>>>>> 8da772d064eef8ca199813086b0d0568a182aba5
+
             bool bolExist = false;//TravelAgent.Tool.CacheHelper.Exists("speprice");
 
             if (bolExist)

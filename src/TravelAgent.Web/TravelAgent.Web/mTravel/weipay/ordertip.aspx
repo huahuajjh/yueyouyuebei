@@ -87,7 +87,7 @@
         <div class="plr10">
 <div class="form_btn"> 
 <%=order.dealType.ToString().Equals(Convert.ToInt32(TravelAgent.Tool.EnumSummary.DealType.人工处理).ToString()) ? "" : "<a class=\"pay\"  href=\"../WapPayApi/Alipay/alipay_default.aspx?id="+order.lineId+"&o=" + order.ordercode + "&subject=" + order.proName + "【出发日期：" + order.TravelDate + "】&total_fee=" + (order.orderPrice+order.attachPrice-order.usePoints+order.subPrice).ToString() + "\" target=\"_blank\">支付宝支付</a>&nbsp; "%>   
-                         
+
  <asp:LinkButton ID="lnkConfirm" runat="server" CssClass="cancel" 
         onclick="lnkConfirm_Click">微信支付</asp:LinkButton>
  </div>

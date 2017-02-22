@@ -655,6 +655,12 @@ namespace TravelAgent.Tool
                     if(dt.Columns.Contains(p.Name))
                     {
                         if (!p.CanWrite) { continue;}
+                        if(row[p.Name].GetType() == typeof(DBNull))
+                        {
+                            p.SetValue(t, "");
+                            continue;
+                        }
+                        
                         p.SetValue(t,row[p.Name],null);
                     }
                 }

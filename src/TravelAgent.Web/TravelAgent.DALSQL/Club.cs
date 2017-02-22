@@ -313,5 +313,6 @@ namespace TravelAgent.DALSQL
 
             return DbHelperSQL.Query(strSql.ToString());
         }
+        
     }
 }

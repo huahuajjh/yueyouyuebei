@@ -107,6 +107,7 @@
     <Compile Include="VisaList.cs" />
     <Compile Include="VisaCity.cs" />
     <Compile Include="VisaType.cs" />
+    <Compile Include="VOrder.cs" />
     <Compile Include="WebNav.cs" />
     <Compile Include="WebInfo.cs" />
   </ItemGroup>
