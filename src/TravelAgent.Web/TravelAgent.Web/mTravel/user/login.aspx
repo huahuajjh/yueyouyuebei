@@ -11,6 +11,7 @@
         html {
             background-image: url("../new/images/bg.jpg");
             background-size: 100%;
+            background-repeat: round;
         }
     </style>
     <script src="../../js/jquery-1.10.2.js"></script>

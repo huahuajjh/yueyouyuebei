@@ -489,6 +489,12 @@ html, body {
     left: 16px;
 }
 
+.wx-user-header-right-btn {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
 .wx-user-header-title {
     color: #fff;
     text-align: center;
@@ -498,6 +504,14 @@ html, body {
 
 .wx-home-btn {
     background-image: url("../images/home.png");
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-size: 25px;
+}
+
+.wx-out-btn {
+    background-image: url("../images/out.png");
     display: block;
     width: 25px;
     height: 25px;

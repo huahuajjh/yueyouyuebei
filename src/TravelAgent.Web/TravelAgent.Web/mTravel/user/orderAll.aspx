@@ -44,7 +44,7 @@
                 <img src="{Url}" alt="">
                 <h2>{ProductName}</h2>
                 <span>{Status}</span>
-                <a href="/mTravel/weipay/confirmPay.aspx?o={OrderNo}">点击支付</a>
+                <a href="/mTravel/weipay/ordertip.aspx?o={OrderNo}">点击支付</a>
                 <p>￥<span>{OrderAmount}</span></p>
             </div>
         </li>

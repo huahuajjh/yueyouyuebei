@@ -166,7 +166,7 @@
                 $("#stateMsg").html(data.Status);
                 if (data.StatusNo == 4) {
                     $("#payBtn").css("display", "inline-block");
-                    $("#payBtn").prop("href", "/mTravel/weipay/confirmPay.aspx?o=" + data.OrderNo);
+                    $("#payBtn").prop("href", "/mTravel/weipay/ordertip.aspx?o=" + data.OrderNo);
                 }
             }
         });
