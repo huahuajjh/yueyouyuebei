@@ -39,7 +39,7 @@ namespace TravelAgent.WebAPI.Areas
             }
         }
 
-        protected HttpResponseMessage ToJsonp(object o, int status_code = 1, string msg = "success", int total = 0)
+        protected HttpResponseMessage ToJsonp(object o = null, int status_code = 1, string msg = "success", int total = 0)
         {
             string callback =  HttpContext.Current.Request.QueryString["callback"];
 

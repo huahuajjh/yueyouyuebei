@@ -41,7 +41,7 @@ namespace TravelAgent.Web.mTravel.data
                     order.orderRemark = "";
                     order.operRemark = "";
                     order.orderState = Convert.ToInt32(TravelAgent.Tool.EnumSummary.OrderState.处理中);
-                    order.clubid = 0;
+                    order.clubid = int.Parse(Request.Form["uid"]);
                     order.adultPrice = 0;
                     order.childPrice = 0;
                     order.payType = 0;
