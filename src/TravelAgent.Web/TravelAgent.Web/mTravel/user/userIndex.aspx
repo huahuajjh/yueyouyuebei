@@ -20,6 +20,9 @@
         <div class="wx-user-header-title">
             个人中心
         </div>
+        <div class="wx-user-header-right-btn">
+            <a class="wx-out-btn" id="outBtn"></a>
+        </div>
     </div>
     <div class="wx-user-info">
         <img src="../new/images/2logo.png" alt="">
@@ -47,6 +50,10 @@
                 $("#gender").addClass("man");
             }
         }
+        $("#outBtn").click(function () {
+            $.removeCookie("msg", { path: "/" });
+            location.href = "login.aspx";
+        });
     </script>
 </body>
 </html>

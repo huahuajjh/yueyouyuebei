@@ -39,7 +39,7 @@
         </li>
     </ul>
     <div style="margin: 20px 15px;">
-        <input type="button" class="wx-btn-y-sub" value="退出登录">
+        <%--<input type="button" class="wx-btn-y-sub" value="退出登录">--%>
     </div>
     <script type="text/javascript">
         if (!$.cookie("msg")) {
