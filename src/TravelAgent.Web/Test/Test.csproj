@@ -54,6 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -94,6 +97,7 @@
     <Compile Include="DALTest\TestArea.cs" />
     <Compile Include="DALTest\TestSchool.cs" />
     <Compile Include="Excel\TestExcel.cs" />
+    <Compile Include="FileRepositoryTest\TestFileRead.cs" />
     <Compile Include="JsonTest\TestJson.cs" />
     <Compile Include="SMS\TestSMS.cs" />
     <Compile Include="TestList.cs" />
@@ -112,6 +116,10 @@
     <ProjectReference Include="..\TravelAgent.DALSQL\TravelAgent.DALSQL.csproj">
       <Project>{c6590989-8c02-4d17-a7d4-91fccf4d205f}</Project>
       <Name>TravelAgent.DALSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.FileRepository\TravelAgent.FileRepository.csproj">
+      <Project>{41ea75c4-a993-4eb3-9c47-27d62bb2c720}</Project>
+      <Name>TravelAgent.FileRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
       <Project>{6cefb7ba-7a36-4a2b-8317-ad5c22178472}</Project>

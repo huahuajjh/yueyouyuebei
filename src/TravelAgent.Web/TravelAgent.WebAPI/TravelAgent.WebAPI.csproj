@@ -206,6 +206,7 @@
     <Compile Include="Areas\Models\RegisterInput.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\DistributorController.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
     <Compile Include="Controllers\ReferencesSchoolController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
@@ -273,6 +274,10 @@
     <ProjectReference Include="..\TravelAgent.DALSQL\TravelAgent.DALSQL.csproj">
       <Project>{c6590989-8c02-4d17-a7d4-91fccf4d205f}</Project>
       <Name>TravelAgent.DALSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.FileRepository\TravelAgent.FileRepository.csproj">
+      <Project>{41EA75C4-A993-4EB3-9C47-27D62BB2C720}</Project>
+      <Name>TravelAgent.FileRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelAgent.IDAL\TravelAgent.IDAL.csproj">
       <Project>{6CEFB7BA-7A36-4A2B-8317-AD5C22178472}</Project>

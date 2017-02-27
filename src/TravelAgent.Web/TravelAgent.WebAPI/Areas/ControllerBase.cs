@@ -57,5 +57,19 @@ namespace TravelAgent.WebAPI.Areas
             }
         }
 
+        protected HttpResponseMessage ToFailMsgJsonp(string msg = "fail")
+        {
+            return ToJsonp(null,0,msg,0);
+        }
+
+        protected HttpResponseMessage ToSuccessMsgJsonp(string msg = "success")
+        {
+            return ToJsonp(null,1,msg,0);
+        }
+
+        protected HttpResponseMessage ToSuccessMsgJsonp(object data,string msg = "success")
+        {
+            return ToJsonp(data, 1, msg, 0);
+        }
     }
 }

@@ -100,5 +100,20 @@ namespace TravelAgent.WebAPI.Areas.mobile.Controllers
 
             return ToJsonp(msg:"修改成功");
         }
+
+        [HttpGet]
+        public HttpResponseMessage WantToBeADistributor()
+        {
+            string o = FileRepository.FileRepository.GetInstance().Read("DistributorContent.json");
+            return ToSuccessMsgJsonp(o);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage IAMADistributor()
+        {
+            string o = FileRepository.FileRepository.GetInstance().Read("DistributorContent.json");
+            return ToSuccessMsgJsonp(o);
+        }
+
     }
 }

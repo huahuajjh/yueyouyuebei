@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TravelAgent.BLL;
 using TravelAgent.DALFactory;
 using TravelAgent.IService;
 using TravelAgent.Model;

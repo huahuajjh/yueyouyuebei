@@ -70,6 +70,7 @@
     <Compile Include="ClubLineCollect.cs" />
     <Compile Include="ClubPoints.cs" />
     <Compile Include="CustomOrder.cs" />
+    <Compile Include="DistributorContent.cs" />
     <Compile Include="InfoSetting.cs" />
     <Compile Include="DepartureCity.cs" />
     <Compile Include="Destination.cs" />

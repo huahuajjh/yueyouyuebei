@@ -74,6 +74,7 @@
     <Compile Include="ICustomOrder.cs" />
     <Compile Include="IDepartureCity.cs" />
     <Compile Include="IDestination.cs" />
+    <Compile Include="IDistributorContentDao.cs" />
     <Compile Include="IInfoSetting.cs" />
     <Compile Include="IInsure.cs" />
     <Compile Include="IJoinProperty.cs" />
