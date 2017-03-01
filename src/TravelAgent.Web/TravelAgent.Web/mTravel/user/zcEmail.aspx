@@ -36,6 +36,7 @@
         <input type="button" class="wx-btn-y-sub" value="注册" id="regBtn">
         <a href="zcPhone.aspx" class="wx-y-link">使用手机注册</a>
     </div>
+    <!--#include file="../new/temp/bottom.html"-->
     <script type="text/javascript">
         $("#regBtn").click(function () {
             if (!$("#email").val()) {

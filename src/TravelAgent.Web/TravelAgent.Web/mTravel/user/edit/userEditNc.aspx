@@ -25,5 +25,6 @@
     <div style="margin: 20px 15px;">
         <input type="button" class="wx-btn-y-sub" value="确定修改">
     </div>
+    <!--#include file="../../new/temp/bottom.html"-->
 </body>
 </html>

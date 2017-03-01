@@ -28,6 +28,7 @@
         <p><span>去</span><a href="/M_Default.aspx">首页</a><span>看看</span></p>
     </div>
     <img src="../new/images/bk3.png" alt="" style="position: fixed; width: 100%; bottom: 0; left: 0;" id="noOrderInfoImg">
+    <!--#include file="../new/temp/bottom.html"-->
     <script type="text/template" id="temp">
         <li>
             <div showid="{Id}">

@@ -41,6 +41,7 @@
     <div style="margin: 20px 15px;">
         <%--<input type="button" class="wx-btn-y-sub" value="退出登录">--%>
     </div>
+    <!--#include file="../new/temp/bottom.html"-->
     <script type="text/javascript">
         if (!$.cookie("msg")) {
             location.href = "login.aspx";

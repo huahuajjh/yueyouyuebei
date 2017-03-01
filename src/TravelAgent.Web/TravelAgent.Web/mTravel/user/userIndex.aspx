@@ -38,6 +38,7 @@
             <a href="orderAll.aspx?state=1" class="wx-nopay-order">待支付订单</a>
         </li>
     </ul>
+    <!--#include file="../new/temp/bottom.html"-->
     <script type="text/javascript">
         if (!$.cookie("msg")) {
             location.href = "login.aspx";

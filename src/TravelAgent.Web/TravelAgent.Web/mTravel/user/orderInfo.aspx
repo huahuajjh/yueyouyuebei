@@ -130,6 +130,7 @@
             订单状态：<span id="stateMsg">未支付</span> <a href="" id="payBtn" style="display:none;">点击支付</a>
         </p>
     </div>
+    <!--#include file="../new/temp/bottom.html"-->
     <script type="text/javascript">
         if (!$.cookie("msg")) {
             location.href = "login.aspx";

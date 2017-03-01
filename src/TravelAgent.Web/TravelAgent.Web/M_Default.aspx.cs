@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Text;
-using TravelAgent.Tool;
 
 namespace TravelAgent.Web
 {
@@ -76,50 +75,6 @@ namespace TravelAgent.Web
             }
             return sbBottomNav.ToString().Remove(sbBottomNav.Length - 1);
         }
-
-        public string BindWebNav()
-        {
-            StringBuilder strNav = new StringBuilder();
-            DataSet dsNav = NavBll.GetNavListByParentId(0, null);
-            foreach (DataRow row in dsNav.Tables[0].Rows)
-            {
-                if (row["navName"].ToString().Contains("签证"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-qianzheng\"><a href = \"{0}\">{1}</a></li>", "mTravel/VisaModel.aspx", row["navName"]));
-                }
-
-                else if (row["navName"].ToString().Contains("常规"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-changgui\"><a href = \"{0}\">{1}</a></li>", "mTravel/LineList.aspx?d=1", row["navName"]));
-                }
-
-                else if (row["navName"].ToString().Contains("主题"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-zhuti\"><a href = \"{0}\">{1}</a></li>", "mTravel/LineTheme.aspx", row["navName"]));
-                }
-
-                else if (row["navName"].ToString().Contains("首页"))
-                {
-                    continue;
-                }
-
-                else if (row["navName"].ToString().Contains("纯玩"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-zhoubian\"><a href = \"{0}\">{1}</a></li>", "mTravel/LineList.aspx?d=3", row["navName"]));
-                }
-
-                else if (row["navName"].ToString().Contains("出游"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-huwai\"><a href = \"{0}\">{1}</a></li>", "mTravel/LineList.aspx?d=2", row["navName"]));
-                }
-
-                else if (row["navName"].ToString().Contains("分销"))
-                {
-                    strNav.Append(string.Format("<li class=\"wx-menu-tejia\"><a href = \"{0}\">{1}</a></li>", "http://distributor.yueyouyuebei.com:8888/Default.aspx", row["navName"]));
-                }
-                else { }
-            }
-            return strNav.ToString();
-        }
+        
     }
 }

@@ -14,29 +14,28 @@
     <!--#include file="mTravel/new/temp/top.html"--> 
     <div class="wx-body">
         <ul class="wx-menu">
-            <!--<li class="wx-menu-tejia">
-                <a href="mTravel/LineList.aspx">特价产品</a>
-            </li>
-            <li class="wx-menu-huwai">
-                <a href="mTravel/LineList.aspx?d=2">户外撒野</a>
-            </li>
-            <li class="wx-menu-zhoubian">
-                <a href="mTravel/LineList.aspx?d=3">周边旅行</a>
-            </li>
-            <li class="wx-menu-zhuti">
-                <a href="mTravel/LineTheme.aspx">主题旅游</a>
+            <li class="wx-menu-qianzheng">
+                <a href="mTravel/LineList.aspx">特价线路</a>
             </li>
             <li class="wx-menu-changgui">
                 <a href="mTravel/LineList.aspx?d=1">常规旅游</a>
+            </li>  
+            <li class="wx-menu-tejia">
+                <a href="mTravel/LineList.aspx?d=2">纯玩旅行</a>
             </li>
-            <li class="wx-menu-qianzheng">
-                <a href="mTravel/VisaModel.aspx">签证服务</a>
-            </li>-->
-            <% =BindWebNav() %>
+            <li class="wx-menu-zhuti">
+                <a href="mTravel/LineList.aspx?d=116">门票</a>
+            </li>
+            <li class="wx-menu-zhoubian">
+                <a href="mTravel/LineList.aspx?d=66">周边旅行</a>
+            </li>
+            <li class="wx-menu-huwai">
+                <a href="http://distributor.yueyouyuebei.com:8888/Default.aspx">分销代理</a>
+            </li>          
         </ul>
         <div class="wx-tuijian-title"><span>推荐产品</span></div>
         <ul class="wx-tuijian-list">
-            <%=BindLine(5,Convert.ToInt32(TravelAgent.Tool.EnumSummary.State.推荐))%>
+            <%=BindLine(30,Convert.ToInt32(TravelAgent.Tool.EnumSummary.State.推荐))%>
         </ul>
         <div class="wx-scroll-bottom">
             <p>已到最底部！</p>

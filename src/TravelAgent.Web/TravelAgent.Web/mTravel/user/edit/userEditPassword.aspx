@@ -35,6 +35,7 @@
     <div style="margin: 20px 15px;">
         <input type="button" class="wx-btn-y-sub" value="确定修改" id="editBtn">
     </div>
+    <!--#include file="../../new/temp/bottom.html"-->
     <script type="text/javascript">
         if (!$.cookie("msg")) {
             location.href = "../login.aspx";

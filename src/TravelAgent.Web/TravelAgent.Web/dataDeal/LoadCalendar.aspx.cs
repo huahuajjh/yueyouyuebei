@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace TravelAgent.Web.dataDeal
 {
@@ -14,7 +10,7 @@ namespace TravelAgent.Web.dataDeal
         private static readonly TravelAgent.BLL.LineSpePrice SpePriceBll = new TravelAgent.BLL.LineSpePrice();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            if (!string.IsNullOrEmpty(Request.QueryString["id"]))
             {
                 int id = Convert.ToInt32(Request.QueryString["id"]);
                 StringBuilder sb = new StringBuilder();
