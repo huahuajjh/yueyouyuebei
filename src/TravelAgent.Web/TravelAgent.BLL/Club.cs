@@ -34,11 +34,22 @@ namespace TravelAgent.BLL
         /// </summary>
         public int Add(TravelAgent.Model.Club model)
         {
-            int count = dal.GetCount(string.Format("clubMobile='{0}' OR clubEmail='{1}'",model.clubMobile,model.clubEmail));
-
-            if(count != 0)
+            if(model.clubEmail != "NA" && model.clubEmail != null)
             {
-                return -1;
+                int count1 = dal.GetCount(string.Format("clubEmail='{0}'", model.clubEmail));
+                if(count1 != 0)
+                {
+                    return -1;
+                }
+            }
+
+            if(model.clubMobile != "NA" && model.clubMobile != null)
+            {
+                int count2 = dal.GetCount(string.Format("clubMobile='{0}'", model.clubMobile));
+                if(count2 != 0)
+                {
+                    return -1;
+                }
             }
 
             int clubid = 0;

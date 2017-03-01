@@ -1,7 +1,8 @@
 ﻿$.support.cors = true;
 var apiURL = (function () {
     //var url = "http://yueyouyuebei.com:8081";
-    var url = "http://192.168.1.8:9694";
+    //var url = "http://192.168.1.8:9999";
+    var url = "http://tests.320.io:35057";
     return {
         AreaGet: url + "/api/Area/Get",
         AreaGetByPage: url + "/api/Area/GetByPage",

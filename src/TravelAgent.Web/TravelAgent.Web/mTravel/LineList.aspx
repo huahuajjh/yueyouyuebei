@@ -74,7 +74,7 @@
 				<em>目的地推荐</em>
 			</div>
 			<ul class="hotmdd">
-				<%=BindPageNav()%>			
+				<%=BindPageNav()%>
 		    </ul>
 
 	<!--产品部分-->

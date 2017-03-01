@@ -14,7 +14,7 @@
     <!--#include file="mTravel/new/temp/top.html"--> 
     <div class="wx-body">
         <ul class="wx-menu">
-            <li class="wx-menu-tejia">
+            <!--<li class="wx-menu-tejia">
                 <a href="mTravel/LineList.aspx">特价产品</a>
             </li>
             <li class="wx-menu-huwai">
@@ -31,7 +31,8 @@
             </li>
             <li class="wx-menu-qianzheng">
                 <a href="mTravel/VisaModel.aspx">签证服务</a>
-            </li>
+            </li>-->
+            <% =BindWebNav() %>
         </ul>
         <div class="wx-tuijian-title"><span>推荐产品</span></div>
         <ul class="wx-tuijian-list">

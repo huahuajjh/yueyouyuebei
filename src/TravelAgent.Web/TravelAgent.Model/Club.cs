@@ -141,7 +141,8 @@ namespace TravelAgent.Model
                 throw new Exception("用户名密码不能为空");
             }
 
-            return new Club() {
+            Club o = new Club()
+            {
                 _clubMobile = phone,
                 _clubEmail = email,
                 _clubPwd = pwd,
@@ -156,6 +157,18 @@ namespace TravelAgent.Model
                 _clubBirthday = "NA",
                 _trueName = "NA"
             };
+
+            if(null == o.clubEmail)
+            {
+                o.clubEmail = "NA";
+            }
+
+            if(null == o.clubMobile)
+            {
+                o.clubMobile = "NA";
+            }
+
+            return o;
         }
     }
 }

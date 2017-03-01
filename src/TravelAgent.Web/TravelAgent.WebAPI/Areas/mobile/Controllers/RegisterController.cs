@@ -16,7 +16,7 @@ namespace TravelAgent.WebAPI.Areas.mobile.Controllers
 
             if(null == input)
             {
-                return ToJsonp("参数错误");
+                return ToJsonp(null,0,"参数错误");
             }
 
             Club club = Club.Register(input.Phone,input.Email,input.Pwd);
@@ -24,10 +24,10 @@ namespace TravelAgent.WebAPI.Areas.mobile.Controllers
             int r = service.Add(club);
             if(r == -1)
             {
-                return ToJsonp("账户已存在");
+                return ToJsonp(null,0,"账户已存在");
             }
 
-            return ToJsonp("恭喜你，注册成功");
+            return ToJsonp(msg:"恭喜你，注册成功");
         }
     }
 }
