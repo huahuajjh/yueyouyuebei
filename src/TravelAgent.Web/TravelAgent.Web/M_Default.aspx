@@ -14,12 +14,12 @@
     <!--#include file="mTravel/new/temp/top.html"--> 
     <div class="wx-body">
         <ul class="wx-menu">
-            <li class="wx-menu-qianzheng">
+            <li class="wx-menu-tejia">
                 <a href="mTravel/LineList.aspx">特价线路</a>
             </li>
             <li class="wx-menu-changgui">
                 <a href="mTravel/LineList.aspx?d=1">常规旅游</a>
-            </li>  
+            </li>
             <li class="wx-menu-tejia">
                 <a href="mTravel/LineList.aspx?d=2">纯玩旅行</a>
             </li>

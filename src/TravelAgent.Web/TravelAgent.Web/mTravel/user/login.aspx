@@ -31,7 +31,7 @@
     </ul>
     <div style="margin: 36px 45px;">
         <input type="button" class="wx-btn-y-sub" value="登录" id="zcBtn">
-        <a href="zcEmail.aspx" class="wx-y-link">点击注册</a>
+        <a href="zcPhone.aspx" class="wx-y-link">点击注册</a>
     </div>    
     <!--#include file="../new/temp/bottom.html"-->
     <script type="text/javascript">

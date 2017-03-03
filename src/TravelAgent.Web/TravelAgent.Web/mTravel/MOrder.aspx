@@ -122,7 +122,7 @@
               <li style="margin-top: 10px;">
                 <label>保险</label>
                 <span class="t2" id="baoxian"> ￥<%=LineModel.Insure!=null?LineModel.Insure.InsurePrice.ToString():"0" %> </span> <span class="t3" id="baoxian_num"> <span class="j-linkage order-btn minus minus-active fa fa-minus" data-type="baox"></span>
-                <input type='number' min="0" max="1" id="pr_bx_num" class="order-txt-n" name="renshu3" value="0" readonly />
+                <input type='number' min="0" max="1" id="pr_bx_num" class="order-txt-n" name="renshu3" value="1" readonly />
                 <span class="j-linkage order-btn plus plus-active fa fa-plus" data-type="baox"></span> </span> 
               </li>
               <li> 

@@ -89,7 +89,7 @@
         });
         function showDataDom(data) {
             var dom = $(nano($("#tempPay").html(), data));
-            if (data.StatusNo == 4) {
+            if (data.StatusNo == 4 || data.StatusNo == 3) {
                 dom = $(nano($("#tempPay").html(), data));
             } else {
                 dom = $(nano($("#temp").html(), data));
