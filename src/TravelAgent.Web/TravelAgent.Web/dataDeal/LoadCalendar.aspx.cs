@@ -32,7 +32,7 @@ namespace TravelAgent.Web.dataDeal
                             {
                                 DateTime dttemp = dtstart.AddDays(i);
                                 int dayValue=Convert.ToInt32(dttemp.DayOfWeek);
-                                string strCurprice = Line.PriceContent.Split(',')[2] + "," + Line.PriceContent.Split(',')[3];
+                                string strCurprice = Line.PriceContent.Split(',')[0] + "," + Line.PriceContent.Split(',')[1];
                                 if (dttemp >= DateTime.Now)
                                 {
                                     if (Line.PriceEditModel == 0)//天天发团
@@ -121,7 +121,7 @@ namespace TravelAgent.Web.dataDeal
                 {
                     if (price.tag == 1)//新增的价格
                     {
-                        strprice = price.linePrice.Split(',')[2] + "," + price.linePrice.Split(',')[3];
+                        strprice = price.linePrice.Split(',')[0] + "," + price.linePrice.Split(',')[1];
                     }
                     else if (price.tag == 0)//删除的价格
                     {

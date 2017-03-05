@@ -49,8 +49,8 @@ namespace TravelAgent.Web
                         string strspeprice = getSpePrice(id, ordertime);
                         if (strspeprice.Equals(""))
                         {
-                            adultprice = Convert.ToInt32(LineModel.PriceContent.Split(',')[2]);
-                            childprice = Convert.ToInt32(LineModel.PriceContent.Split(',')[3]);
+                            adultprice = Convert.ToInt32(LineModel.PriceContent.Split(',')[0]);
+                            childprice = Convert.ToInt32(LineModel.PriceContent.Split(',')[1]);
                         }
                         else
                         {

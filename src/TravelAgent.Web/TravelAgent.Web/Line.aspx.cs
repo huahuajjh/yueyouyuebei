@@ -74,15 +74,16 @@ namespace TravelAgent.Web
                         this.lblCity.Text = cityModel.CityName;
                     }
 
-                    int intNormalPrice = String.IsNullOrEmpty(LineModel.PriceContent) ? 0 : Convert.ToInt32(LineModel.PriceContent.Split(',')[2]);
-                    int intMinPrice = GetLineSpePrice(LineModel.Id, intNormalPrice);
-                    if (intMinPrice == 0)
+                    //int intNormalPrice = String.IsNullOrEmpty(LineModel.PriceContent) ? 0 : Convert.ToInt32(LineModel.PriceContent.Split(',')[2]);
+                    //int intMinPrice = GetLineSpePrice(LineModel.Id, intNormalPrice);
+                    int price = String.IsNullOrEmpty(LineModel.PriceContent) ? 0 : Convert.ToInt32(LineModel.PriceContent.Split(',')[0]);
+                    if (price == 0)
                     {
                         this.ltPrice.Text = "电询";
                     }
                     else
                     {
-                        this.ltPrice.Text = "¥ " + intMinPrice;
+                        this.ltPrice.Text = "¥ " + price;
                     }
                 }
             }
@@ -275,7 +276,7 @@ namespace TravelAgent.Web
                         if (dttemp >= DateTime.Now)
                         {
                             int dayValue = Convert.ToInt32(dttemp.DayOfWeek);
-                            string strCurPrice = LineModel.PriceContent.Split(',')[2] + "," + LineModel.PriceContent.Split(',')[3];
+                            string strCurPrice = LineModel.PriceContent.Split(',')[0] + "," + LineModel.PriceContent.Split(',')[1];
                             if (LineModel.PriceEditModel == 0)//天天发团
                             {
                                 strSpePrice = getSpePrice(LineModel.Id, dttemp.ToString("yyyy-MM-dd"), strCurPrice, listSpePrice);

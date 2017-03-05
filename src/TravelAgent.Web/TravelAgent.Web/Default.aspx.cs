@@ -284,14 +284,6 @@ namespace TravelAgent.Web
         {
             StringBuilder sbLine = new StringBuilder();
             string strWhere = "isLock=0 and destId=" + destId;
-            //if (state != null)
-            //{
-                //Access
-                //strWhere = "InStr(State,'," + state + ",')>0 and "+strWhere;
-
-                //SQL
-                //strWhere = "CHARINDEX('," + state + ",',State)>0 and "+strWhere;
-            //}
           
             DataSet dsLine = LineBll.GetList(top, strWhere, "Sort asc,adddate desc");
             DataRow row = null;
@@ -299,21 +291,20 @@ namespace TravelAgent.Web
             {
                  row = dsLine.Tables[0].Rows[i];
                  sbLine.Append("<dl class=\"xl_box\">");
-                 //sbLine.Append("<dt class=\"xl_pic\"><a rel=\"nofollow\" href=\"/Line.aspx?id=" + row["Id"] + "\" target=\"_blank\"><img src=\"" + row["linePic"] + "\" alt=\"" + row["lineName"] + "\" /></a></dt>");
-                 //sbLine.Append("<dd class=\"xl_tit\"><a rel=\"nofollow\" href=\"/Line.aspx?id=" + row["Id"] + "\" target=\"_blank\"><i>" + row["dayNumber"] + "日游</i>" + row["lineName"] + "</a></dd>");
                  //urlrewrite
                  sbLine.Append("<dt class=\"xl_pic\"><a rel=\"nofollow\" href=\"/line/"+row["Id"]+".html\" target=\"_blank\"><img src=\""+row["linePic"]+"\" alt=\""+row["lineName"]+"\" /></a></dt>");
                 sbLine.Append("<dd class=\"xl_tit\"><a rel=\"nofollow\" href=\"/line/"+row["Id"]+".html\" target=\"_blank\"><i>"+row["dayNumber"]+"日游</i>"+row["lineName"]+"</a></dd>");
 
-                int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
-                int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
-                if (intMinPrice == 0)
+                //int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
+                //int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
+                int price = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[0]);
+                if (price == 0)
                 {
                     sbLine.Append("<dd class=\"xl_jia\">电询<font class=\"gzd\">关注度：" + row["gzd"] + "</font></dd>");
                 }
                 else
                 {
-                    sbLine.Append("<dd class=\"xl_jia\">¥<font class=\"h18\">" + intMinPrice + "</font><font class=\"preqi\">起</font><font class=\"gzd\">关注度：" + row["gzd"] + "</font></dd>");
+                    sbLine.Append("<dd class=\"xl_jia\">¥<font class=\"h18\">" + price + "</font><font class=\"preqi\">起</font><font class=\"gzd\">关注度：" + row["gzd"] + "</font></dd>");
                 }
                
                 sbLine.Append("</dl>");
@@ -349,15 +340,18 @@ namespace TravelAgent.Web
                 //urlrewrite
                 sbLine.Append("<dt class=\"zyx_pic\"><a rel=\"nofollow\" href=\"/line/"+row["Id"]+".html\" target=\"_blank\"><img src=\""+row["linePic"]+"\" alt=\""+row["lineName"]+"\" /></a></dt>");
                 sbLine.Append("<dd class=\"zyx_tit\"><a rel=\"nofollow\" href=\"/line/"+row["Id"]+".html\" target=\"_blank\">"+row["lineName"]+"<"+row["lineSubName"]+"></a></dd>");
-                int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
-                int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
-                if (intMinPrice == 0)
+
+                //int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
+                //int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
+
+                int price = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[0]);
+                if (price == 0)
                 {
                     sbLine.Append("<dd class=\"zyx_jia\">电询</dd>");
                 }
                 else
                 {
-                    sbLine.Append("<dd class=\"zyx_jia\">¥<font class=\"h18\">" + intMinPrice + "</font><font class=\"preqi\">起</font></dd>");
+                    sbLine.Append("<dd class=\"zyx_jia\">¥<font class=\"h18\">" + price + "</font><font class=\"preqi\">起</font></dd>");
                 }
                 sbLine.Append("</dl>");
             }
@@ -467,15 +461,17 @@ namespace TravelAgent.Web
                 sbLine.Append("<dt class=\"sqpic\"><a target=\"_blank\" href=\"/line/" + row["Id"] + ".html\" rel=\"nofollow\"><img alt=\"" + row["lineName"] + "\" src=\"" + row["linePic"] + "\"></a></dt>");
                 sbLine.Append("<dd class=\"sqtxt\">");
                 sbLine.Append("<em><a target=\"_blank\" href=\"/line/" + row["Id"] + ".html\" rel=\"nofollow\">"+row["lineName"]+"</a></em>");
-                int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
-                int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
-                if (intMinPrice == 0)
+
+                //int intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[2]);
+                //int intMinPrice = GetLineSpePrice(Convert.ToInt32(row["Id"]), intNormalPrice);
+                int price = String.IsNullOrEmpty(row["priceContent"].ToString()) ? 0 : Convert.ToInt32(row["priceContent"].ToString().Split(',')[0]);
+                if (price == 0)
                 {
                     sbLine.Append("<span>电询</span>");
                 }
                 else
                 {
-                    sbLine.Append("<span>¥ " + intMinPrice + "<font class=\"preqi\">起</font></span>");
+                    sbLine.Append("<span>¥ " + price + "<font class=\"preqi\">起</font></span>");
                 }
                 sbLine.Append("</dd>");
                 sbLine.Append("</dl>");
@@ -579,7 +575,7 @@ namespace TravelAgent.Web
                 //sbLine.Append("<a href=\"/Line.aspx?id="+row["Id"]+"\" target=\"_blank\" >");
                 //urlrewrite
                 sbLine.Append("<a href=\"/line/" + row["Id"] + ".html\" target=\"_blank\" >");
-                string intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? "电询" : "¥" + row["priceContent"].ToString().Split(',')[2];
+                string intNormalPrice = String.IsNullOrEmpty(row["priceContent"].ToString()) ? "电询" : "¥" + row["priceContent"].ToString().Split(',')[0];
                 sbLine.Append("<span class=\"inbox_zhiding_pre\">&nbsp;<i style=\"font-size:20px;font-family:Verdana,SimSun,Arial;\">" + intNormalPrice + "</i>元/人</span>");
                 sbLine.Append("<span class=\"inbox_zhiding_tit\">" + row["lineName"] + "</span>");
                 sbLine.Append("<span class=\"inbox_zhiding_con\">" + row["lineSubName"] + "</span>");

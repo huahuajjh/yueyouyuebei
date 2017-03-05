@@ -220,7 +220,7 @@ namespace TravelAgent.Web
                 }
                 else
                 {
-                    sbLine.Append("<dd class=\"tj_jia\">¥<font class=\"ho22\">" + row["priceContent"].ToString().Split(',')[2]+ "</font></dd>");
+                    sbLine.Append("<dd class=\"tj_jia\">¥<font class=\"ho22\">" + row["priceContent"].ToString().Split(',')[0]+ "</font></dd>");
                 }
                 
                 sbLine.Append("<dd class=\"tj_sheng\">");
@@ -264,7 +264,7 @@ namespace TravelAgent.Web
                 }
                 else
                 {
-                    sbLine.Append(" <p><span>¥<font class=\"ho16\">" + row["priceContent"].ToString().Split(',')[2] + "</font></span></p>");
+                    sbLine.Append(" <p><span>¥<font class=\"ho16\">" + row["priceContent"].ToString().Split(',')[0] + "</font></span></p>");
                 }
                 sbLine.Append("</li>");
             }
@@ -454,7 +454,7 @@ namespace TravelAgent.Web
                 }
                 else
                 {
-                    sbList.Append("<p class=\"jia\"><font class=\"h014\">¥</font><font class=\"ho18\">" + row["priceCommon"] + "</font> 起</p>");
+                    sbList.Append("<p class=\"jia\"><font class=\"h014\">¥</font><font class=\"ho18\">" + row["priceContent"].ToString().Split(',')[0] + "</font> 起</p>");
                 }
                 
                 sbList.Append("<p class=\"gzu\">"+row["gzd"]+"人关注</p>");

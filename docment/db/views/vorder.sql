@@ -18,8 +18,8 @@ SELECT
 		WHEN '6' THEN '预订成功'
 		ELSE 'NA' END AS Status,
 	o.Id AS Id,
-	l.lineName AS ProductName,
-	l.linePic AS Url,
+	CASE WHEN l.lineName IS NULL THEN 'NA' ELSE l.lineName END AS ProductName,
+	CASE WHEN l.linePic IS NULL THEN 'NA' ELSE l.linePic END AS Url,
 	o.orderState AS StatusNo,
 	c.id AS UserId
 	
