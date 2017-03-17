@@ -79,9 +79,8 @@ namespace TravelAgent.WeiPay
             }
 
             sb.Append(key + "=" + value);
-            //return sb.ToString();
-
             string sign = MD5Util.GetMD5(sb.ToString(), getCharset()).ToUpper();
+            LogUtil.WriteLog("----------------------------"+sb.ToString()+"----------------------------");
             return sign;
         }
 

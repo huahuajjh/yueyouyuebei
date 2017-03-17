@@ -134,7 +134,7 @@ namespace TravelAgent.Web.mTravel
                         if (dttemp >= DateTime.Now)
                         {
                             int dayValue = Convert.ToInt32(dttemp.DayOfWeek);
-                            string strCurPrice = Line.PriceContent.Split(',')[2] + "," + Line.PriceContent.Split(',')[3];
+                            string strCurPrice = Line.PriceContent.Split(',')[0] + "," + Line.PriceContent.Split(',')[1];
                             if (Line.PriceEditModel == 0)//天天发团
                             {
                                 strSpePrice = getSpePrice(Line.Id, dttemp.ToString("yyyy-MM-dd"), strCurPrice, listSpePrice);

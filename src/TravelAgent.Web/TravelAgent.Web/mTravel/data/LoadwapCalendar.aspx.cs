@@ -36,7 +36,7 @@ namespace TravelAgent.Web.mTravel.data
                             {
                                 DateTime dttemp = dtstart.AddDays(i);
                                 int dayValue = Convert.ToInt32(dttemp.DayOfWeek);
-                                string strCurprice = Line.PriceContent.Split(',')[2] + "," + Line.PriceContent.Split(',')[3];
+                                string strCurprice = Line.PriceContent.Split(',')[0] + "," + Line.PriceContent.Split(',')[1];
                                 if (dttemp >= DateTime.Now)
                                 {
                                     if (Line.PriceEditModel == 0)//天天发团

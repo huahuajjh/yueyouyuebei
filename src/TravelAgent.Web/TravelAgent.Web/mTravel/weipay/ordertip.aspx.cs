@@ -56,8 +56,8 @@ namespace TravelAgent.Web.mTravel.weipay
         {
             TravelAgent.Model.WebInfo webinfo = new TravelAgent.BLL.WebInfo().loadConfig(Server.MapPath(ConfigurationManager.AppSettings["WebInfoConfig"].ToString()));
 
-            string code = Request.QueryString["code"];
-            LogUtil.WriteLog("Code：" + code);
+            string code = Request.QueryString["code"];            
+            LogUtil.WriteLog("Code ：" + code);
             if (string.IsNullOrEmpty(code))
             {
                 string code_url = string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope=snsapi_base&state=lk#wechat_redirect", webinfo.AppID, redirect_uri);
@@ -132,6 +132,7 @@ namespace TravelAgent.Web.mTravel.weipay
 
             //跳转到 WeiPay.aspx 页面，请设置函数中WeiPay.aspx的页面地址
             this.Response.Redirect(model.ToString());
+            LogUtil.WriteLog("--------------------------redirect="+model.ToString()+"-----------------------------");
         }
     }
 }

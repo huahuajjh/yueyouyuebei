@@ -44,7 +44,9 @@ namespace TravelAgent.Web.mTravel
             }
             else
             {
-                strwhere += " and CHARINDEX('," + state + ",',State)>0 and destId=" + d;
+                //strwhere += " and CHARINDEX('," + state + ",',State)>0 and destId=" + d;
+                //update by jjh
+                strwhere += " and destId=" + d;
             }
             
             DataSet dsLine = LineBll.GetList(top, strwhere, "Sort asc,adddate desc");

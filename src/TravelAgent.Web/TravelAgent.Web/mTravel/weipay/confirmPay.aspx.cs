@@ -83,17 +83,17 @@ namespace TravelAgent.Web.mTravel.weipay
 
             #region sign===============================
             Sign = packageReqHandler.CreateMd5Sign("key", webinfo.Key);
-            LogUtil.WriteLog("WeiPay 页面  sign：" + Sign);
+            LogUtil.WriteLog("本地计算的sign：" + Sign);
             #endregion
 
             #region 获取package包======================
             packageReqHandler.setParameter("sign", Sign);
 
             string data = packageReqHandler.parseXML();
-            LogUtil.WriteLog("WeiPay 页面  package（XML）：" + data);
+            LogUtil.WriteLog("拼接的xml：" + data);
 
             string prepayXml = HttpUtil.Send(data, "https://api.mch.weixin.qq.com/pay/unifiedorder");
-            LogUtil.WriteLog("WeiPay 页面  package（Back_XML）：" + prepayXml);
+            LogUtil.WriteLog("微信支付返回xml消息：" + prepayXml);
 
             //获取预支付ID
             var xdoc = new XmlDocument();
@@ -104,7 +104,7 @@ namespace TravelAgent.Web.mTravel.weipay
             {
                 PrepayId = xnl[7].InnerText;
                 Package = string.Format("prepay_id={0}", PrepayId);
-                LogUtil.WriteLog("WeiPay 页面  package：" + Package);
+                LogUtil.WriteLog("解析返回的xml：" + Package);
             }
             #endregion
 
@@ -116,7 +116,7 @@ namespace TravelAgent.Web.mTravel.weipay
             paySignReqHandler.setParameter("package", Package);
             paySignReqHandler.setParameter("signType", "MD5");
             PaySign = paySignReqHandler.CreateMd5Sign("key", webinfo.Key);
-
+            
             LogUtil.WriteLog("WeiPay 页面  paySign：" + PaySign);
             #endregion
             #endregion

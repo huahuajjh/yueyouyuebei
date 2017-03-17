@@ -10,6 +10,7 @@ using System.IO;
 using System.Text;
 using TravelAgent.WeiPay;
 using Newtonsoft.Json;
+using NLog;
 
 namespace TravelAgent.Web.mTravel.weipay
 {

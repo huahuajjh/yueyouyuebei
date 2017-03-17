@@ -137,6 +137,10 @@
       <Project>{57ea1a47-f9d2-405f-97d1-1fb046381e08}</Project>
       <Name>TravelAgent.Tool</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TravelAgent.WeiPay\TravelAgent.WeiPay.csproj">
+      <Project>{0818CB65-B67F-4539-9E89-A40F44D75DAF}</Project>
+      <Name>TravelAgent.WeiPay</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">

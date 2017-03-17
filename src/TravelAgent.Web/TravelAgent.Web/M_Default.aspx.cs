@@ -50,7 +50,7 @@ namespace TravelAgent.Web
                 sbLine.Append("<li>");
                 sbLine.Append("<a href=\"mTravel/LineDetail.aspx?id=" + row["Id"] + "\">");
                 sbLine.Append("<img src=\"" + row["linePic"] + "\">");
-                sbLine.Append("<div class=\"wx-tuijian-data-money\"><p>￥<span>" + row["priceCommon"]+ "</span>起</p></div>");
+                sbLine.Append("<div class=\"wx-tuijian-data-money\"><p>￥<span>" + row["priceContent"].ToString().Split(',')[0]+ "</span>起</p></div>");
                 sbLine.Append("<div class=\"wx-tuijian-data-info\">");
                 sbLine.Append("<div class=\"wx-tuijian-data-title\"><div class=\"wx-tuijian-data-title-val\">" + row["lineName"] + "<span class=\"wx-tuijian-data-hot\"></span></div></div>");
                 sbLine.Append("<span class=\"wx-tuijian-data-span\">" + row["dayNumber"] + "日游</span>");

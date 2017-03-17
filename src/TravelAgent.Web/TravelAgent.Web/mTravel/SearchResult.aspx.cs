@@ -71,7 +71,7 @@ namespace TravelAgent.Web.mTravel
                     }
                     else
                     {
-                        sbLine.Append("<span class=\"show_line_jia\">¥&nbsp;" + row["priceCommon"] + "</span>");
+                        sbLine.Append("<span class=\"show_line_jia\">¥&nbsp;" + row["priceContent"].ToString().Split(',')[0] + "</span>");
                     }
                     string name = "";
                     Model.DepartureCity city = CityBll.GetModel(Convert.ToInt32(row["cityId"]));

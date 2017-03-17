@@ -183,10 +183,10 @@ $(function () {
             flag = true;
         }
         //推荐人
-        if (tuijianren.length < 2) {
-            $("#span_tuijianren").text("请输入推荐人");
-            flag = true;
-        }
+        //if (tuijianren.length < 2) {
+        //    $("#span_tuijianren").text("请输入推荐人");
+        //    flag = true;
+        //}
         if (flag) {
             /*定位焦点*/
             $(".userTypeContact table").find("span").each(function () {

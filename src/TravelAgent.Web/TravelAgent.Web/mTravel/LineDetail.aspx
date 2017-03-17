@@ -33,10 +33,10 @@
                                 <div class="linedetail_pre">
                                         <span><%=ShowJoinName(Line.ProIds)%></span>
                                         <span><%=Line.DayNumber %>日游</span>
-                                        <strong><%=ShowPrice(Line.PriceCommon.ToString())%></strong>
+                                        <strong><%=ShowPrice(Line.PriceContent.Split(',')[0])%></strong>
                                 </div>
                         </div>
-			                        <!--出发日期及余位-->
+			            <!--出发日期及余位-->
                         <div class="linedetail_box">
                                 <div class="linedetail_date">
                                         <p>提前报名：<%=Line.AheadNumber %>天</p>
@@ -46,7 +46,7 @@
 
 			<!--出发日期-->
                         <div class="linedetail_box">
-                                <div class="linedetail_xin_tit">出发日期及报价</div>
+                            <div class="linedetail_xin_tit">出发日期及报价</div>
                                 <div class="linedetail_xin_con" id="line_xinbox2">
 											<%=ShowDate() %>                                
 											<div class="linedetail_xin_btn2"><span><s></s></span></div>
